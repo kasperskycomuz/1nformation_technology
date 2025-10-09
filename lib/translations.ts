@@ -292,6 +292,55 @@ const practiceInteractiveModules: Record<Language, PracticeInteractiveContent[]>
           options: ["DOCX", "PDF", "PNG"],
           correct: 0,
           explanation: "DOCX сохраняет структуру и позволяет редактировать документ совместно онлайн." 
+        },
+        {
+          id: "os-updates",
+          question: "Как обеспечить актуальность Windows без дополнительных ручных действий?",
+          options: ["Отключить центр обновления", "Настроить автоматическую установку обновлений через Центр обновления", "Установить только драйверы принтера"],
+          correct: 1,
+          explanation: "Автоматические обновления закрывают уязвимости и поддерживают систему в рабочем состоянии."
+        },
+        {
+          id: "office-collaboration",
+          question: "Как организовать совместную работу над документом Word в реальном времени?",
+          options: ["Хранить файл на локальном диске", "Поделиться документом через OneDrive или SharePoint", "Печатать и раздавать копии"],
+          correct: 1,
+          explanation: "Публикация в OneDrive или SharePoint позволяет нескольким пользователям редактировать файл одновременно."
+        },
+        {
+          id: "office-shortcut",
+          question: "Какое сочетание клавиш быстро сохраняет документ в Microsoft Word?",
+          options: ["Ctrl + S", "Ctrl + X", "Alt + F4"],
+          correct: 0,
+          explanation: "Ctrl + S моментально сохраняет изменения в текущем документе."
+        },
+        {
+          id: "security-antivirus",
+          question: "Что следует сделать перед установкой нового антивирусного решения?",
+          options: ["Удалить предыдущий антивирус", "Отключить обновления Windows", "Отключить многофакторную аутентификацию"],
+          correct: 0,
+          explanation: "Удаление старого антивируса предотвращает конфликты и повышает стабильность системы."
+        },
+        {
+          id: "permissions",
+          question: "Какой параметр Windows позволяет выдать пользователю право изменять файл?",
+          options: ["Разрешения безопасности (Security permissions)", "Настройки обоев рабочего стола", "Режим отображения панели задач"],
+          correct: 0,
+          explanation: "Права безопасности определяют доступ к файлам и папкам для конкретных пользователей и групп."
+        },
+        {
+          id: "templates",
+          question: "Как ускорить подготовку однотипных документов Word?",
+          options: ["Использовать готовый шаблон", "Каждый раз создавать документ с нуля", "Сначала экспортировать документ в PNG"],
+          correct: 0,
+          explanation: "Шаблон содержит преднастроенные стили и структуру, что экономит время при повторном использовании."
+        },
+        {
+          id: "excel-shared",
+          question: "Как лучше организовать Excel-таблицу для совместного использования?",
+          options: ["Хранить файл только локально", "Разместить книгу в облаке и настроить уровни доступа", "Использовать разные форматы данных в каждой строке"],
+          correct: 1,
+          explanation: "Облачное хранение с контролем доступа обеспечивает актуальность данных и удобство совместной работы."
         }
       ],
       submitLabel: "Проверить ответы",
@@ -364,6 +413,55 @@ const practiceInteractiveModules: Record<Language, PracticeInteractiveContent[]>
           options: ["DOCX", "PDF", "PNG"],
           correct: 0,
           explanation: "DOCX hujjat tuzilmasini saqlaydi va onlayn tahrirlashga imkon beradi."
+        },
+        {
+          id: "os-updates",
+          question: "Windows operatsion tizimini avtomatik yangilashni qanday ta'minlash mumkin?",
+          options: ["Yangilanish markazini o'chirish", "Yangilanishlarni avtomatik o'rnatishni yoqish", "Faqat printer drayverlarini o'rnatish"],
+          correct: 1,
+          explanation: "Avtomatik yangilanishlar zaifliklarni yopadi va tizimni barqaror yuritadi."
+        },
+        {
+          id: "office-collaboration",
+          question: "Word hujjatini real vaqt rejimida birgalikda tahrirlash uchun nima qilish kerak?",
+          options: ["Faylni faqat mahalliy diskda saqlash", "OneDrive yoki SharePoint orqali bo'lishish", "Hujjatni chop etib, nusxalar tarqatish"],
+          correct: 1,
+          explanation: "OneDrive yoki SharePoint hujjatni bir nechta foydalanuvchi bilan bir vaqtda tahrirlash imkonini beradi."
+        },
+        {
+          id: "office-shortcut",
+          question: "Microsoft Word da hujjatni tez saqlash uchun qaysi tugmalar birikmasi ishlatiladi?",
+          options: ["Ctrl + S", "Ctrl + X", "Alt + F4"],
+          correct: 0,
+          explanation: "Ctrl + S amaldagi hujjatni darhol saqlaydi."
+        },
+        {
+          id: "security-antivirus",
+          question: "Yangi antivirusni o'rnatishdan oldin qaysi amalni bajarish muhim?",
+          options: ["Avvalgi antivirusni olib tashlash", "Windows yangilanishlarini o'chirish", "Ikki faktorli himoyani o'chirish"],
+          correct: 0,
+          explanation: "Eski antivirusni olib tashlash dasturlar o'rtasidagi ziddiyatlarni oldini oladi."
+        },
+        {
+          id: "permissions",
+          question: "Windowsda foydalanuvchiga faylni o'zgartirish huquqini berish uchun nimani sozlash kerak?",
+          options: ["Xavfsizlik ruxsatlari", "Ish stoli fonini almashtirish", "Vazifalar paneli ko'rinishini sozlash"],
+          correct: 0,
+          explanation: "Xavfsizlik ruxsatlari fayl va papkalarga kirish darajasini belgilaydi."
+        },
+        {
+          id: "templates",
+          question: "Wordda bir xil turdagi hujjatlarni tez tayyorlashning eng qulay usuli qanday?",
+          options: ["Tayyor shablondan foydalanish", "Har safar qaytadan yozish", "Dastlab hujjatni PNG formatiga eksport qilish"],
+          correct: 0,
+          explanation: "Shablon tayyor stil va tuzilmani saqlaydi, shuning uchun vaqt tejaydi."
+        },
+        {
+          id: "excel-shared",
+          question: "Excel jadvalini jamoaviy foydalanish uchun qanday tashkil etish ma'qul?",
+          options: ["Faylni faqat mahalliy kompyuterda saqlash", "Bulutda umumiy fayl yaratib, kirish darajalarini sozlash", "Har bir qator uchun turli formatlardan foydalanish"],
+          correct: 1,
+          explanation: "Bulutdagi umumiy fayl ma'lumotlarni dolzarb saqlaydi va hamkorlikni osonlashtiradi."
         }
       ],
       submitLabel: "Javoblarni tekshirish",
