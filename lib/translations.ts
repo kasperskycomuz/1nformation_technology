@@ -566,6 +566,594 @@ const practiceInteractiveModules: Record<Language, PracticeInteractiveContent[]>
         successMessage: "Отлично! Вы готовы создавать электронные задания в iSpring и Wordwall.",
         encouragement: "Экспериментируйте с шаблонами и расширяйте банк упражнений.",
         resultsTitle: "Ваш результат"
+      },
+      {
+        id: "apps-authoring",
+        title: "Интерактивное задание: iSpring, MyTest и LearningApps",
+        description:
+          "Проверьте навыки настройки интерактивных приложений: симуляции в iSpring, тесты в MyTest и онлайн-упражнения в LearningApps.",
+        tasks: [
+          {
+            id: "ispring-talkmaster",
+            question: "Какой компонент iSpring Suite предназначен для создания диалоговых тренажёров с ветвлением сценариев?",
+            options: ["TalkMaster", "Screen Recorder", "Audio Editor"],
+            correct: 0,
+            explanation: "TalkMaster позволяет проектировать диалоги с выбором реплик и смотреть статистику прохождения."
+          },
+          {
+            id: "ispring-insert",
+            question: "В какой вкладке PowerPoint находится команда вставки интерактивного объекта iSpring Interaction?",
+            options: ["iSpring Suite → Interaction", "Рецензирование → Сравнить", "Анимация → Добавить анимацию"],
+            correct: 0,
+            explanation: "После установки iSpring появляется вкладка iSpring Suite с кнопкой Interaction для добавления объекта."
+          },
+          {
+            id: "ispring-publish-lms",
+            question: "Какой режим публикации iSpring выбрать, чтобы интегрировать модуль в LMS?",
+            options: ["Publish → LMS (SCORM)", "Publish → YouTube", "Publish → Word"],
+            correct: 0,
+            explanation: "Публикация в формате SCORM обеспечивает корректный обмен данными с системой управления обучением."
+          },
+          {
+            id: "ispring-drag",
+            question: "Какой тип вопроса iSpring QuizMaker использовать для перетаскивания объектов на изображение?",
+            options: ["Drag-and-Drop", "Likert Scale", "Numeric"],
+            correct: 0,
+            explanation: "Тип Drag-and-Drop позволяет разместить маркеры на нужных областях изображения или схемы."
+          },
+          {
+            id: "mytest-extension",
+            question: "Какое расширение получает исходный файл теста, созданного в MyTestX редакторе?",
+            options: [".mtf", ".docx", ".pptx"],
+            correct: 0,
+            explanation: "MyTestX сохраняет проекты в собственном формате .mtf, который открывается в редакторе."
+          },
+          {
+            id: "mytest-time",
+            question: "Где задаётся ограничение по времени прохождения теста в MyTest?",
+            options: ["Меню \"Тест\" → \"Свойства теста\"", "Меню \"Правка\" → \"Отменить\"", "Контекстное меню вопроса → \"Удалить\""],
+            correct: 0,
+            explanation: "В окне свойств теста доступны параметры времени, количества попыток и шкалы оценивания."
+          },
+          {
+            id: "mytest-exe",
+            question: "Как создать автономный файл теста, который запускается без установки MyTest?",
+            options: ["Файл → Создать исполняемый файл (.exe)", "Файл → Печать", "Вид → Панель инструментов"],
+            correct: 0,
+            explanation: "Команда создания exe-компиляции формирует самостоятельный тестовый модуль для обучающихся."
+          },
+          {
+            id: "learningapps-template",
+            question: "Какой шаблон LearningApps лучше подойдёт для сопоставления слов и переводов?",
+            options: ["Matching Pairs", "Group Puzzle", "Single Choice"],
+            correct: 0,
+            explanation: "Matching Pairs создаёт карточки для связывания пар, что идеально для словарных тренировок."
+          },
+          {
+            id: "learningapps-class",
+            question: "Как организовать сбор результатов обучающихся в LearningApps?",
+            options: ["Создать класс и выдать код доступа участникам", "Попросить студентов прислать скриншот", "Экспортировать задание в PDF"],
+            correct: 0,
+            explanation: "Через раздел \"Классы\" можно отслеживать, кто и как выполнил упражнение."
+          },
+          {
+            id: "learningapps-embed",
+            question: "Как встроить упражнение LearningApps в страницу курса?",
+            options: ["Скопировать HTML-код из раздела \"Встроить\" и вставить на сайт", "Сделать скриншот упражнения", "Отправить файл через FTP-клиент"],
+            correct: 0,
+            explanation: "Платформа генерирует embed-код, который можно добавить в LMS, блог или сайт курса."
+          }
+        ],
+        submitLabel: "Проверить ответы",
+        resetLabel: "Сбросить и пройти заново",
+        scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
+        successMessage: "Отличный результат! Вы уверенно комбинируете iSpring, MyTest и LearningApps для языковых заданий.",
+        encouragement: "Попробуйте адаптировать сценарии под собственные уроки и расширить библиотеку упражнений.",
+        resultsTitle: "Ваш результат"
+      },
+      {
+        id: "animation-3d",
+        title: "Интерактивное задание: анимация в Photoshop и 3D в Blender",
+        description:
+          "Оцените знания по созданию покадровой анимации в Photoshop и построению 3D-сцен в Blender: ключевые кадры, UV-развёртка, материалы и экспорт моделей.",
+        tasks: [
+          {
+            id: "ps-timeline",
+            question: "Как открыть временную шкалу анимации в Adobe Photoshop?",
+            options: ["Окно → Таймлайн", "Редактирование → Преобразовать в смарт-объект", "Фильтр → Галерея размытия"],
+            correct: 0,
+            explanation: "Панель «Таймлайн» доступна через меню «Окно» и позволяет создать покадровую или видеотаймлайн анимацию."
+          },
+          {
+            id: "animation-fps",
+            question: "Какой параметр определяет количество кадров в секунду при экспорте анимации?",
+            options: ["FPS", "DPI", "ISO"],
+            correct: 0,
+            explanation: "FPS (Frames Per Second) задаёт частоту кадров и влияет на плавность движения."
+          },
+          {
+            id: "ps-gif-export",
+            question: "Как правильно экспортировать GIF-анимацию из Photoshop?",
+            options: ["Файл → Экспорт → Сохранить для Web (Legacy)", "Изображение → Режим → CMYK", "Слой → Растрировать слой"],
+            correct: 0,
+            explanation: "Команда «Сохранить для Web (Legacy)» позволяет выбрать формат GIF, палитру и параметры цикла."
+          },
+          {
+            id: "blender-keyframe",
+            question: "Какая горячая клавиша добавляет ключевой кадр для выбранного параметра в Blender?",
+            options: ["I", "X", "Shift+S"],
+            correct: 0,
+            explanation: "Клавиша I (Insert Keyframe) записывает значение параметра в текущем кадре."
+          },
+          {
+            id: "blender-engine",
+            question: "Какой движок рендера Blender обеспечивает физически корректное трассирование лучей?",
+            options: ["Eevee", "Workbench", "Cycles"],
+            correct: 2,
+            explanation: "Cycles использует трассировку лучей и подходит для реалистичных кадров с глобальным освещением."
+          },
+          {
+            id: "blender-view",
+            question: "Как быстро переключиться в режим Solid в окне 3D View Blender?",
+            options: ["Нажать Shift+E", "Нажать Z и выбрать Solid", "Нажать Ctrl+Alt+C"],
+            correct: 1,
+            explanation: "Меню по клавише Z позволяет выбрать режим отображения, включая Solid, Wireframe и Rendered."
+          },
+          {
+            id: "ps-loop",
+            question: "Как сделать GIF-анимацию зацикленной при экспорте из Photoshop?",
+            options: ["В окне предпросмотра задать цикл ‘Навсегда’", "Продублировать каждый слой", "Уменьшить размер холста"],
+            correct: 0,
+            explanation: "Параметр цикла находится внизу окна экспорта и позволяет выбрать бесконечное воспроизведение."
+          },
+          {
+            id: "blender-uv",
+            question: "Как подготовить модель к нанесению текстур в Blender?",
+            options: ["Выполнить UV-развёртку через Smart UV Project", "Добавить модификатор Boolean", "Перенести объект в коллекцию"],
+            correct: 0,
+            explanation: "UV-развёртка создаёт плоскую карту координат, по которой накладывается текстура."
+          },
+          {
+            id: "graph-editor",
+            question: "Для чего используется Graph Editor в Blender?",
+            options: ["Для точной настройки кривых анимации", "Для управления библиотекой ассетов", "Для создания материалов"],
+            correct: 0,
+            explanation: "В Graph Editor редактируют интерполяцию и плавность движения ключевых кадров."
+          },
+          {
+            id: "blender-export",
+            question: "Какой формат файла подходит для обмена 3D-моделями между разными приложениями?",
+            options: ["FBX", "PSD", "MP3"],
+            correct: 0,
+            explanation: "Формат FBX сохраняет материалы, анимацию и иерархию, что удобно для импорта в другие программы."
+          }
+        ],
+        submitLabel: "Проверить ответы",
+        resetLabel: "Сбросить и пройти заново",
+        scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
+        successMessage: "Отлично! Вы уверенно создаёте анимацию и работаете с 3D-моделями.",
+        encouragement: "Экспериментируйте с материалами, светом и экспресс-рендерами, чтобы прокачать визуальные навыки.",
+        resultsTitle: "Ваш результат"
+      },
+      {
+        id: "media-editing",
+        title: "Интерактивное задание: обработка аудио- и видеоматериалов",
+        description:
+          "Проверьте навыки монтажа, цветокоррекции и улучшения аудио: рабочие процессы Premiere/Audacity, кодеки, нормализация и резервное копирование медиатеки.",
+        tasks: [
+          {
+            id: "audio-noise",
+            question: "Как уменьшить постоянный фоновой шум в голосовой записи?",
+            options: ["Применить эффект Noise Reduction", "Увеличить общую громкость", "Переключить дорожку в моно"],
+            correct: 0,
+            explanation: "Процесс Noise Reduction анализирует образец шума и убирает нежелательные частоты."
+          },
+          {
+            id: "video-container",
+            question: "Какой контейнер чаще всего используют для экспорта видео с кодеком H.264?",
+            options: ["MP4", "DOCX", "TIFF"],
+            correct: 0,
+            explanation: "MP4 совместим с большинством платформ и поддерживает потоковую трансляцию."
+          },
+          {
+            id: "sync-audio",
+            question: "Как синхронизировать видео и аудио по хлопку в монтажной программе?",
+            options: ["Совместить клипы по меткам и форме волны", "Применить эффект размытия", "Изменить разрешение проекта"],
+            correct: 0,
+            explanation: "Совмещение по маркерам или форме волны обеспечивает точное совпадение видео и аудио дорожек."
+          },
+          {
+            id: "color-correction",
+            question: "Какой инструмент Adobe Premiere Pro используют для базовой цветокоррекции?",
+            options: ["Панель Lumetri Color", "Панель Essential Graphics", "Инструмент Crop"],
+            correct: 0,
+            explanation: "Lumetri Color содержит основные панели для экспозиции, баланса белого и творческих LUT."
+          },
+          {
+            id: "audio-level",
+            question: "До какого уровня обычно нормализуют голосовую дорожку для комфортного восприятия?",
+            options: ["−1 dB", "−6 dB", "+3 dB"],
+            correct: 1,
+            explanation: "Уровень около −6 dB даёт запас по пику и предотвращает клиппинг на разных устройствах."
+          },
+          {
+            id: "video-transcode",
+            question: "Как уменьшить размер ролика без потери совместимости с большинством плееров?",
+            options: ["Закодировать видео в HandBrake с кодеком H.264 и переменным битрейтом", "Удалить аудиодорожку", "Заархивировать ролик в ZIP"],
+            correct: 0,
+            explanation: "H.264 с адаптивным битрейтом сохраняет качество и поддерживается почти всеми устройствами."
+          },
+          {
+            id: "audio-fade",
+            question: "Как сделать плавное затухание аудиодорожки в финале ролика?",
+            options: ["Поставить ключевые кадры и постепенно снизить громкость", "Применить эффект линзы", "Отразить дорожку по горизонтали"],
+            correct: 0,
+            explanation: "Аудиоавтоматизация по ключевым кадрам обеспечивает контролируемое затухание."
+          },
+          {
+            id: "slow-motion",
+            question: "Как добиться плавного замедления при изменении скорости клипа?",
+            options: ["Повысить яркость кадра", "Использовать Optical Flow или Frame Blending", "Изменить формат звука"],
+            correct: 1,
+            explanation: "Оптический поток или покадровое смешивание рассчитывают промежуточные кадры для плавного slow motion."
+          },
+          {
+            id: "audio-format",
+            question: "Какой формат подходит для хранения аудио без потерь качества?",
+            options: ["WAV", "MP3 128 kbps", "OGG 96 kbps"],
+            correct: 0,
+            explanation: "WAV сохраняет исходное качество и подходит для дальнейшей обработки."
+          },
+          {
+            id: "media-backup",
+            question: "Как надёжно организовать резервное копирование медиатеки проекта?",
+            options: ["Хранить материалы на двух независимых носителях и в облаке", "Перемещать исходники в корзину после импорта", "Использовать один USB-накопитель"],
+            correct: 0,
+            explanation: "Стратегия 3-2-1 (несколько копий и типы носителей) защищает проект от потери данных."
+          }
+        ],
+        submitLabel: "Проверить ответы",
+        resetLabel: "Сбросить и пройти заново",
+        scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
+        successMessage: "Отлично! Вы уверенно обрабатываете аудио и видео материал.",
+        encouragement: "Экспериментируйте с эффектами, LUT и миксом, чтобы добиться профессионального звучания и картинки.",
+        resultsTitle: "Ваш результат"
+      },
+      {
+        id: "safe-internet",
+        title: "Интерактивное задание: цифровая гигиена и безопасность в интернете",
+        description:
+          "Закрепите практики кибербезопасности и цифрового благополучия: сложные пароли, 2FA, резервное копирование и комфортные сценарии онлайн-работы.",
+        tasks: [
+          {
+            id: "password-length",
+            question: "Какой пароль считается устойчивым к перебору?",
+            options: ["Не менее 12 символов с буквами, цифрами и спецсимволами", "Четырёхзначный PIN", "Имя домашнего питомца"],
+            correct: 0,
+            explanation: "Длинный пароль с разными типами символов значительно усложняет взлом."
+          },
+          {
+            id: "two-factor",
+            question: "Какой шаг дополнительно защищает учётную запись?",
+            options: ["Открывать все вложения", "Включить двухфакторную аутентификацию", "Использовать один пароль для всех сервисов"],
+            correct: 1,
+            explanation: "2FA требует второй фактор подтверждения и существенно снижает риск компрометации."
+          },
+          {
+            id: "phishing",
+            question: "Что чаще всего выдаёт фишинговое письмо?",
+            options: ["Грамматические ошибки и срочные просьбы по подозрительной ссылке", "Отсутствие эмодзи в тексте", "Формат PDF"],
+            correct: 0,
+            explanation: "Фишинговые письма подталкивают действовать немедленно и ведут на поддельные сайты."
+          },
+          {
+            id: "updates",
+            question: "Зачем устанавливать обновления операционной системы и приложений?",
+            options: ["Они закрывают уязвимости и повышают стабильность", "Они удаляют файлы пользователя", "Они замедляют интернет"],
+            correct: 0,
+            explanation: "Обновления содержат патчи безопасности и улучшают совместимость программ."
+          },
+          {
+            id: "public-wifi",
+            question: "Как снизить риски при работе в общественной Wi-Fi сети?",
+            options: ["Использовать VPN и избегать передачи конфиденциальных данных", "Отключить антивирус", "Открывать банковские сайты без проверки"],
+            correct: 0,
+            explanation: "VPN шифрует трафик и препятствует перехвату личных данных."
+          },
+          {
+            id: "privacy-settings",
+            question: "Где регулируются настройки видимости профиля в соцсетях?",
+            options: ["В разделе конфиденциальности и безопасности аккаунта", "В папке загрузок", "В корзине"],
+            correct: 0,
+            explanation: "Меню конфиденциальности позволяет ограничить круг лиц, видящих ваши публикации и данные."
+          },
+          {
+            id: "digital-wellbeing",
+            question: "Что помогает поддерживать цифровое благополучие?",
+            options: ["Регулярные перерывы и лимиты экранного времени", "Игнорирование признаков усталости", "Работа без сна по ночам"],
+            correct: 0,
+            explanation: "Перерывы, упражнения и лимиты экранного времени предотвращают эмоциональное выгорание."
+          },
+          {
+            id: "data-backup",
+            question: "Как защитить важные документы от потери?",
+            options: ["Создавать резервные копии на внешнем диске и в облаке", "Хранить только на рабочем столе", "Отправлять себе пароли по почте"],
+            correct: 0,
+            explanation: "Резервное копирование обеспечивает восстановление данных после сбоев или атак."
+          },
+          {
+            id: "downloads",
+            question: "Как избежать заражения вредоносным ПО при скачивании программ?",
+            options: ["Загружать только с официальных сайтов и проверять цифровую подпись", "Отключить брандмауэр", "Запускать случайные файлы .exe"],
+            correct: 0,
+            explanation: "Официальные источники и проверки подписи минимизируют риск установки модифицированных программ."
+          },
+          {
+            id: "online-harassment",
+            question: "Как правильно реагировать на токсичное поведение или травлю в сети?",
+            options: ["Заблокировать нарушителя и сообщить модерации", "Ответить агрессией", "Опубликовать личные данные обидчика"],
+            correct: 0,
+            explanation: "Блокировка и обращение к модераторам обеспечивают поддержку и фиксируют нарушение."
+          }
+        ],
+        submitLabel: "Проверить ответы",
+        resetLabel: "Сбросить и пройти заново",
+        scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
+        successMessage: "Вы формируете устойчивые навыки безопасной онлайн-работы.",
+        encouragement: "Регулярно обновляйте знания о киберугрозах и делитесь правилами цифровой гигиены с коллегами.",
+        resultsTitle: "Ваш результат"
+      },
+      {
+        id: "google-suite",
+        title: "Интерактивное задание: Google Workspace и classroomscreen",
+        description:
+          "Закрепите навык совместной работы в Google Docs, Sheets, Slides, Forms и Classroom, а также управления уроком с помощью classroomscreen.com.",
+        tasks: [
+          {
+            id: "docs-comment",
+            question: "Как добавить комментарий к выделенному фрагменту в Google Docs?",
+            options: ["Выделить текст и нажать Ctrl+Alt+M", "Нажать F5", "Экспортировать документ в PDF"],
+            correct: 0,
+            explanation: "Сочетание Ctrl+Alt+M или иконка комментария добавляют обсуждение к выделенному тексту."
+          },
+          {
+            id: "drive-sharing",
+            question: "Как настроить совместный доступ к файлу Google Документов?",
+            options: ["Скопировать ссылку из адресной строки", "Через кнопку ‘Настроить доступ’ и выбор ролей читателя/комментатора/редактора", "Отправить файл по почте в формате DOCX"],
+            correct: 1,
+            explanation: "Кнопка ‘Настроить доступ’ позволяет задать права доступа и ограничить круг участников."
+          },
+          {
+            id: "sheets-sumif",
+            question: "Какая функция Google Sheets суммирует значения по условию?",
+            options: ["SUMIF", "VLOOKUP", "COUNT"],
+            correct: 0,
+            explanation: "SUMIF (или SUMIFS) складывает только те ячейки, которые соответствуют заданному критерию."
+          },
+          {
+            id: "forms-quiz",
+            question: "Как превратить Google Форму в тест с автоматической проверкой?",
+            options: ["В настройках включить режим ‘Тест’", "Создать таблицу результатов вручную", "Импортировать документ Word"],
+            correct: 0,
+            explanation: "Режим ‘Тест’ позволяет назначить баллы и правильные ответы для автоматического оценивания."
+          },
+          {
+            id: "classroom-assignment",
+            question: "Как создать задание в Google Classroom?",
+            options: ["Перейти во вкладку Classwork → Create → Assignment", "Написать сообщение в Stream", "Добавить комментарий к файлу"],
+            correct: 0,
+            explanation: "Вкладка Classwork содержит все типы активности: задание, викторину, материал и т.д."
+          },
+          {
+            id: "slides-link",
+            question: "Как создать интерактивную навигацию внутри презентации Google Slides?",
+            options: ["Выделить элемент → Вставить ссылку → Выбрать нужный слайд", "Экспортировать презентацию в JPG", "Настроить шрифт"],
+            correct: 0,
+            explanation: "Встроенные ссылки позволяют переходить на конкретные слайды и создавать нелинейные сценарии."
+          },
+          {
+            id: "sheets-protect",
+            question: "Как ограничить редактирование определённого диапазона в Google Sheets?",
+            options: ["Данные → Защитить диапазоны", "Правка → Отменить", "Файл → Скачать"],
+            correct: 0,
+            explanation: "Защищённый диапазон позволяет указать, кто может вносить изменения в выбранные ячейки."
+          },
+          {
+            id: "classroomscreen",
+            question: "Какая функция classroomscreen помогает управлять временем выполнения задания?",
+            options: ["Изменение фонового изображения", "Виджет таймера или обратного отсчёта", "Галерея пиктограмм"],
+            correct: 1,
+            explanation: "Таймер classroomscreen визуализирует оставшееся время и помогает держать темп урока."
+          },
+          {
+            id: "classroom-guardians",
+            question: "Как пригласить родителей/опекунов к курсу в Google Classroom?",
+            options: ["Во вкладке People пригласить опекуна по электронной почте", "Создать новую тему в Stream", "Вставить ссылку в Google Sites"],
+            correct: 0,
+            explanation: "Во вкладке People у каждого ученика можно указать email опекуна для получения отчётов."
+          },
+          {
+            id: "forms-responses",
+            question: "Как автоматически собирать ответы формы в Google Sheets?",
+            options: ["В разделе ‘Ответы’ выбрать ‘Создать таблицу’", "Скопировать ответы вручную", "Экспортировать форму в PowerPoint"],
+            correct: 0,
+            explanation: "Созданная связаная таблица обновляется автоматически при каждом новом ответе."
+          }
+        ],
+        submitLabel: "Проверить ответы",
+        resetLabel: "Сбросить и пройти заново",
+        scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
+        successMessage: "Отлично! Вы уверенно работаете с экосистемой Google и интерактивными сервисами.",
+        encouragement: "Комбинируйте формы, таблицы и интерактивные экраны, чтобы выстроить полный дистанционный курс.",
+        resultsTitle: "Ваш результат"
+      },
+      {
+        id: "hemis-system",
+        title: "Интерактивное задание: HEMIS — управление учебными данными",
+        description:
+          "Освойте основные процессы информационной системы HEMIS: роли пользователей, учебные планы, идентификаторы и аналитические отчёты.",
+        tasks: [
+          {
+            id: "hemis-roles",
+            question: "Какие ключевые роли обычно выделяются в системе HEMIS?",
+            options: ["Администратор, преподаватель, студент", "Дизайнер, маркетолог, копирайтер", "Фотограф, видеограф, редактор"],
+            correct: 0,
+            explanation: "Система разграничивает права доступа для административного персонала, преподавателей и обучающихся."
+          },
+          {
+            id: "hemis-id",
+            question: "Что представляет собой персональный идентификатор преподавателя или студента в HEMIS?",
+            options: ["Уникальный код записи в базе данных", "Пароль от Wi-Fi", "Номер аудитории"],
+            correct: 0,
+            explanation: "Идентификатор связывает пользователя с академическими данными и используется в отчётности."
+          },
+          {
+            id: "hemis-timetable",
+            question: "Какие данные используют для формирования расписания в HEMIS?",
+            options: ["Учебный план, нагрузка преподавателей и доступность аудиторий", "Только фотографии аудиторий", "Случайные числа"],
+            correct: 0,
+            explanation: "Система сопоставляет учебные планы с ресурсами вуза, чтобы сформировать расписание."
+          },
+          {
+            id: "hemis-gradebook",
+            question: "Как преподаватель фиксирует результаты контроля знаний в HEMIS?",
+            options: ["Через электронный журнал (gradebook)", "Отправлять бумажные ведомости", "Сообщать по телефону"],
+            correct: 0,
+            explanation: "Электронный журнал позволяет вводить оценки, посещаемость и комментарии по студентам."
+          },
+          {
+            id: "hemis-security",
+            question: "Как обеспечивается конфиденциальность данных в HEMIS?",
+            options: ["Через распределение ролей и журналирование действий", "Путём публикации данных в открытом доступе", "Использованием общих паролей"],
+            correct: 0,
+            explanation: "Разграничение прав доступа и аудит действий помогают защитить персональные данные."
+          },
+          {
+            id: "hemis-report",
+            question: "Какие отчёты можно сформировать в HEMIS для руководства факультета?",
+            options: ["Успеваемость, посещаемость, нагрузка преподавателей", "Список меню студенческой столовой", "Расходы на командировки"],
+            correct: 0,
+            explanation: "Система предоставляет аналитические отчёты по учебным показателям и ресурсам."
+          },
+          {
+            id: "hemis-enrollment",
+            question: "Как в HEMIS фиксируется зачисление студентов на дисциплины?",
+            options: ["Через регистрацию учебного плана и привязку студентов к группам", "Путём устного уведомления", "Через публикацию в социальных сетях"],
+            correct: 0,
+            explanation: "Учебные группы и планы автоматически добавляют студентов на нужные курсы."
+          },
+          {
+            id: "hemis-integration",
+            question: "Зачем HEMIS интегрируют с LMS и бухгалтерскими системами?",
+            options: ["Для обмена данными об успеваемости, расписании и оплате", "Чтобы увеличивать размер файлов", "Для автоматической рассылки спама"],
+            correct: 0,
+            explanation: "Интеграция обеспечивает единое информационное пространство вуза."
+          },
+          {
+            id: "hemis-updates",
+            question: "Что необходимо делать при обновлении модулей HEMIS?",
+            options: ["Тестировать изменения и информировать пользователей", "Удалять все данные", "Менять логотип вуза"],
+            correct: 0,
+            explanation: "Тестирование и коммуникация позволяют избежать ошибок и подготовить пользователей к новому функционалу."
+          },
+          {
+            id: "hemis-support",
+            question: "Куда сотруднику обратиться при возникновении ошибок в HEMIS?",
+            options: ["В службу технической поддержки или ответственному администратору", "В случайный телеграм-чат", "В социальные сети студентов"],
+            correct: 0,
+            explanation: "Служба поддержки регистрирует обращения и помогает оперативно устранить проблемы."
+          }
+        ],
+        submitLabel: "Проверить ответы",
+        resetLabel: "Сбросить и пройти заново",
+        scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
+        successMessage: "Отлично! Вы ориентируетесь в ключевых процессах HEMIS.",
+        encouragement: "Продолжайте изучать интеграции HEMIS с другими сервисами вуза и обновления модулей.",
+        resultsTitle: "Ваш результат"
+      },
+      {
+        id: "smart-learning",
+        title: "Интерактивное задание: смарт-учебники, Zoom и вебинары",
+        description:
+          "Проверьте навыки организации онлайн-обучения: смарт-учебники, Zoom, вебинарные платформы и интерактивные сценарии взаимодействия со студентами.",
+        tasks: [
+          {
+            id: "smartbook-features",
+            question: "Какая особенность смарт-учебников повышает вовлечённость студентов?",
+            options: ["Интерактивные элементы: тесты, видео, гиперссылки", "Только статичный текст", "Отсутствие навигации"],
+            correct: 0,
+            explanation: "Интерактивные модули дают моментальную обратную связь и делают обучение адаптивным."
+          },
+          {
+            id: "zoom-waiting-room",
+            question: "Какой инструмент Zoom помогает контролировать доступ участников?",
+            options: ["Зал ожидания (Waiting Room)", "Фоновые фильтры", "Реакции"],
+            correct: 0,
+            explanation: "Зал ожидания позволяет впускать только авторизованных слушателей."
+          },
+          {
+            id: "zoom-recording",
+            question: "На что важно обратить внимание при записи занятия в Zoom?",
+            options: ["Получить согласие участников и выбрать место сохранения", "Выключить микрофон преподавателя", "Переключить качество видео на 144p"],
+            correct: 0,
+            explanation: "Согласие и настройка локации файла обеспечивают соблюдение политики конфиденциальности."
+          },
+          {
+            id: "webinar-engagement",
+            question: "Как повысить вовлечённость на вебинаре?",
+            options: ["Использовать опросы, чат и вопросы к аудитории", "Читать монотонный текст", "Запретить любые вопросы"],
+            correct: 0,
+            explanation: "Интерактивные элементы удерживают внимание и дают обратную связь."
+          },
+          {
+            id: "zoom-breakout",
+            question: "Для чего используют комнаты для групп (Breakout rooms)?",
+            options: ["Для разделения участников на мини-группы", "Для изменения виртуального фона", "Для записи экрана"],
+            correct: 0,
+            explanation: "Breakout rooms создают пространство для командной работы и дискуссий."
+          },
+          {
+            id: "smartbook-analytics",
+            question: "Как преподаватель отслеживает прогресс в смарт-учебнике?",
+            options: ["Через встроенную аналитику: время, попытки, результаты", "По отзывам в социальных сетях", "Через бумажные журналы"],
+            correct: 0,
+            explanation: "Системы смарт-учебников предоставляют статистику прохождения и затраченного времени."
+          },
+          {
+            id: "zoom-security",
+            question: "Как повысить безопасность Zoom-конференции?",
+            options: ["Использовать пароль и ограничить демонстрацию экрана", "Публиковать ссылку в открытых соцсетях", "Отключить зал ожидания"],
+            correct: 0,
+            explanation: "Пароль и управление правами предотвращают нежелательные подключения и злоупотребления." 
+          },
+          {
+            id: "webinar-plan",
+            question: "Что включить в сценарий вебинара для структурированного проведения?",
+            options: ["План вступления, основной части, практики и обратной связи", "Только список ссылок", "Полное импровизационное выступление"],
+            correct: 0,
+            explanation: "Структурированный план удерживает внимание и фиксирует ключевые блоки занятия."
+          },
+          {
+            id: "zoom-polls",
+            question: "Как Zoom помогает быстро собрать обратную связь во время занятия?",
+            options: ["Через инструмент Polls/Опросы", "Через смену виртуального фона", "Через чат реакций"],
+            correct: 0,
+            explanation: "Опросы позволяют мгновенно получить ответы и отобразить результаты группе."
+          },
+          {
+            id: "smart-learning-hybrid",
+            question: "Что важно при организации гибридного занятия (очная + онлайн аудитория)?",
+            options: ["Обеспечить качественный звук, совместные материалы и каналы обратной связи", "Игнорировать онлайн-участников", "Использовать только печатные раздатки"],
+            correct: 0,
+            explanation: "Сбалансированные каналы коммуникации и материалы делают обучение доступным всем участникам."
+          }
+        ],
+        submitLabel: "Проверить ответы",
+        resetLabel: "Сбросить и пройти заново",
+        scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
+        successMessage: "Вы готовы проводить интерактивные онлайн-уроки и вебинары.",
+        encouragement: "Комбинируйте смарт-учебники, Zoom и инструменты вовлечения, чтобы поддерживать активность студентов.",
+        resultsTitle: "Ваш результат"
       }
   ],
   uz: [
@@ -904,6 +1492,594 @@ const practiceInteractiveModules: Record<Language, PracticeInteractiveContent[]>
       successMessage: "Barakalla! Siz iSpring va Wordwall yordamida o'quv mashqlarini yaratishni o'rgandingiz.",
       encouragement: "Yangi shablonlar bilan tajriba qilib, mashg'ulotlar bankini kengaytiring.",
       resultsTitle: "Natijangiz"
+    },
+    {
+      id: "apps-authoring",
+      title: "Interaktiv topshiriq: iSpring, MyTest va LearningApps",
+      description:
+        "iSpring simulyatsiyalari, MyTest testlari va LearningApps onlayn mashqlari bilan ishlash ko'nikmalarini sinab ko'ring.",
+      tasks: [
+        {
+          id: "ispring-talkmaster",
+          question: "iSpring Suite tarkibidagi qaysi komponent ssenariyli dialog trenajyorlarini yaratish uchun mo'ljallangan?",
+          options: ["TalkMaster", "Screen Recorder", "Audio Editor"],
+          correct: 0,
+          explanation: "TalkMaster yordamida suhbat tarmoqlanishini sozlash va o'tish statistikasi ko'rish mumkin."
+        },
+        {
+          id: "ispring-insert",
+          question: "PowerPoint dasturida iSpring Interaction obyektini qo'shish buyrug'i qaysi yorliqda joylashgan?",
+          options: ["iSpring Suite → Interaction", "Review → Compare", "Animations → Add Animation"],
+          correct: 0,
+          explanation: "iSpring o'rnatilgach, iSpring Suite yorlig'i paydo bo'ladi va unda Interaction tugmasi mavjud."
+        },
+        {
+          id: "ispring-publish-lms",
+          question: "iSpring modulini LMS tizimiga ulash uchun qaysi chop etish rejimi tanlanadi?",
+          options: ["Publish → LMS (SCORM)", "Publish → YouTube", "Publish → Word"],
+          correct: 0,
+          explanation: "SCORM formatidagi eksport LMS bilan ma'lumot almashinuvini to'g'ri tashkil etadi."
+        },
+        {
+          id: "ispring-drag",
+          question: "Rasm ustiga ob'ektlarni sudrab joylashtirish uchun iSpring QuizMaker'da qaysi savol turidan foydalaniladi?",
+          options: ["Drag-and-Drop", "Likert Scale", "Numeric"],
+          correct: 0,
+          explanation: "Drag-and-Drop savollari markerlarni kerakli joyga sudrash orqali javob berishga imkon beradi."
+        },
+        {
+          id: "mytest-extension",
+          question: "MyTestX muharririda yaratilgan test fayli qanday kengaytgichga ega bo'ladi?",
+          options: [".mtf", ".docx", ".pptx"],
+          correct: 0,
+          explanation: "Tahrirlash uchun test loyihasi .mtf formatida saqlanadi va unga MyTestX orqali ishlov beriladi."
+        },
+        {
+          id: "mytest-time",
+          question: "MyTest dasturida testni topshirish uchun vaqt cheklovini qayerda belgilash mumkin?",
+          options: ["\"Test\" menyusidagi \"Test xususiyatlari\" oynasida", "\"Tahrirlash\" menyusidagi \"Bekor qilish\" buyrug'ida", "Savolning kontekst menyusida \"O'chirish\" buyrug'i orqali"],
+          correct: 0,
+          explanation: "Test xususiyatlari oynasida vaqt, urinishlar soni va ball shkalasi sozlanadi."
+        },
+        {
+          id: "mytest-exe",
+          question: "MyTest dasturisiz ishlaydigan mustaqil test faylini qanday yaratish mumkin?",
+          options: ["Fayl → Ijrochi fayl (.exe) yaratish", "Fayl → Chop etish", "Ko'rinish → Asboblar paneli"],
+          correct: 0,
+          explanation: ".exe shaklidagi kompilyatsiya testni alohida ilova sifatida ishga tushirishga imkon beradi."
+        },
+        {
+          id: "learningapps-template",
+          question: "LearningApps platformasida so'z va tarjimalarni moslashtirish uchun qaysi shablon mos?",
+          options: ["Matching Pairs", "Group Puzzle", "Single Choice"],
+          correct: 0,
+          explanation: "Matching Pairs shabloni ikkita ro'yxat elementlarini juftlash orqali lug'atni mustahkamlaydi."
+        },
+        {
+          id: "learningapps-class",
+          question: "LearningApps'da o'quvchilarning natijalarini qanday yig'ish mumkin?",
+          options: ["Sinflar bo'limida sinf yaratib, kirish kodini berish", "Talabalardan skrinshot yuborishni so'rash", "Topshiriqni PDF formatida yuklab olish"],
+          correct: 0,
+          explanation: "Sinf rejimi orqali har bir ishtirokchi natijalari avtomatik tarzda qayd etiladi."
+        },
+        {
+          id: "learningapps-embed",
+          question: "LearningApps mashqini kurs sahifasiga qanday joylashtirish mumkin?",
+          options: ["\"Embed\" bo'limidagi HTML kodni nusxalab saytga joylash", "Mashqning skrinshotini yuklash", "FTP orqali fayl yuborish"],
+          correct: 0,
+          explanation: "Platforma taqdim etgan embed-kodni LMS yoki blog sahifasiga qo'shish yetarli."
+        }
+      ],
+      submitLabel: "Javoblarni tekshirish",
+      resetLabel: "Qayta boshlash",
+      scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
+      successMessage: "Zo'r! Siz iSpring, MyTest va LearningApps bilan interaktiv topshiriqlar yaratishni yaxshi bilasiz.",
+      encouragement: "O'z darslaringiz uchun ssenariylarni moslab, mashqlar kutubxonasini kengaytiring.",
+      resultsTitle: "Natijangiz"
+    },
+    {
+      id: "animation-3d",
+      title: "Interaktiv topshiriq: Photoshop animatsiyasi va Blender 3D",
+      description:
+        "Photoshopda kadrma-kadr animatsiya va Blenderda 3D sahnalar yaratish ko'nikmalarini tekshiring: kalit kadrlar, UV-razvyortka, materiallar va eksport.",
+      tasks: [
+        {
+          id: "ps-timeline",
+          question: "Adobe Photoshop dasturida animatsiya vaqt chizig'ini qanday ochish mumkin?",
+          options: ["Window → Timeline menyusi orqali", "Edit → Convert to Smart Object", "Filter → Blur Gallery"],
+          correct: 0,
+          explanation: "Timeline paneli Window menyusidan faollashtiriladi va kadrlarni boshqarishga imkon beradi."
+        },
+        {
+          id: "animation-fps",
+          question: "Animatsiyani eksport qilishda sekundiga kadrlar sonini qaysi parametr belgilaydi?",
+          options: ["FPS", "DPI", "ISO"],
+          correct: 0,
+          explanation: "FPS (Frames Per Second) animatsiyaning silliqligini belgilaydi."
+        },
+        {
+          id: "ps-gif-export",
+          question: "Photoshopdan GIF animatsiyani qanday qilib to'g'ri eksport qilish mumkin?",
+          options: ["File → Export → Save for Web (Legacy)", "Image → Mode → CMYK", "Layer → Rasterize"],
+          correct: 0,
+          explanation: "Save for Web (Legacy) oynasi rang palitrasi va takrorlanish parametrlarini sozlashga imkon beradi."
+        },
+        {
+          id: "blender-keyframe",
+          question: "Blenderda tanlangan parametr uchun kalit kadrni qanday qo'shasiz?",
+          options: ["I tugmasini bosish", "X tugmasini bosish", "Shift+S tugmalari"],
+          correct: 0,
+          explanation: "I tugmasi (Insert Keyframe) joriy kadrda parametr qiymatini saqlab qoladi."
+        },
+        {
+          id: "blender-engine",
+          question: "Qaysi Blender render dvigateli fizik asoslangan nurlanishni ta'minlaydi?",
+          options: ["Eevee", "Workbench", "Cycles"],
+          correct: 2,
+          explanation: "Cycles ray tracing asosida ishlaydi va realizmga yaqin natija beradi."
+        },
+        {
+          id: "blender-view",
+          question: "Blenderning 3D View oynasida Solid rejimiga tezkor o'tishning usuli qaysi?",
+          options: ["Shift+E tugmasini bosish", "Z tugmasini bosib Solid ni tanlash", "Ctrl+Alt+C tugmalari"],
+          correct: 1,
+          explanation: "Z menyusi orqali Solid, Wireframe yoki Rendered rejimlarini tanlash mumkin."
+        },
+        {
+          id: "ps-loop",
+          question: "GIF animatsiyasini doimiy takrorlanadigan qilish uchun nima qilish kerak?",
+          options: ["Eksport oynasida Loop parametrini 'Forever' ga o'rnatish", "Har bir kadrni ko'paytirish", "Kanvas o'lchamini kichraytirish"],
+          correct: 0,
+          explanation: "Loop parametrini Forever ga sozlash animatsiyani to'xtamasdan takrorlaydi."
+        },
+        {
+          id: "blender-uv",
+          question: "Blenderda modelga tekstura berishdan oldin qaysi harakatni bajarish zarur?",
+          options: ["Smart UV Project yordamida UV-razvyortka qilish", "Boolean modifikatorini qo'shish", "Ob'ektni boshqa kolleksiyaga ko'chirish"],
+          correct: 0,
+          explanation: "UV-razvyortka teksturani to'g'ri joylashtirish uchun koordinatalarni aniqlaydi."
+        },
+        {
+          id: "graph-editor",
+          question: "Blenderdagi Graph Editor nimaga xizmat qiladi?",
+          options: ["Animatsiya egri chiziqlarini nozik sozlash uchun", "Sahnalarni boshqarish uchun", "Materiallar yaratish uchun"],
+          correct: 0,
+          explanation: "Graph Editor kalit kadrlar orasidagi interpolatsiyani nazorat qilishga yordam beradi."
+        },
+        {
+          id: "blender-export",
+          question: "3D modellardan boshqa dasturlarda foydalanish uchun qaysi fayl formati mos keladi?",
+          options: ["FBX", "PSD", "MP3"],
+          correct: 0,
+          explanation: "FBX formati materiallar va animatsiyani saqlagan holda modelni almashish imkonini beradi."
+        }
+      ],
+      submitLabel: "Javoblarni tekshirish",
+      resetLabel: "Qayta boshlash",
+      scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
+      successMessage: "Zo'r! Siz animatsiya va 3D modellashtirishni amalda qo'llay olasiz.",
+      encouragement: "Materiallar, yorug'lik va tezkor renderlar bilan tajriba qilib ko'ring, ko'nikmalaringizni mustahkamlang.",
+      resultsTitle: "Natijangiz"
+    },
+    {
+      id: "media-editing",
+      title: "Interaktiv topshiriq: audio va video materiallarini qayta ishlash",
+      description:
+        "Montaj, rangni tuzatish va audio sifatini yaxshilash ko'nikmalarini tekshiring: Premiere/Audacity jarayonlari, kodeklar, normalizatsiya va media-arxivni zaxiralash.",
+      tasks: [
+        {
+          id: "audio-noise",
+          question: "Ovoz yozuvidagi fon shovqinini qanday kamaytirish mumkin?",
+          options: ["Noise Reduction effektini qo'llash", "Umumiy ovoz balandligini oshirish", "Yo'lni monoga o'zgartirish"],
+          correct: 0,
+          explanation: "Noise Reduction shovqin namunasini tahlil qilib, keraksiz chastotalarni pasaytiradi."
+        },
+        {
+          id: "video-container",
+          question: "H.264 kodekida eksport qilingan videolar uchun qaysi konteyner ko'proq qo'llaniladi?",
+          options: ["MP4", "DOCX", "TIFF"],
+          correct: 0,
+          explanation: "MP4 deyarli barcha platformalar tomonidan qo'llab-quvvatlanadi va striming uchun mos."
+        },
+        {
+          id: "sync-audio",
+          question: "Montaj dasturida clap bo'yicha video va audiolarni qanday sinxronlash mumkin?",
+          options: ["Kliplarni markerlar va to'lqin shakli bo'yicha moslashtirish", "Blur effektini qo'llash", "Loyihaning ruxsatini o'zgartirish"],
+          correct: 0,
+          explanation: "Marker yoki audio to'lqini bo'yicha hizlash tracklarni aniq moslashtirishga yordam beradi."
+        },
+        {
+          id: "color-correction",
+          question: "Adobe Premiere Pro dasturida bazaviy rang tuzatish uchun qaysi panel ishlatiladi?",
+          options: ["Lumetri Color paneli", "Essential Graphics paneli", "Crop asbobi"],
+          correct: 0,
+          explanation: "Lumetri Color ekspozitsiya, oq balans va kreativ LUTlarni boshqarish imkonini beradi."
+        },
+        {
+          id: "audio-level",
+          question: "Ovoz yo'lini qulay eshitilish uchun odatda qaysi darajagacha normalizatsiya qilish tavsiya etiladi?",
+          options: ["−1 dB", "−6 dB", "+3 dB"],
+          correct: 1,
+          explanation: "−6 dB atrofidagi daraja piklar uchun zaxira qoldiradi va clipingning oldini oladi."
+        },
+        {
+          id: "video-transcode",
+          question: "Videoning hajmini mos pleerlar bilan moslashuvchan holda qanday kichraytirish mumkin?",
+          options: ["HandBrake dasturida H.264 kodekini o'zgaruvchan bitrat bilan qo'llash", "Audio yo'lini o'chirish", "Videoni ZIP arxivga joylash"],
+          correct: 0,
+          explanation: "H.264 kodeki va VBR sifatni saqlagan holda fayl hajmini kamaytiradi."
+        },
+        {
+          id: "audio-fade",
+          question: "Rolik oxirida audio asta-sekin pasayishi uchun nima qilinadi?",
+          options: ["Kalit kadrlar qo'yib, ovoz balandligini pasaytirish", "Linza effektini qo'llash", "Yo'lni teskari aylantirish"],
+          correct: 0,
+          explanation: "Audio avtomatlashtirish orqali kadrlar bo'yicha tovushni bosqichma-bosqich kamaytirish mumkin."
+        },
+        {
+          id: "slow-motion",
+          question: "Tezlikni kamaytirganda kadrlarning silliq harakatini qanday ta'minlash mumkin?",
+          options: ["Kadr yorug'ligini oshirish", "Optical Flow yoki Frame Blending rejimlarini qo'llash", "Audio formatini o'zgartirish"],
+          correct: 1,
+          explanation: "Optical Flow va Frame Blending qo'shimcha kadrlarni hisoblab, harakatni silliqlashtiradi."
+        },
+        {
+          id: "audio-format",
+          question: "Sifatni saqlagan holda audio saqlash uchun qaysi format tanlanadi?",
+          options: ["WAV", "MP3 128 kbps", "OGG 96 kbps"],
+          correct: 0,
+          explanation: "WAV siqilmagan format bo'lib, keyingi qayta ishlash uchun maqbul."
+        },
+        {
+          id: "media-backup",
+          question: "Loyiha media fayllarini ishonchli zaxiralashning eng yaxshi usuli qaysi?",
+          options: ["Ikki mustaqil qurilmada va bulutda nusxa saqlash", "Importdan keyin manbalarni o'chirish", "Bitta USB fleshkada saqlash"],
+          correct: 0,
+          explanation: "3-2-1 strategiyasi turli tashuvchilarda bir nechta nusxalarni saqlashni tavsiya etadi."
+        }
+      ],
+      submitLabel: "Javoblarni tekshirish",
+      resetLabel: "Qayta boshlash",
+      scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
+      successMessage: "Barakalla! Siz audio va video materiallarini professional tarzda qayta ishlay olasiz.",
+      encouragement: "Effektlar, LUT va mikslash bilan tajriba qilib, ovoz va tasvir sifatini yanada yaxshilang.",
+      resultsTitle: "Natijangiz"
+    },
+    {
+      id: "safe-internet",
+      title: "Interaktiv topshiriq: raqamli gigiyena va internet xavfsizligi",
+      description:
+        "Murakkab parollar, 2FA, zaxira nusxalar va sog'lom onlayn muhit bo'yicha amaliy bilimlaringizni tekshiring.",
+      tasks: [
+        {
+          id: "password-length",
+          question: "Qaysi turdagi parol bexavotir hisoblanadi?",
+          options: ["Kamida 12 belgidan iborat, raqam va maxsus belgilar bilan", "To'rt xonali PIN", "Uy hayvoningiz nomi"],
+          correct: 0,
+          explanation: "Uzun va murakkab parollarni bruteforce orqali topish juda qiyin."
+        },
+        {
+          id: "two-factor",
+          question: "Hisobni qo'shimcha himoyalash uchun qaysi chorani ko'rish kerak?",
+          options: ["Barcha biriktirilgan fayllarni ochish", "Ikki bosqichli autentifikatsiyani yoqish", "Barcha servislar uchun bitta paroldan foydalanish"],
+          correct: 1,
+          explanation: "2FA ikkinchi omilni talab qiladi va hisob buzilish xavfini kamaytiradi."
+        },
+        {
+          id: "phishing",
+          question: "Fishing xatlarining asosiy belgilaridan biri nima?",
+          options: ["Imlo xatolari va shoshilinch talablarga ega shubhali havola", "Matnda emoji yo'qligi", "PDF formati"],
+          correct: 0,
+          explanation: "Fisherlar tezkor javobni talab qilib, foydalanuvchini qalbaki sahifalarga yo'naltiradi."
+        },
+        {
+          id: "updates",
+          question: "Nega operatsion tizim va ilovalarni muntazam yangilash zarur?",
+          options: ["Ular zaifliklarni yopadi va barqarorlikni oshiradi", "Ular foydalanuvchi fayllarini o'chiradi", "Ular internetni sekinlashtiradi"],
+          correct: 0,
+          explanation: "Yangilanishlar xavfsizlik yamoqlari va moslikni yaxshilash uchun chiqariladi."
+        },
+        {
+          id: "public-wifi",
+          question: "Ommaviy Wi-Fi tarmoqlaridan xavfsiz foydalanish uchun nima tavsiya etiladi?",
+          options: ["VPN dan foydalanish va maxfiy ma'lumotlarni kiritmaslik", "Antivirusni o'chirish", "Bank saytlariga tekshirmasdan kirish"],
+          correct: 0,
+          explanation: "VPN trafikni shifrlaydi va ma'lumotlarning qo'lga tushishini qiyinlashtiradi."
+        },
+        {
+          id: "privacy-settings",
+          question: "Ijtimoiy tarmoqlarda profil ko'rinishini qayerdan boshqarish mumkin?",
+          options: ["Hisobning maxfiylik va xavfsizlik bo'limida", "Yuklab olingan fayllar papkasida", "Savatchada"],
+          correct: 0,
+          explanation: "Maxfiylik sozlamalari kim ma'lumotlarni ko'rishi mumkinligini aniqlaydi."
+        },
+        {
+          id: "digital-wellbeing",
+          question: "Raqamli salomatlikni saqlash uchun nimalar yordam beradi?",
+          options: ["Muntazam tanaffuslar va ekran vaqti limitlarini sozlash", "Charchash belgilari e'tiborga olinmasligi", "Kecha-kunduz ishlash"],
+          correct: 0,
+          explanation: "Tanaffuslar, jismoniy mashqlar va limitlar ruhiy holatni barqarorlashtiradi."
+        },
+        {
+          id: "data-backup",
+          question: "Muhim hujjatlarni yo'qotishdan qanday himoya qilish mumkin?",
+          options: ["Tashqi disk va bulutga zaxira nusxa yaratish", "Faqat ish stolida saqlash", "O'zingizga parollarni yuborish"],
+          correct: 0,
+          explanation: "Bir nechta nusxa yaratish favqulodda vaziyatlarda ma'lumotlarni tiklashga imkon beradi."
+        },
+        {
+          id: "downloads",
+          question: "Dasturlarni yuklab olayotganda zararli fayllardan qanday himoyalanish mumkin?",
+          options: ["Faqat rasmiy saytlardan yuklab olish va raqamli imzoni tekshirish", "Brandmauerlarni o'chirish", "Tasodifiy .exe fayllarni ishga tushirish"],
+          correct: 0,
+          explanation: "Rasmiy manbalar va imzo tekshiruvlari modifikatsiyalangan fayllarni oldini oladi."
+        },
+        {
+          id: "online-harassment",
+          question: "Onlayn muhitdagi tajovuzkor xulqga qanday javob berish kerak?",
+          options: ["Buzg'unchini bloklash va moderatorlarga xabar berish", "Agressiya bilan javob berish", "Shaxsiy ma'lumotlarni e'lon qilish"],
+          correct: 0,
+          explanation: "Bloklash va moderatorlarga murojaat qilish xavfsizlikni ta'minlaydi va vaziyatni hujjatlashtiradi."
+        }
+      ],
+      submitLabel: "Javoblarni tekshirish",
+      resetLabel: "Qayta boshlash",
+      scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
+      successMessage: "Ajoyib! Siz raqamli xavfsizlik bo'yicha barqaror odatlarga egasiz.",
+      encouragement: "Kiberxavfsizlik yangiliklarini kuzatib boring va qoidalar bilan hamkasblaringizni ham tanishtiring.",
+      resultsTitle: "Natijangiz"
+    },
+    {
+      id: "google-suite",
+      title: "Interaktiv topshiriq: Google Workspace va classroomscreen",
+      description:
+        "Google Docs, Sheets, Slides, Forms va Classroom bilan hamkorlikni, shuningdek classroomscreen.com yordamida darsni boshqarishni sinab ko'ring.",
+      tasks: [
+        {
+          id: "docs-comment",
+          question: "Google Docs hujjatida ajratilgan matnga qanday izoh qo'shasiz?",
+          options: ["Ctrl+Alt+M tugmalarini bosish yoki izoh ikonchasini tanlash", "F5 tugmasini bosish", "Hujjatni PDFga eksport qilish"],
+          correct: 0,
+          explanation: "Ctrl+Alt+M kombinatsiyasi izoh panelini ochib, mulohaza qoldirishga imkon beradi."
+        },
+        {
+          id: "drive-sharing",
+          question: "Google Docs fayliga hamkorlik huquqlarini qanday sozlash mumkin?",
+          options: ["Manzil satridan havolani nusxalash", "Share/‘Ulashish’ tugmasidagi ro'llarni tanlash", "Faylni DOCX shaklida email orqali yuborish"],
+          correct: 1,
+          explanation: "Share oynasi orqali o'quvchi, izohchi yoki muharrir huquqlari belgilanadi."
+        },
+        {
+          id: "sheets-sumif",
+          question: "Google Sheetsda shart bo'yicha qiymatlarni yig'ish uchun qaysi funksiya qo'llaniladi?",
+          options: ["SUMIF", "VLOOKUP", "COUNT"],
+          correct: 0,
+          explanation: "SUMIF kriteriyga mos keladigan kataklardagi qiymatlarni yig'adi."
+        },
+        {
+          id: "forms-quiz",
+          question: "Google Formani avtomatik baholanuvchi testga qanday aylantirasiz?",
+          options: ["Settings bo'limida ‘Quiz’ rejimini yoqish", "Natijalarni qo'lda jadvalga kiritish", "Word hujjatini import qilish"],
+          correct: 0,
+          explanation: "Quiz rejimi ballarni va to'g'ri javoblarni belgilashga imkon beradi."
+        },
+        {
+          id: "classroom-assignment",
+          question: "Google Classroomda yangi topshiriqni qayerdan yaratasiz?",
+          options: ["Classwork → Create → Assignment menyusi orqali", "Stream bo'limida post yozish", "Faylga izoh qo'shish"],
+          correct: 0,
+          explanation: "Classwork bo'limi topshiriq, test, material va boshqa faoliyatlarni yaratishga mo'ljallangan."
+        },
+        {
+          id: "slides-link",
+          question: "Google Slidesda ichki navigatsiyani qanday qurish mumkin?",
+          options: ["Elementni tanlab, Insert → Link orqali kerakli slaydni ko'rsatish", "Prezentatsiyani JPG ga eksport qilish", "Shriftni o'zgartirish"],
+          correct: 0,
+          explanation: "Linklar yordamida slayd ichida shartli marshrutlar va interaktiv menyular yaratiladi."
+        },
+        {
+          id: "sheets-protect",
+          question: "Google Sheetsda ma'lum diapazonni tahrir qilishni qanday cheklaysiz?",
+          options: ["Data → Protect ranges menyusi orqali", "Edit → Undo buyrug'i bilan", "File → Download orqali"],
+          correct: 0,
+          explanation: "Protect ranges funksiyasi faqat tanlangan foydalanuvchilarga tahrirlash huquqini beradi."
+        },
+        {
+          id: "classroomscreen",
+          question: "Classroomscreen xizmatida vaqtni boshqarishga qaysi vidjet yordam beradi?",
+          options: ["Fon rasmini almashtirish", "Timer yoki Countdown vidjeti", "Piktogrammalar galereyasi"],
+          correct: 1,
+          explanation: "Timer/Countdown darsni vaqt bo'yicha boshqarishga va talabalar e'tiborini jamlashga yordam beradi."
+        },
+        {
+          id: "classroom-guardians",
+          question: "Google Classroomda ota-onalarni kursga qanday taklif qilsa bo'ladi?",
+          options: ["People bo'limida Guardian email manzilini qo'shish", "Stream bo'limida yangi mavzu yaratish", "Google Sitesga havola joylash"],
+          correct: 0,
+          explanation: "People bo'limi har bir o'quvchi uchun ota-ona kontaktini ko'rsatishga imkon beradi."
+        },
+        {
+          id: "forms-responses",
+          question: "Google Formadan kelgan javoblarni avtomatik ravishda jadvalda qanday saqlash mumkin?",
+          options: ["Responses bo'limida ‘Create spreadsheet’ ni tanlash", "Natijalarni qo'lda nusxalash", "Formani PowerPointga eksport qilish"],
+          correct: 0,
+          explanation: "Yaratilgan jadval yangi javoblar kelganda avtomatik yangilanadi."
+        }
+      ],
+      submitLabel: "Javoblarni tekshirish",
+      resetLabel: "Qayta boshlash",
+      scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
+      successMessage: "Zo'r! Siz Google ekotizimida jamoaviy ishlashni yaxshi o'zlashtirgansiz.",
+      encouragement: "Formalar, jadval va interaktiv ekranlarni uyg'unlashtirib, to'liq masofaviy kurs yarating.",
+      resultsTitle: "Natijangiz"
+    },
+    {
+      id: "hemis-system",
+      title: "Interaktiv topshiriq: HEMIS — o'quv ma'lumotlarini boshqarish",
+      description:
+        "HEMIS axborot tizimining asosiy jarayonlarini sinab ko'ring: foydalanuvchi rollari, o'quv rejalari, identifikatorlar va tahliliy hisobotlar.",
+      tasks: [
+        {
+          id: "hemis-roles",
+          question: "HEMIS tizimida odatda qaysi asosiy rollar ajratiladi?",
+          options: ["Administrator, o'qituvchi, talaba", "Dizayner, marketolog, kopirayter", "Fotograf, videograf, muharrir"],
+          correct: 0,
+          explanation: "Rollarga qarab tizimdagi huquqlar va ko'rinish cheklanadi."
+        },
+        {
+          id: "hemis-id",
+          question: "HEMISdagi shaxsiy identifikator nimani anglatadi?",
+          options: ["Bazadagi noyob foydalanuvchi kodi", "Wi-Fi paroli", "Auditoriya raqami"],
+          correct: 0,
+          explanation: "Identifikator foydalanuvchini o'quv ma'lumotlari va hisobotlar bilan bog'laydi."
+        },
+        {
+          id: "hemis-timetable",
+          question: "HEMISda dars jadvali qaysi ma'lumotlarga asoslanadi?",
+          options: ["O'quv reja, o'qituvchi yuklamasi va auditoriya bandligi", "Faqat auditoriya suratlari", "Tasodifiy sonlar"],
+          correct: 0,
+          explanation: "Tizim resurslar va o'quv rejalarni moslashtirib, jadval tuzadi."
+        },
+        {
+          id: "hemis-gradebook",
+          question: "O'qituvchi HEMISda baholarni qayerda kiritadi?",
+          options: ["Elektron jurnal (gradebook) orqali", "Qog'oz vedomostlarni topshirish orqali", "Telefon orqali xabar berish"],
+          correct: 0,
+          explanation: "Elektron jurnal baholar, davomat va izohlarni bir joyda saqlaydi."
+        },
+        {
+          id: "hemis-security",
+          question: "HEMISda ma'lumotlarning maxfiyligi qanday ta'minlanadi?",
+          options: ["Rollarni ajratish va harakatlarni jurnal qilish orqali", "Ma'lumotlarni ochiq joylashtirish orqali", "Umumiy parollardan foydalanish"],
+          correct: 0,
+          explanation: "Ruxsatlar va audit yozuvlari shaxsiy ma'lumotlarni himoya qiladi."
+        },
+        {
+          id: "hemis-report",
+          question: "Fakultet rahbariyati uchun HEMISdan qaysi hisobotlarni olish mumkin?",
+          options: ["O'zlashtirish, davomat, o'qituvchi yuklamasi", "Talabalar oshxonasi menyusi", "Safar xarajatlari"],
+          correct: 0,
+          explanation: "HEMIS o'quv jarayonining asosiy ko'rsatkichlari bo'yicha analitik hisobotlar beradi."
+        },
+        {
+          id: "hemis-enrollment",
+          question: "Talabalar HEMISda fanlarga qanday biriktiriladi?",
+          options: ["O'quv reja va guruhlarga biriktirish orqali", "Og'zaki xabar berish orqali", "Ijtimoiy tarmoqlarda post joylash orqali"],
+          correct: 0,
+          explanation: "Guruhlar va rejalarning avtomatik mosligi talabalarni kerakli kurslarga qo'shadi."
+        },
+        {
+          id: "hemis-integration",
+          question: "HEMISni LMS va buxgalteriya tizimlari bilan integratsiya qilishdan maqsad nima?",
+          options: ["O'zlashtirish, jadval va to'lov ma'lumotlari almashinuvi", "Fayl hajmini oshirish", "Spam tarqatish"],
+          correct: 0,
+          explanation: "Integratsiya universitetning yagona axborot makonini yaratadi."
+        },
+        {
+          id: "hemis-updates",
+          question: "HEMIS modullari yangilanganda nimalar bajarilishi kerak?",
+          options: ["O'zgarishlarni sinovdan o'tkazish va foydalanuvchilarni xabardor qilish", "Barcha ma'lumotlarni o'chirish", "Universitet logotipini almashtirish"],
+          correct: 0,
+          explanation: "Sinov va kommunikatsiya xatolarning oldini olib, foydalanuvchilarni yangi funksionallikka tayyorlaydi."
+        },
+        {
+          id: "hemis-support",
+          question: "HEMISda xatolik yuz bersa, xodim qayerga murojaat qiladi?",
+          options: ["Texnik qo'llab-quvvatlash xizmati yoki mas'ul administratorga", "Tasodifiy Telegram chatiga", "Talabalar ijtimoiy tarmoqlariga"],
+          correct: 0,
+          explanation: "Qo'llab-quvvatlash xizmati murojaatlarni ro'yxatga olib, muammolarni tezda bartaraf etadi."
+        }
+      ],
+      submitLabel: "Javoblarni tekshirish",
+      resetLabel: "Qayta boshlash",
+      scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
+      successMessage: "Ajoyib! Siz HEMIS tizimidagi asosiy jarayonlarni yaxshi bilasiz.",
+      encouragement: "HEMISning boshqa xizmatlar bilan integratsiyasi va yangi modullarini o'rganishda davom eting.",
+      resultsTitle: "Natijangiz"
+    },
+    {
+      id: "smart-learning",
+      title: "Interaktiv topshiriq: smart darsliklar, Zoom va vebinarlar",
+      description:
+        "Smart darsliklar, Zoom va vebinar platformalaridan foydalanib, onlayn ta'limni tashkil etish ko'nikmalarini mustahkamlash.",
+      tasks: [
+        {
+          id: "smartbook-features",
+          question: "Smart darsliklarning qaysi xususiyati talabalar faolligini oshiradi?",
+          options: ["Interaktiv elementlar: testlar, video va havolalar", "Faqat statik matn", "Navigatsiyasiz sahifalar"],
+          correct: 0,
+          explanation: "Interaktiv bloklar darhol fikr bildiradi va moslashuvchan o'qishni qo'llab-quvvatlaydi."
+        },
+        {
+          id: "zoom-waiting-room",
+          question: "Zoom'da ishtirokchilar kirishini nazorat qilish uchun qaysi funksiya ishlatiladi?",
+          options: ["Waiting Room (Zal kutish) funksiyasi", "Virtual fonlar", "Reaksiyalar"],
+          correct: 0,
+          explanation: "Waiting Room orqali faqat tasdiqlangan ishtirokchilarni darsga qo'yish mumkin."
+        },
+        {
+          id: "zoom-recording",
+          question: "Zoom darsini yozib olayotganda nimalarga e'tibor berish zarur?",
+          options: ["Ishtirokchilardan rozilik olib, fayl saqlanadigan joyni tanlash", "O'qituvchi mikrofonini o'chirish", "Video sifatini 144p ga tushirish"],
+          correct: 0,
+          explanation: "Rozilik va saqlash manzilini tanlash maxfiylik siyosatiga mos keladi."
+        },
+        {
+          id: "webinar-engagement",
+          question: "Vebinarda ishtirokchilarni faol jalb qilish uchun nima qilish kerak?",
+          options: ["So'rovlar, chat va savol-javoblardan foydalanish", "Faqat matnni monoton o'qish", "Savollarni butunlay taqiqlash"],
+          correct: 0,
+          explanation: "Interaktiv elementlar diqqatni ushlab turadi va qayta aloqa beradi."
+        },
+        {
+          id: "zoom-breakout",
+          question: "Breakout Rooms funksiyasi qanday vazifani bajaradi?",
+          options: ["Ishtirokchilarni kichik guruhlarga bo'lish", "Virtual fonni o'zgartirish", "Ekranni yozib olish"],
+          correct: 0,
+          explanation: "Breakout Rooms jamoaviy muhokama va amaliy ishlarga qulay sharoit yaratadi."
+        },
+        {
+          id: "smartbook-analytics",
+          question: "Smart darsliklarda talabalarning natijalarini qanday kuzatish mumkin?",
+          options: ["Sarflangan vaqt, urinishlar va natijalarni ko'rsatadigan analitika orqali", "Ijtimoiy tarmoqlardagi fikrlar orqali", "Qog'oz jurnal orqali"],
+          correct: 0,
+          explanation: "Analitika o'qituvchiga har bir talabaning rivojlanishini ko'rishga yordam beradi."
+        },
+        {
+          id: "zoom-security",
+          question: "Zoom konferensiyasini xavfsiz qilish uchun qaysi choralar ko'riladi?",
+          options: ["Parol o'rnatish va ekran almashishni cheklash", "Havolani ochiq tarmoqlarda joylash", "Waiting Room funksiyasini o'chirish"],
+          correct: 0,
+          explanation: "Parol va ekran almashish huquqlarini boshqarish nojo'ya ulanishlarning oldini oladi."
+        },
+        {
+          id: "webinar-plan",
+          question: "Vebinar ssenariysiga nimalarni kiritish tavsiya etiladi?",
+          options: ["Kirish, asosiy qism, amaliy blok va fikr-mulohaza rejasini", "Faqat havolalar ro'yxatini", "To'liq improvizatsiyani"],
+          correct: 0,
+          explanation: "Strukturali ssenariy vaqtni boshqarish va asosiy g'oyalarni taqdim etishga yordam beradi."
+        },
+        {
+          id: "zoom-polls",
+          question: "Zoom darsida tezkor fikr-mulohaza yig'ish uchun qaysi vosita qo'llaniladi?",
+          options: ["Polls/Oproslar funksiyasi", "Virtual fonni o'zgartirish", "Reaksiyalar chatini ishlatish"],
+          correct: 0,
+          explanation: "Polls vositasi natijalarni darhol ko'rsatib, talabalar fikrini yig'adi."
+        },
+        {
+          id: "smart-learning-hybrid",
+          question: "Gibrid (offline + online) darsni o'tkazishda nimaga e'tibor qaratish kerak?",
+          options: ["Sifatli ovoz, birgalikdagi materiallar va qayta aloqa kanallarini ta'minlash", "Onlayn ishtirokchilarni e'tiborsiz qoldirish", "Faqat bosma materiallardan foydalanish"],
+          correct: 0,
+          explanation: "Ham onlayn, ham auditoriyadagi talabalar uchun bir xil imkoniyat yaratish muhim."
+        }
+      ],
+      submitLabel: "Javoblarni tekshirish",
+      resetLabel: "Qayta boshlash",
+      scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
+      successMessage: "Barakalla! Siz onlayn darslar va vebinarlarni samarali tashkil eta olasiz.",
+      encouragement: "Smart darsliklar, Zoom va interaktiv vositalarni uyg'unlashtirib, talabalar faolligini qo'llab-quvvatlang.",
+      resultsTitle: "Natijangiz"
     }
   ]
 };
@@ -947,7 +2123,14 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
         "Визуализация результатов исследования в Tableau и Observable",
         "Настройка операционных систем и офисных приложений для учебных проектов",
         "Проектирование интерактивных учебных курсов в Hot Potatoes",
-        "Разработка языковых упражнений в iSpring QuizMaker и Wordwall.net"
+        "Разработка языковых упражнений в iSpring QuizMaker и Wordwall.net",
+        "Интерактивные задания в iSpring, MyTest и LearningApps",
+        "Создание анимаций и 3D-моделей в Adobe Photoshop и Blender",
+        "Монтаж и улучшение аудио- и видеоматериалов",
+        "Цифровая гигиена и безопасное поведение в интернете",
+        "Google Docs, Sheets, Slides, Forms и Classroom: совместная работа и интерактивные доски classroomscreen.com",
+        "Информационная система HEMIS: роли пользователей и управление учебными данными",
+        "Смарт-учебники, Zoom и вебинары в образовательном процессе"
       ],
       backLabel: "← На главную"
     },
@@ -962,7 +2145,14 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
         "Tablue va Observable'da tadqiqot natijalarini vizuallashtirish",
         "O'quv loyihalari uchun operatsion tizim va ofis dasturlarini sozlash",
         "Hot Potatoes dasturida interaktiv o'quv kurslarini yaratish",
-        "iSpring QuizMaker va Wordwall.net yordamida til mashqlarini yaratish"
+        "iSpring QuizMaker va Wordwall.net yordamida til mashqlarini yaratish",
+        "iSpring, MyTest va LearningApps bilan interaktiv topshiriqlar",
+        "Adobe Photoshop va Blenderda animatsiya hamda 3D modellar yaratish",
+        "Audio va video materiallarini montaj qilish va sifatini yaxshilash",
+        "Internetdan xavfsiz foydalanish va raqamli gigiyena",
+        "Google Docs, Sheets, Slides, Forms, Classroom va classroomscreen.com bilan ishlash",
+        "HEMIS axborot tizimi: foydalanuvchi rollari va o'quv ma'lumotlarini boshqarish",
+        "Smart darsliklar, Zoom va vebinarlar yordamida ta'limni tashkil etish"
       ],
       backLabel: "← Bosh sahifaga"
     }
