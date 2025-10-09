@@ -257,6 +257,55 @@ const practiceInteractiveModules: Record<Language, PracticeInteractiveContent[]>
           options: ["Проводник", "Диспетчер задач", "Записная книжка"],
           correct: 1,
           explanation: "Диспетчер задач отображает загрузку ресурсов и процессы, что важно для диагностики."
+        },
+        {
+          id: "safe-boot",
+          question: "Какой режим загрузки Windows запускает систему с минимальным набором драйверов для диагностики?",
+          options: ["Стандартная загрузка", "Безопасный режим", "Гостевой режим"],
+          correct: 1,
+          explanation: "Безопасный режим позволяет выявлять проблемы, исключив влияние сторонних драйверов и служб."
+        },
+        {
+          id: "bios-access",
+          question: "Какая клавиша чаще всего используется для входа в BIOS/UEFI на стационарных ПК?",
+          options: ["Delete", "F11", "Tab"],
+          correct: 0,
+          explanation: "На большинстве материнских плат клавиша Delete открывает настройки BIOS или UEFI."
+        },
+        {
+          id: "ssd-benefit",
+          question: "Какое преимущество даёт переход с HDD на SSD для системного диска?",
+          options: ["Уменьшение объема памяти", "Более высокая скорость чтения и записи", "Повышение уровня шума"],
+          correct: 1,
+          explanation: "SSD обеспечивает заметно более высокую скорость доступа к данным и ускоряет загрузку системы."
+        },
+        {
+          id: "ram-install",
+          question: "Что нужно сделать перед установкой новой планки оперативной памяти?",
+          options: ["Отключить питание и заземлиться", "Установить дополнительный жёсткий диск", "Удалить антивирус"],
+          correct: 0,
+          explanation: "Отключение питания и снятие статического заряда защищает компоненты от повреждения."
+        },
+        {
+          id: "cable-management",
+          question: "Зачем использовать кабельные стяжки внутри системного блока?",
+          options: ["Чтобы увеличить шум вентиляторов", "Для улучшения циркуляции воздуха и безопасности", "Чтобы уменьшить длину кабелей"],
+          correct: 1,
+          explanation: "Аккуратная укладка кабелей улучшает airflow и снижает риск их повреждения."
+        },
+        {
+          id: "power-supply",
+          question: "Какой основной параметр блока питания важно учитывать при выборе?",
+          options: ["Цвет корпуса", "Мощность в ваттах и сертификат эффективности", "Наличие подсветки клавиатуры"],
+          correct: 1,
+          explanation: "Мощность и сертификат (например, 80 Plus) показывают, справится ли блок питания с нагрузкой."
+        },
+        {
+          id: "monitor-calibration",
+          question: "Как снизить нагрузку на глаза при работе за монитором?",
+          options: ["Поставить монитор на максимальную яркость", "Настроить яркость и цветовую температуру под освещение", "Отключить энергосбережение"],
+          correct: 1,
+          explanation: "Калибровка яркости и цветовой температуры под условия освещения делает изображение комфортнее для зрения."
         }
       ],
       submitLabel: "Проверить ответы",
@@ -378,6 +427,55 @@ const practiceInteractiveModules: Record<Language, PracticeInteractiveContent[]>
           options: ["Explorer (Ochiluvchi oynalar)", "Vazifalar dispetcheri", "Daftar"],
           correct: 1,
           explanation: "Vazifalar dispetcheri resurslar yuklanishi va jarayonlarni ko'rsatadi, bu diagnostika uchun muhim."
+        },
+        {
+          id: "safe-boot",
+          question: "Windows tizimini minimal drayverlar bilan diagnostika qilish uchun qaysi yuklash rejimi tanlanadi?",
+          options: ["Standart yuklash", "Xavfsiz rejim", "Mehmon rejimi"],
+          correct: 1,
+          explanation: "Xavfsiz rejim ortiqcha drayver va servislarni o'chirib, muammolarni aniqlashni osonlashtiradi."
+        },
+        {
+          id: "bios-access",
+          question: "Stol kompyuterlarida BIOS/UEFI sozlamalariga kirish uchun eng ko'p qaysi tugma bosiladi?",
+          options: ["Delete", "F11", "Tab"],
+          correct: 0,
+          explanation: "Ko'pgina anakartlarda Delete tugmasi BIOS yoki UEFI menyusini ochadi."
+        },
+        {
+          id: "ssd-benefit",
+          question: "Tizim diskini HDD dan SSD ga almashtirish qanday afzallik beradi?",
+          options: ["Xotira hajmini kamaytiradi", "O'qish va yozish tezligini oshiradi", "Shovqinni kuchaytiradi"],
+          correct: 1,
+          explanation: "SSD ma'lumotlarga tezroq murojaat qiladi va tizim yuklanishini tezlashtiradi."
+        },
+        {
+          id: "ram-install",
+          question: "Yangi operativ xotira platasini o'rnatishdan oldin nima qilish kerak?",
+          options: ["Quvvatni o'chirib, statik zaryadni tushirish", "Qo'shimcha qattiq disk o'rnatish", "Antivirusni o'chirish"],
+          correct: 0,
+          explanation: "Quvvatni uzish va statik zaryadni yo'qotish komponentlarni shikastlanishdan himoya qiladi."
+        },
+        {
+          id: "cable-management",
+          question: "Sistemali blok ichida kabel stajkalaridan foydalanishning asosiy sababi nima?",
+          options: ["Ventilyatorlarni shovqinli qilish uchun", "Havo aylanishini yaxshilash va xavfsizlikni ta'minlash uchun", "Kabel uzunligini kamaytirish uchun"],
+          correct: 1,
+          explanation: "Kabelni tartibli joylashtirish airflow ni yaxshilaydi va ularni zararlanishdan asraydi."
+        },
+        {
+          id: "power-supply",
+          question: "Quvvat bloki tanlashda qaysi asosiy ko'rsatkichga e'tibor berish kerak?",
+          options: ["Korpus rangi", "Vattdagi quvvat va samaradorlik sertifikati", "Klaviatura yoritilishi"],
+          correct: 1,
+          explanation: "Quvvat va 80 Plus kabi sertifikatlar blokning yuklamaga chidashini ko'rsatadi."
+        },
+        {
+          id: "monitor-calibration",
+          question: "Monitor bilan ishlaganda ko'zlarga tushadigan yukni kamaytirishning eng yaxshi usuli qaysi?",
+          options: ["Yorqinlikni maksimal darajaga qo'yish", "Yorqinlik va rang haroratini yoritishga moslab sozlash", "Energiya tejashni o'chirish"],
+          correct: 1,
+          explanation: "Yorqinlik va rang balansini to'g'ri sozlash ko'rishni qulay qiladi va charchoqni kamaytiradi."
         }
       ],
       submitLabel: "Javoblarni tekshirish",
