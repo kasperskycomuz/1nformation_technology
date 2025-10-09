@@ -40,6 +40,7 @@ body {
   border: 1px solid var(--glass-border);
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .hero::after {
@@ -48,6 +49,34 @@ body {
   inset: 0;
   background: linear-gradient(135deg, rgba(95, 61, 196, 0.15), rgba(53, 138, 221, 0.12));
   pointer-events: none;
+}
+
+.hero__glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  top: -180px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(95, 61, 196, 0.35), rgba(53, 138, 221, 0) 60%);
+  filter: blur(0px);
+  opacity: 0.9;
+  pointer-events: none;
+  transform: rotate(-8deg);
+}
+
+.hero__layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: stretch;
+}
+
+.hero__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .hero__badge {
@@ -78,6 +107,32 @@ body {
   position: relative;
 }
 
+.hero__benefits {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+  position: relative;
+}
+
+.hero__benefits li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: rgba(27, 27, 33, 0.75);
+  font-weight: 500;
+}
+
+.hero__benefit-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5f3dc4, #3577dd);
+  box-shadow: 0 0 0 4px rgba(95, 61, 196, 0.12);
+  flex-shrink: 0;
+}
+
 .hero__actions {
   margin-top: 2.5rem;
   display: flex;
@@ -104,6 +159,80 @@ body {
   box-shadow: 0 14px 24px rgba(95, 61, 196, 0.2);
 }
 
+.hero__scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(27, 27, 33, 0.55);
+}
+
+.hero__scroll-hint span:first-child {
+  font-size: 1rem;
+}
+
+.hero__aside {
+  position: relative;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 22px;
+  padding: 1.75rem;
+  border: 1px solid rgba(149, 154, 189, 0.25);
+  box-shadow: 0 24px 46px rgba(32, 59, 120, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  backdrop-filter: blur(14px);
+}
+
+.hero__stats {
+  display: grid;
+  gap: 1rem;
+}
+
+.hero__stat {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.hero__stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-strong);
+  letter-spacing: -0.02em;
+}
+
+.hero__stat-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(27, 27, 33, 0.75);
+}
+
+.hero__stat p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(27, 27, 33, 0.6);
+  line-height: 1.5;
+}
+
+.hero__note {
+  padding: 1.1rem 1.2rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(95, 61, 196, 0.18), rgba(53, 119, 221, 0.16));
+  color: white;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.hero__note-title {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  opacity: 0.85;
+}
+
 .grid {
   display: grid;
   gap: 1.75rem;
@@ -111,6 +240,7 @@ body {
 }
 
 .section-card {
+  position: relative;
   background: white;
   border-radius: 20px;
   padding: 1.75rem;
@@ -120,6 +250,28 @@ body {
   flex-direction: column;
   gap: 1.2rem;
   min-height: 280px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.section-card::before {
+  content: "";
+  position: absolute;
+  inset: -40% 40% 60% -40%;
+  background: linear-gradient(135deg, rgba(95, 61, 196, 0.18), rgba(53, 119, 221, 0.14));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.section-card:hover,
+.section-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 46px rgba(32, 59, 120, 0.16);
+}
+
+.section-card:hover::before,
+.section-card:focus-within::before {
+  opacity: 1;
 }
 
 .section-card__header {
@@ -499,6 +651,14 @@ body {
     align-items: stretch;
   }
 
+  .hero__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__aside {
+    order: -1;
+  }
+
   .section-card {
     min-height: 0;
   }
@@ -526,5 +686,9 @@ body {
 
   .section__wrap {
     padding: 2rem;
+  }
+
+  .hero__scroll-hint {
+    justify-content: center;
   }
 }
