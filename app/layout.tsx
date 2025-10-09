@@ -5,7 +5,7 @@ import { SiteFrame } from "@/components/SiteFrame";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ИТ для филологов",
+  title: "IT для филологов",
   description:
     "Учебный портал с лекциями, практиками, презентациями и материалами по ИТ для филологов"
 };
