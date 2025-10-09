@@ -239,6 +239,194 @@ body {
   margin: 0;
 }
 
+.site-frame {
+  position: relative;
+  width: 100%;
+}
+
+.language-switcher {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(149, 154, 189, 0.3);
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(40, 62, 130, 0.14);
+  backdrop-filter: blur(12px);
+  z-index: 50;
+}
+
+.language-switcher__button {
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.language-switcher__button:hover,
+.language-switcher__button:focus-visible {
+  outline: none;
+  background: rgba(95, 61, 196, 0.12);
+  color: var(--accent-strong);
+}
+
+.language-switcher__button--active {
+  background: linear-gradient(135deg, #5f3dc4, #3577dd);
+  color: white;
+  box-shadow: 0 10px 20px rgba(53, 119, 221, 0.2);
+}
+
+.section__description {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.assignment {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid rgba(180, 184, 214, 0.35);
+  box-shadow: 0 18px 36px rgba(32, 59, 120, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.assignment__header h2 {
+  margin: 0 0 0.75rem;
+}
+
+.assignment__header p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.assignment__tasks {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.assignment__task {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.assignment__question {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.assignment__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.assignment__option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(171, 176, 210, 0.5);
+  background: rgba(255, 255, 255, 0.85);
+  transition: border 0.2s ease, background 0.2s ease;
+}
+
+.assignment__option:hover,
+.assignment__option:focus-within {
+  border-color: rgba(95, 61, 196, 0.5);
+  background: rgba(95, 61, 196, 0.08);
+}
+
+.assignment__option input[type="radio"] {
+  accent-color: #5f3dc4;
+}
+
+.assignment__feedback {
+  font-size: 0.9rem;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  line-height: 1.4;
+}
+
+.assignment__feedback--success {
+  background: rgba(66, 192, 124, 0.18);
+  color: #116a3d;
+}
+
+.assignment__feedback--info {
+  background: rgba(95, 61, 196, 0.12);
+  color: var(--accent-strong);
+}
+
+.assignment__actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.assignment__button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(95, 61, 196, 0.1);
+  color: var(--accent-strong);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.assignment__button:hover,
+.assignment__button:focus-visible {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(95, 61, 196, 0.16);
+}
+
+.assignment__button--primary {
+  background: linear-gradient(135deg, #5f3dc4, #3577dd);
+  color: white;
+  box-shadow: 0 12px 22px rgba(53, 119, 221, 0.22);
+}
+
+.assignment__button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+  transform: none;
+}
+
+.assignment__results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(126, 132, 176, 0.24);
+}
+
+.assignment__message {
+  margin: 0;
+  color: var(--text-muted);
+}
+
 .section {
   min-height: 100vh;
   background: var(--bg);
@@ -306,6 +494,23 @@ body {
 
   .section-card {
     min-height: 0;
+  }
+
+  .language-switcher {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .assignment {
+    padding: 1.5rem;
+  }
+
+  .assignment__actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .section__wrap {

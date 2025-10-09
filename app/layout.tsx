@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { LanguageProvider } from "@/components/LanguageContext";
+import { SiteFrame } from "@/components/SiteFrame";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,11 +13,15 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body>
+        <LanguageProvider>
+          <SiteFrame>{children}</SiteFrame>
+        </LanguageProvider>
+      </body>
     </html>
   );
 }
