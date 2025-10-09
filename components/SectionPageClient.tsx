@@ -27,8 +27,12 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
             <li key={item}>{item}</li>
           ))}
         </ul>
-        {slug === "practice" && content.interactive ? (
-          <PracticeInteractiveAssignment content={content.interactive} />
+        {slug === "practice" && content.interactiveModules?.length ? (
+          <div className="section__interactives">
+            {content.interactiveModules.map((module) => (
+              <PracticeInteractiveAssignment key={module.id} content={module} anchorId={module.id} />
+            ))}
+          </div>
         ) : null}
       </div>
     </main>

@@ -36,7 +36,7 @@ type HomeContent = {
   };
 };
 
-type PracticeInteractiveTask = {
+export type PracticeInteractiveTask = {
   id: string;
   question: string;
   options: string[];
@@ -44,7 +44,8 @@ type PracticeInteractiveTask = {
   explanation: string;
 };
 
-type PracticeInteractiveContent = {
+export type PracticeInteractiveContent = {
+  id: string;
   title: string;
   description: string;
   tasks: PracticeInteractiveTask[];
@@ -61,7 +62,7 @@ type SectionPageContent = {
   lead: string;
   description: string;
   items: string[];
-  interactive?: PracticeInteractiveContent;
+  interactiveModules?: PracticeInteractiveContent[];
   backLabel: string;
 };
 
@@ -228,75 +229,151 @@ export const homeContent: Record<Language, HomeContent> = {
   }
 };
 
-const practiceInteractive: Record<Language, PracticeInteractiveContent> = {
-  ru: {
-    title: "Интерактивное задание: компьютеры и настройка системы",
-    description:
-      "Ответьте на вопросы и проверьте, насколько уверенно вы ориентируетесь в оборудовании и базовой конфигурации рабочего места.",
-    tasks: [
+const practiceInteractiveModules: Record<Language, PracticeInteractiveContent[]> = {
+  ru: [
+    {
+      id: "hardware-setup",
+      title: "Интерактивное задание: компьютеры и настройка системы",
+      description:
+        "Ответьте на вопросы и проверьте, насколько уверенно вы ориентируетесь в оборудовании и базовой конфигурации рабочего места.",
+      tasks: [
+        {
+          id: "peripheral",
+          question: "Какое из перечисленных устройств относится к периферийным устройствам ввода?",
+          options: ["Монитор", "Сканер", "Акустическая система"],
+          correct: 1,
+          explanation: "Сканер передает информацию в компьютер, поэтому относится к устройствам ввода."
+        },
+        {
+          id: "backup",
+          question: "Какое действие следует выполнить ПЕРЕД установкой новой операционной системы?",
+          options: ["Создать резервную копию данных", "Удалить все драйверы", "Отключить клавиатуру"],
+          correct: 0,
+          explanation: "Резервная копия защитит важные файлы, если в процессе установки что-то пойдет не так."
+        },
+        {
+          id: "diagnostics",
+          question: "Какой инструмент Windows помогает быстро проверить состояние системы и ключевые показатели?",
+          options: ["Проводник", "Диспетчер задач", "Записная книжка"],
+          correct: 1,
+          explanation: "Диспетчер задач отображает загрузку ресурсов и процессы, что важно для диагностики."
+        }
+      ],
+      submitLabel: "Проверить ответы",
+      resetLabel: "Сбросить и пройти заново",
+      scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
+      successMessage: "Отлично! Вы уверенно разбираетесь в устройстве компьютера и настройке системы.",
+      encouragement: "Хороший старт! Ознакомьтесь с пояснениями и попробуйте ещё раз.",
+      resultsTitle: "Ваш результат"
+    },
       {
-        id: "peripheral",
-        question: "Какое из перечисленных устройств относится к периферийным устройствам ввода?",
-        options: ["Монитор", "Сканер", "Акустическая система"],
-        correct: 1,
-        explanation: "Сканер передает информацию в компьютер, поэтому относится к устройствам ввода."
-      },
-      {
-        id: "backup",
-        question: "Какое действие следует выполнить ПЕРЕД установкой новой операционной системы?",
-        options: ["Создать резервную копию данных", "Удалить все драйверы", "Отключить клавиатуру"],
-        correct: 0,
-        explanation: "Резервная копия защитит важные файлы, если в процессе установки что-то пойдет не так."
-      },
-      {
-        id: "diagnostics",
-        question: "Какой инструмент Windows помогает быстро проверить состояние системы и ключевые показатели?",
-        options: ["Проводник", "Диспетчер задач", "Записная книжка"],
-        correct: 1,
-        explanation: "Диспетчер задач отображает загрузку ресурсов и процессы, что важно для диагностики."
-      }
-    ],
-    submitLabel: "Проверить ответы",
-    resetLabel: "Сбросить и пройти заново",
-    scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
-    successMessage: "Отлично! Вы уверенно разбираетесь в устройстве компьютера и настройке системы.",
-    encouragement: "Хороший старт! Ознакомьтесь с пояснениями и попробуйте ещё раз.",
-    resultsTitle: "Ваш результат"
-  },
-  uz: {
-    title: "Interaktiv topshiriq: kompyuter qurilmalari va tizimni sozlash",
-    description:
-      "Savollarga javob bering va ishchi joyni jihozlash hamda sozlash bo'yicha qanchalik ishonchli ekaningizni tekshiring.",
-    tasks: [
-      {
-        id: "peripheral",
-        question: "Quyidagi qurilmalardan qaysi biri kirish periferik qurilmasiga kiradi?",
-        options: ["Monitor", "Skaner", "Akustik tizim"],
-        correct: 1,
-        explanation: "Skaner ma'lumotni kompyuterga uzatadi, shuning uchun u kirish qurilmasidir."
-      },
-      {
-        id: "backup",
-        question: "Yangi operatsion tizimni o'rnatishdan OLDIN qaysi amalni bajarish kerak?",
-        options: ["Ma'lumotlarning zaxira nusxasini yaratish", "Barcha drayverlarni o'chirish", "Klaviaturani uzish"],
-        correct: 0,
-        explanation: "Zaxira nusxa o'rnatish jarayonida muammo yuz bersa, muhim fayllarni saqlab qoladi."
-      },
-      {
-        id: "diagnostics",
-        question: "Windows tizimida qaysi vosita tizim holatini va asosiy ko'rsatkichlarni tezda tekshirishga yordam beradi?",
-        options: ["Explorer (Ochiluvchi oynalar)", "Vazifalar dispetcheri", "Daftar"],
-        correct: 1,
-        explanation: "Vazifalar dispetcheri resurslar yuklanishi va jarayonlarni ko'rsatadi, bu diagnostika uchun muhim."
-      }
-    ],
-    submitLabel: "Javoblarni tekshirish",
-    resetLabel: "Qayta boshlash",
-    scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
-    successMessage: "Ajoyib! Siz kompyuter qurilmalari va tizim sozlamalarini yaxshi bilasiz.",
-    encouragement: "Yaxshi boshlash! Izohlarni ko'rib chiqing va yana urinib ko'ring.",
-    resultsTitle: "Natijangiz"
-  }
+      id: "os-office",
+      title: "Интерактивное задание: операционные системы и офисные приложения",
+      description:
+        "Разберите практические ситуации и выберите действия, которые помогут поддерживать операционную систему и офисный пакет в актуальном состоянии.",
+      tasks: [
+        {
+          id: "os-example",
+          question: "Что из перечисленного является примером операционной системы?",
+          options: ["Microsoft Word", "macOS", "Adobe Photoshop"],
+          correct: 1,
+          explanation: "macOS управляет аппаратными ресурсами компьютера; Word и Photoshop — прикладные программы."
+        },
+        {
+          id: "office-activation",
+          question: "Какое действие необходимо выполнить при первом запуске Microsoft Office 365 на новом компьютере?",
+          options: ["Удалить предустановленные обновления Windows", "Войти в учетную запись Microsoft и активировать лицензию", "Отключить доступ к сети"],
+          correct: 1,
+          explanation: "Активация через учетную запись включает лицензию и синхронизацию облачных документов."
+        },
+        {
+          id: "doc-format",
+          question: "В каком формате лучше сохранить документ Word для совместного редактирования?",
+          options: ["DOCX", "PDF", "PNG"],
+          correct: 0,
+          explanation: "DOCX сохраняет структуру и позволяет редактировать документ совместно онлайн." 
+        }
+      ],
+      submitLabel: "Проверить ответы",
+      resetLabel: "Сбросить и пройти заново",
+      scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
+      successMessage: "Отлично! Вы готовы поддерживать ОС и офисные приложения в рабочем состоянии.",
+      encouragement: "Продолжайте тренироваться и обращайте внимание на рекомендации в пояснениях.",
+      resultsTitle: "Ваш результат"
+    }
+  ],
+  uz: [
+    {
+      id: "hardware-setup",
+      title: "Interaktiv topshiriq: kompyuter qurilmalari va tizimni sozlash",
+      description:
+        "Savollarga javob bering va ishchi joyni jihozlash hamda sozlash bo'yicha qanchalik ishonchli ekaningizni tekshiring.",
+      tasks: [
+        {
+          id: "peripheral",
+          question: "Quyidagi qurilmalardan qaysi biri kirish periferik qurilmasiga kiradi?",
+          options: ["Monitor", "Skaner", "Akustik tizim"],
+          correct: 1,
+          explanation: "Skaner ma'lumotni kompyuterga uzatadi, shuning uchun u kirish qurilmasidir."
+        },
+        {
+          id: "backup",
+          question: "Yangi operatsion tizimni o'rnatishdan OLDIN qaysi amalni bajarish kerak?",
+          options: ["Ma'lumotlarning zaxira nusxasini yaratish", "Barcha drayverlarni o'chirish", "Klaviaturani uzish"],
+          correct: 0,
+          explanation: "Zaxira nusxa o'rnatish jarayonida muammo yuz bersa, muhim fayllarni saqlab qoladi."
+        },
+        {
+          id: "diagnostics",
+          question: "Windows tizimida qaysi vosita tizim holatini va asosiy ko'rsatkichlarni tezda tekshirishga yordam beradi?",
+          options: ["Explorer (Ochiluvchi oynalar)", "Vazifalar dispetcheri", "Daftar"],
+          correct: 1,
+          explanation: "Vazifalar dispetcheri resurslar yuklanishi va jarayonlarni ko'rsatadi, bu diagnostika uchun muhim."
+        }
+      ],
+      submitLabel: "Javoblarni tekshirish",
+      resetLabel: "Qayta boshlash",
+      scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
+      successMessage: "Ajoyib! Siz kompyuter qurilmalari va tizim sozlamalarini yaxshi bilasiz.",
+      encouragement: "Yaxshi boshlash! Izohlarni ko'rib chiqing va yana urinib ko'ring.",
+      resultsTitle: "Natijangiz"
+    },
+    {
+      id: "os-office",
+      title: "Interaktiv topshiriq: operatsion tizimlar va ofis dasturlari",
+      description:
+        "Amaliy vaziyatlarni ko'rib chiqing va operatsion tizim hamda ofis paketini dolzarb holda saqlash uchun to'g'ri choralarni tanlang.",
+      tasks: [
+        {
+          id: "os-example",
+          question: "Quyidagi variantlardan qaysi biri operatsion tizimga misol bo'ladi?",
+          options: ["Microsoft Word", "macOS", "Adobe Photoshop"],
+          correct: 1,
+          explanation: "macOS kompyuter resurslarini boshqaradi; Word va Photoshop — amaliy dasturlar."
+        },
+        {
+          id: "office-activation",
+          question: "Microsoft Office 365 ni yangi kompyuterda birinchi marta ishga tushirganda nima qilish kerak?",
+          options: ["Windows yangilanishlarini o'chirish", "Microsoft hisobiga kirib, litsenziyani faollashtirish", "Internetni uzish"],
+          correct: 1,
+          explanation: "Hisobga kirish litsenziyani faollashtiradi va bulutli hujjatlarni sinxronlaydi."
+        },
+        {
+          id: "doc-format",
+          question: "Hujjatni birgalikda tahrirlash uchun Wordda qaysi formatni saqlash ma'qul?",
+          options: ["DOCX", "PDF", "PNG"],
+          correct: 0,
+          explanation: "DOCX hujjat tuzilmasini saqlaydi va onlayn tahrirlashga imkon beradi."
+        }
+      ],
+      submitLabel: "Javoblarni tekshirish",
+      resetLabel: "Qayta boshlash",
+      scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
+      successMessage: "Barakalla! Siz operatsion tizim va ofis dasturlarini boshqarishni bilasiz.",
+      encouragement: "Mashqni davom ettiring va izohlarni diqqat bilan o'qing.",
+      resultsTitle: "Natijangiz"
+    }
+  ]
 };
 
 const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageContent, "interactive">>> = {
@@ -335,7 +412,8 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       items: [
         "Создание мини-корпуса и аннотирование текста",
         "Python для филологов: обработка текста с помощью spaCy и NLTK",
-        "Визуализация результатов исследования в Tableau и Observable"
+        "Визуализация результатов исследования в Tableau и Observable",
+        "Настройка операционных систем и офисных приложений для учебных проектов"
       ],
       backLabel: "← На главную"
     },
@@ -347,7 +425,8 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       items: [
         "Mini-korpus yaratish va matnni annotatsiya qilish",
         "Filologlar uchun Python: spaCy va NLTK yordamida matnni qayta ishlash",
-        "Tablue va Observable'da tadqiqot natijalarini vizuallashtirish"
+        "Tablue va Observable'da tadqiqot natijalarini vizuallashtirish",
+        "O'quv loyihalari uchun operatsion tizim va ofis dasturlarini sozlash"
       ],
       backLabel: "← Bosh sahifaga"
     }
@@ -466,11 +545,11 @@ export const sectionContent: Record<SectionSlug, Record<Language, SectionPageCon
       {
         ru: {
           ...value.ru,
-          interactive: typedSlug === "practice" ? practiceInteractive.ru : undefined
+          interactiveModules: typedSlug === "practice" ? practiceInteractiveModules.ru : undefined
         },
         uz: {
           ...value.uz,
-          interactive: typedSlug === "practice" ? practiceInteractive.uz : undefined
+          interactiveModules: typedSlug === "practice" ? practiceInteractiveModules.uz : undefined
         }
       }
     ];

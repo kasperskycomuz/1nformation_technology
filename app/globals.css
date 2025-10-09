@@ -290,8 +290,15 @@ body {
   line-height: 1.6;
 }
 
-.assignment {
+.section__interactives {
   margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.assignment {
+  margin: 0;
   padding: 2rem;
   background: white;
   border-radius: 20px;
@@ -506,6 +513,10 @@ body {
 
   .assignment {
     padding: 1.5rem;
+  }
+
+  .section__interactives {
+    gap: 2rem;
   }
 
   .assignment__actions {

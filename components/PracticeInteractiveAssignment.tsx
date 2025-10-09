@@ -1,33 +1,25 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import type { PracticeInteractiveContent } from "@/lib/translations";
+
 type PracticeInteractiveAssignmentProps = {
-  content: {
-    title: string;
-    description: string;
-    tasks: {
-      id: string;
-      question: string;
-      options: string[];
-      correct: number;
-      explanation: string;
-    }[];
-    submitLabel: string;
-    resetLabel: string;
-    scoreLabel: (score: number, total: number) => string;
-    successMessage: string;
-    encouragement: string;
-    resultsTitle: string;
-  };
+  content: PracticeInteractiveContent;
+  anchorId?: string;
 };
 
 type AnswersState = Record<string, number | null>;
 
-export function PracticeInteractiveAssignment({ content }: PracticeInteractiveAssignmentProps) {
+export function PracticeInteractiveAssignment({ content, anchorId }: PracticeInteractiveAssignmentProps) {
   const [answers, setAnswers] = useState<AnswersState>(() =>
     Object.fromEntries(content.tasks.map((task) => [task.id, null]))
   );
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    setAnswers(Object.fromEntries(content.tasks.map((task) => [task.id, null])));
+    setSubmitted(false);
+  }, [content]);
 
   const score = useMemo(() => {
     if (!submitted) {
@@ -62,8 +54,10 @@ export function PracticeInteractiveAssignment({ content }: PracticeInteractiveAs
     [answers, content.tasks]
   );
 
+  const sectionId = anchorId ?? content.id;
+
   return (
-    <section className="assignment" aria-live="polite">
+    <section id={sectionId} className="assignment" aria-live="polite">
       <div className="assignment__header">
         <h2>{content.title}</h2>
         <p>{content.description}</p>
