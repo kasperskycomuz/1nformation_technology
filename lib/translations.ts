@@ -150,7 +150,7 @@ export const homeContent: Record<Language, HomeContent> = {
   uz: {
     hero: {
       badge: "Filologlar uchun IT",
-      title: "Filologlarga tadqiqot va ilhom uchun yordam beradigan raqamli texnologiyalar",
+      title: "Filologlarga tadqiqot va izlanish uchun yordam beradigan raqamli texnologiyalar",
       description:
         "Ta'lim portaliga xush kelibsiz: bu yerda gumanitar fanlar va zamonaviy IT amaliyotlari o'rtasida ko'prik bo'ladigan materiallar to'plangan. Ma'ruzalarga sho'ng'ing, amaliyotni bajarib ko'ring, vizual materiallardan foydalaning va bilimlaringizni ulashing."
     },
