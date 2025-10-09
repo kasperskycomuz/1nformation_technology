@@ -398,7 +398,175 @@ const practiceInteractiveModules: Record<Language, PracticeInteractiveContent[]>
       successMessage: "Отлично! Вы готовы поддерживать ОС и офисные приложения в рабочем состоянии.",
       encouragement: "Продолжайте тренироваться и обращайте внимание на рекомендации в пояснениях.",
       resultsTitle: "Ваш результат"
-    }
+      },
+      {
+        id: "hot-potatoes",
+        title: "Интерактивное задание: создание мультимедийного курса в Hot Potatoes",
+        description:
+          "Закрепите ключевые шаги подготовки электронного курса: выбор модулей Hot Potatoes, добавление мультимедиа, организация файлов и публикация материала.",
+        tasks: [
+          {
+            id: "hp-module-choice",
+            question: "Какой модуль Hot Potatoes лучше всего подходит для викторин с одиночным или множественным выбором?",
+            options: ["JQuiz", "JMatch", "JCross"],
+            correct: 0,
+            explanation: "Модуль JQuiz поддерживает вопросы с выбором ответа, краткие ответы и оценивание."
+          },
+          {
+            id: "hp-output",
+            question: "В каком формате Hot Potatoes по умолчанию публикует упражнения?",
+            options: ["HTML-файл", "PDF-документ", "Исполняемый EXE"],
+            correct: 0,
+            explanation: "Hot Potatoes генерирует интерактивные HTML-страницы, готовые к загрузке в браузер."
+          },
+          {
+            id: "hp-shuffle",
+            question: "Как обеспечить случайный порядок вопросов в упражнении JQuiz?",
+            options: ["Включить параметр Shuffle questions в настройках", "Сохранить файл под новым именем", "Использовать модуль JCloze вместо JQuiz"],
+            correct: 0,
+            explanation: "Опция Shuffle questions автоматически перемешивает порядок вопросов при каждом запуске."
+          },
+          {
+            id: "hp-cloze",
+            question: "Какой модуль предназначен для заданий на заполнение пропусков в тексте?",
+            options: ["JCloze", "JMatch", "The Masher"],
+            correct: 0,
+            explanation: "JCloze создаёт упражнения, в которых обучающийся вводит пропущенные слова."
+          },
+          {
+            id: "hp-media",
+            question: "Как корректно добавить изображение в упражнение Hot Potatoes?",
+            options: ["Использовать Insert > Picture и хранить файл изображения рядом с HTML", "Вставить ссылку на исполняемый файл", "Переименовать картинку с расширением .jmt"],
+            correct: 0,
+            explanation: "Изображения подключаются через меню Insert, а файл должен лежать в той же папке, что и HTML."
+          },
+          {
+            id: "hp-masher",
+            question: "Как объединить несколько упражнений Hot Potatoes в единый курс с навигацией?",
+            options: ["Воспользоваться инструментом The Masher", "Открыть каждое упражнение в новой вкладке браузера", "Конвертировать задания в формат PDF"],
+            correct: 0,
+            explanation: "The Masher формирует структуру курса, связывая упражнения и добавляя общую навигацию."
+          },
+          {
+            id: "hp-feedback",
+            question: "Где настраиваются индивидуальные пояснения к ответам в JQuiz?",
+            options: ["Во вкладке Feedback для каждого вопроса", "В свойствах файла Windows", "В модуле JCross"],
+            correct: 0,
+            explanation: "Раздел Feedback внутри редактора JQuiz позволяет добавить реагирование на правильные и неправильные ответы."
+          },
+          {
+            id: "hp-audio",
+            question: "Как встроить аудио-комментарий в упражнение Hot Potatoes?",
+            options: ["Использовать кнопку Insert Media и добавить HTML-тег <audio>", "Вставить звуковой файл в текст вопроса", "Записать аудио в формате EXE"],
+            correct: 0,
+            explanation: "Hot Potatoes поддерживает теги HTML5, поэтому аудио подключается через Insert Media и тег <audio>."
+          },
+          {
+            id: "hp-folder",
+            question: "Как лучше организовать структуру проекта перед публикацией курса?",
+            options: ["Хранить HTML-файлы и мультимедиа в одной папке проекта", "Разнести изображения по системным каталогам Windows", "Переименовать файлы в случайные номера"],
+            correct: 0,
+            explanation: "Совместное хранение HTML и медиа гарантирует корректные пути к ресурсам после загрузки на сервер."
+          },
+          {
+            id: "hp-export",
+            question: "Какой способ позволит выгружать результаты прохождения для анализа успеваемости?",
+            options: ["Экспортировать в SCORM или использовать JavaScript-отправку результатов на сервер", "Распечатать страницу с упражнениями", "Удалить упражнения сразу после прохождения"],
+            correct: 0,
+            explanation: "SCORM-пакет или скрипт отправки результатов даёт возможность собирать статистику по обучающимся."
+          }
+        ],
+        submitLabel: "Проверить ответы",
+        resetLabel: "Сбросить и пройти заново",
+        scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
+        successMessage: "Вы отлично ориентируетесь в инструментах Hot Potatoes и готовы создавать мультимедийные курсы.",
+        encouragement: "Потренируйтесь на своих материалах и расширьте курс дополнительными модулями.",
+        resultsTitle: "Ваш результат"
+      },
+      {
+        id: "authoring-tools",
+        title: "Интерактивное задание: iSpring QuizMaker и Wordwall.net",
+        description:
+          "Освойте ключевые функции инструментов для создания электронных учебников: проектирование викторин в iSpring QuizMaker и интерактивных упражнений в Wordwall.",
+        tasks: [
+          {
+            id: "ispring-format",
+            question: "Какой вариант публикации в iSpring QuizMaker следует выбрать для интеграции с LMS?",
+            options: ["Publish → LMS (SCORM)", "Publish → Video", "Publish → YouTube"],
+            correct: 0,
+            explanation: "Режим Publish → LMS генерирует SCORM-пакет, который корректно отслеживается в системах управления обучением."
+          },
+          {
+            id: "ispring-question-types",
+            question: "Какой тип вопроса в iSpring лучше использовать для задания на соответствие терминов и определений?",
+            options: ["Matching", "Multiple Choice", "Essay"],
+            correct: 0,
+            explanation: "Вопрос Matching позволяет связать элемент из левого списка с правильным ответом из правого."
+          },
+          {
+            id: "ispring-branching",
+            question: "Где в iSpring QuizMaker настраивается ветвление в зависимости от ответа студента?",
+            options: ["Во вкладке Feedback & Branching", "В разделе Design Themes", "На панели Player"],
+            correct: 0,
+            explanation: "Вкладка Feedback & Branching позволяет задать переходы на другие слайды или показать пояснение."
+          },
+          {
+            id: "ispring-question-bank",
+            question: "Для чего используется Question Group в iSpring QuizMaker?",
+            options: ["Для создания банка вопросов и случайного выбора", "Для настройки цветовой схемы", "Для экспорта в PDF"],
+            correct: 0,
+            explanation: "Question Group позволяет хранить несколько вопросов и случайно подставлять их в тест."
+          },
+          {
+            id: "ispring-media",
+            question: "Как добавить аудиокомментарий к вопросу iSpring?",
+            options: ["Использовать кнопку Insert Audio на панели редактора", "Вставить ссылку на внешний MP3 в тексте", "Переименовать файл вопроса в .mp3"],
+            correct: 0,
+            explanation: "Через Insert Audio можно записать голос или подключить готовый аудиофайл, который воспроизводится вместе с вопросом."
+          },
+          {
+            id: "ispring-reporting",
+            question: "Какой отчёт выбрать при публикации, чтобы LMS фиксировала максимальный балл и завершение попытки?",
+            options: ["Tracking → Complete/Incomplete + Score", "Tracking → Slides viewed", "Tracking → Video progress"],
+            correct: 0,
+            explanation: "Настройка Complete/Incomplete + Score передаёт в LMS сведения о прохождении и набранных баллах."
+          },
+          {
+            id: "wordwall-template",
+            question: "Какой шаблон Wordwall подходит для тренировки перевода слов при сопоставлении?",
+            options: ["Match Up", "Open the Box", "Random Wheel"],
+            correct: 0,
+            explanation: "Шаблон Match Up позволяет связывать карточки из двух списков, что удобно для лексических упражнений."
+          },
+          {
+            id: "wordwall-assign",
+            question: "Как поделиться упражнением Wordwall с учётом индивидуального отслеживания результатов?",
+            options: ["Выбрать режим Assign и отправить ссылку обучающимся", "Скачать PDF-версию упражнения", "Сохранить игру как шаблон"],
+            correct: 0,
+            explanation: "Режим Assign генерирует персонализированную ссылку, фиксируя имя и результаты каждого участника."
+          },
+          {
+            id: "wordwall-export",
+            question: "Как сохранить Wordwall упражнение в статичном формате для офлайн-печати?",
+            options: ["Использовать опцию Download → PDF", "Нажать Export → SCORM", "Сделать скриншоты"],
+            correct: 0,
+            explanation: "Опция Download → PDF формирует раздаточный материал для занятий без доступа к интернету."
+          },
+          {
+            id: "wordwall-custom",
+            question: "Где в Wordwall настраиваются индивидуальные инструкции и время попытки?",
+            options: ["Во вкладке Edit → Settings", "В меню My Results", "В разделе Collections"],
+            correct: 0,
+            explanation: "Settings позволяет задать пользовательские инструкции, лимит времени и количество попыток."
+          }
+        ],
+        submitLabel: "Проверить ответы",
+        resetLabel: "Сбросить и пройти заново",
+        scoreLabel: (score, total) => `Верно: ${score} из ${total}`,
+        successMessage: "Отлично! Вы готовы создавать электронные задания в iSpring и Wordwall.",
+        encouragement: "Экспериментируйте с шаблонами и расширяйте банк упражнений.",
+        resultsTitle: "Ваш результат"
+      }
   ],
   uz: [
     {
@@ -568,6 +736,174 @@ const practiceInteractiveModules: Record<Language, PracticeInteractiveContent[]>
       successMessage: "Barakalla! Siz operatsion tizim va ofis dasturlarini boshqarishni bilasiz.",
       encouragement: "Mashqni davom ettiring va izohlarni diqqat bilan o'qing.",
       resultsTitle: "Natijangiz"
+    },
+    {
+      id: "hot-potatoes",
+      title: "Interaktiv topshiriq: Hot Potatoes da multimediali kurs yaratish",
+      description:
+        "Hot Potatoes modullarini tanlash, media qo'shish, fayllarni tartiblash va tayyor kursni chop etish bo'yicha asosiy amallarni mustahkamlang.",
+      tasks: [
+        {
+          id: "hp-module-choice",
+          question: "Hot Potatoes modullaridan qaysi biri bir yoki bir nechta javobli viktorinalar uchun eng mos?",
+          options: ["JQuiz", "JMatch", "JCross"],
+          correct: 0,
+          explanation: "JQuiz moduli test savollarini, baholashni va javob variantlarini qo'llab-quvvatlaydi."
+        },
+        {
+          id: "hp-output",
+          question: "Hot Potatoes odatda mashqlarni qaysi formatda chop etadi?",
+          options: ["HTML fayl", "PDF hujjat", "EXE dastur"],
+          correct: 0,
+          explanation: "Hot Potatoes brauzerda ochiladigan interaktiv HTML sahifalarini yaratadi."
+        },
+        {
+          id: "hp-shuffle",
+          question: "JQuizda savollar tartibini tasodifiy qilish uchun nima qilish kerak?",
+          options: ["Settings bo'limidagi Shuffle questions parametrini yoqish", "Faylni boshqa nom bilan saqlash", "JCloze moduliga o'tish"],
+          correct: 0,
+          explanation: "Shuffle questions parametri har ishga tushirishda savollar tartibini aralashtirib beradi."
+        },
+        {
+          id: "hp-cloze",
+          question: "Matndagi bo'sh joylarni to'ldirish mashqlari uchun qaysi modul mo'ljallangan?",
+          options: ["JCloze", "JMatch", "The Masher"],
+          correct: 0,
+          explanation: "JCloze matn ichidagi bo'shliqlarni to'ldirishga mo'ljallangan mashqlarni yaratadi."
+        },
+        {
+          id: "hp-media",
+          question: "Hot Potatoes mashqiga rasmni qanday to'g'ri qo'shish kerak?",
+          options: ["Insert > Picture menyusidan foydalanib, rasm faylini HTML bilan bir papkada saqlash", "Rasmga .exe kengaytmasini berish", "Faylni .jmt kengaytmasiga o'zgartirish"],
+          correct: 0,
+          explanation: "Rasm Insert menyusi orqali ulanadi va to'g'ri ko'rinish uchun HTML fayli bilan bir papkada turishi zarur."
+        },
+        {
+          id: "hp-masher",
+          question: "Bir nechta Hot Potatoes mashqlarini bitta kursga birlashtirish uchun nima qilish kerak?",
+          options: ["The Masher vositasidan foydalanish", "Har bir mashqni alohida brauzer oynasida ochish", "Mashqlarni PDF formatiga aylantirish"],
+          correct: 0,
+          explanation: "The Masher mashqlarga umumiy navigatsiya qo'shib, ularni yagona kurs sifatida birlashtiradi."
+        },
+        {
+          id: "hp-feedback",
+          question: "JQuizda har bir javob uchun alohida izohlarni qayerda sozlash mumkin?",
+          options: ["Savol oynasidagi Feedback bo'limida", "Windows fayl xususiyatlarida", "JCross modulida"],
+          correct: 0,
+          explanation: "Feedback bo'limi to'g'ri va noto'g'ri javoblar uchun individual izohlar kiritish imkonini beradi."
+        },
+        {
+          id: "hp-audio",
+          question: "Mashqqa audio sharh qo'shishning to'g'ri usuli qaysi?",
+          options: ["Insert Media tugmasidan foydalanib, HTML5 <audio> tegi orqali qo'shish", "Audio fayl nomini savol matniga yozish", "Ovoz yozuvini .exe formatida saqlash"],
+          correct: 0,
+          explanation: "Hot Potatoes HTML5 teglari bilan mos, shuning uchun audio Insert Media va <audio> teglari orqali ulanadi."
+        },
+        {
+          id: "hp-folder",
+          question: "Kursni chop etishdan oldin fayllarni qanday tartiblash ma'qul?",
+          options: ["HTML va media fayllarni bir loyiha papkasida saqlash", "Rasmlarni Windows tizim papkalariga joylash", "Fayllarni tasodifiy raqamlar bilan qayta nomlash"],
+          correct: 0,
+          explanation: "Bir papkada saqlash serverga yuklanganda media yo'llari buzilmasligini ta'minlaydi."
+        },
+        {
+          id: "hp-export",
+          question: "O'quvchilarning natijalarini tahlil qilish uchun qaysi usul yordam beradi?",
+          options: ["SCORM shabloniga eksport qilish yoki JavaScript orqali serverga natija yuborish", "Sahifani printerdan chiqarish", "Mashqlarni bajarilgach o'chirib yuborish"],
+          correct: 0,
+          explanation: "SCORM yoki maxsus skriptlar natijalarni to'plash va LMSga integratsiya qilish imkonini beradi."
+        }
+      ],
+      submitLabel: "Javoblarni tekshirish",
+      resetLabel: "Qayta boshlash",
+      scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
+      successMessage: "Ajoyib! Siz Hot Potatoes yordamida interaktiv kurs yaratish jarayonini yaxshi o'zlashtirdingiz.",
+      encouragement: "O'z materiallaringiz asosida mashqlar tuzib, kursni yanada boyiting.",
+      resultsTitle: "Natijangiz"
+    },
+    {
+      id: "authoring-tools",
+      title: "Interaktiv topshiriq: iSpring QuizMaker va Wordwall.net",
+      description:
+        "Elektron darsliklar uchun asosiy vositalarni o'rganing: iSpring QuizMaker'da viktorinalar va Wordwall'da interaktiv mashqlar yaratish bosqichlarini mustahkamlang.",
+      tasks: [
+        {
+          id: "ispring-format",
+          question: "iSpring QuizMaker natijalarini LMS tizimiga yuklash uchun qaysi chop etish rejimini tanlash kerak?",
+          options: ["Publish → LMS (SCORM)", "Publish → Video", "Publish → YouTube"],
+          correct: 0,
+          explanation: "Publish → LMS rejimi SCORM paketini yaratadi va LMSda natijalarni kuzatishga imkon beradi."
+        },
+        {
+          id: "ispring-question-types",
+          question: "iSpring'da termin va ta'riflarni moslashtirish uchun qaysi savol turidan foydalanish qulay?",
+          options: ["Matching", "Multiple Choice", "Essay"],
+          correct: 0,
+          explanation: "Matching turi ikki ro'yxat elementlarini bog'lash orqali lug'atni mustahkamlaydi."
+        },
+        {
+          id: "ispring-branching",
+          question: "Talaba javobiga qarab o'tishlarni qayerda sozlash mumkin?",
+          options: ["Feedback & Branching oynasida", "Design Themes bo'limida", "Player panelida"],
+          correct: 0,
+          explanation: "Feedback & Branching bo'limi savoldan keyingi slayd yoki izohni tanlashga imkon beradi."
+        },
+        {
+          id: "ispring-question-bank",
+          question: "Question Group iSpring QuizMaker'da qanday vazifani bajaradi?",
+          options: ["Savollar bankini yaratib, ularni tasodifiy tanlash", "Rang sxemasini o'zgartirish", "PDFga eksport qilish"],
+          correct: 0,
+          explanation: "Question Group testga tasodifiy savollar qo'shish uchun foydalaniladi."
+        },
+        {
+          id: "ispring-media",
+          question: "Savolga audio sharh qo'shishning eng to'g'ri usuli qaysi?",
+          options: ["Insert Audio tugmasidan foydalanish", "Matn ichiga tashqi MP3 havolasini yozish", "Savol faylini .mp3 kengaytmaga o'zgartirish"],
+          correct: 0,
+          explanation: "Insert Audio yordamida tayyor faylni qo'shish yoki ovoz yozib olish mumkin."
+        },
+        {
+          id: "ispring-reporting",
+          question: "LMS ball va yakuniy holatni qayd etishi uchun qaysi kuzatuv (Tracking) sozlamasi tanlanadi?",
+          options: ["Complete/Incomplete + Score", "Slides viewed", "Video progress"],
+          correct: 0,
+          explanation: "Complete/Incomplete + Score parametri o'tish holati va ballarni yuboradi."
+        },
+        {
+          id: "wordwall-template",
+          question: "So'zlarni tarjima bilan moslashtirish uchun qaysi Wordwall shabloni eng mos?",
+          options: ["Match Up", "Open the Box", "Random Wheel"],
+          correct: 0,
+          explanation: "Match Up moslashtirish mashqlari uchun yaratilingan va til mashqlari uchun qulay."
+        },
+        {
+          id: "wordwall-assign",
+          question: "Talabalarning natijalarini individual tarzda kuzatish uchun mashqni qanday ulash kerak?",
+          options: ["Assign rejimini tanlab, havolani yuborish", "Mashqni PDFga yuklab, tarqatish", "Shablonni o'chirib, yangisini yaratish"],
+          correct: 0,
+          explanation: "Assign rejimi ishtirokchi ismi va ballarini qayd etadigan maxsus havolani yaratadi."
+        },
+        {
+          id: "wordwall-export",
+          question: "Wordwall mashqidan oflayn foydalanish uchun qanday formatda yuklab olish mumkin?",
+          options: ["Download → PDF", "Export → SCORM", "Save as Template"],
+          correct: 0,
+          explanation: "PDF formatidagi yuklab olish bosma material sifatida ishlatiladi."
+        },
+        {
+          id: "wordwall-custom",
+          question: "Wordwall'da vaqt limiti va ko'rsatmalar qayerda sozlanadi?",
+          options: ["Edit → Settings bo'limida", "My Results sahifasida", "Collections menyusida"],
+          correct: 0,
+          explanation: "Settings oynasi yordamida instruktsiya, vaqt va urinishlar sonini belgilash mumkin."
+        }
+      ],
+      submitLabel: "Javoblarni tekshirish",
+      resetLabel: "Qayta boshlash",
+      scoreLabel: (score, total) => `To'g'ri javoblar: ${score}/${total}`,
+      successMessage: "Barakalla! Siz iSpring va Wordwall yordamida o'quv mashqlarini yaratishni o'rgandingiz.",
+      encouragement: "Yangi shablonlar bilan tajriba qilib, mashg'ulotlar bankini kengaytiring.",
+      resultsTitle: "Natijangiz"
     }
   ]
 };
@@ -609,7 +945,9 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
         "Создание мини-корпуса и аннотирование текста",
         "Python для филологов: обработка текста с помощью spaCy и NLTK",
         "Визуализация результатов исследования в Tableau и Observable",
-        "Настройка операционных систем и офисных приложений для учебных проектов"
+        "Настройка операционных систем и офисных приложений для учебных проектов",
+        "Проектирование интерактивных учебных курсов в Hot Potatoes",
+        "Разработка языковых упражнений в iSpring QuizMaker и Wordwall.net"
       ],
       backLabel: "← На главную"
     },
@@ -622,7 +960,9 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
         "Mini-korpus yaratish va matnni annotatsiya qilish",
         "Filologlar uchun Python: spaCy va NLTK yordamida matnni qayta ishlash",
         "Tablue va Observable'da tadqiqot natijalarini vizuallashtirish",
-        "O'quv loyihalari uchun operatsion tizim va ofis dasturlarini sozlash"
+        "O'quv loyihalari uchun operatsion tizim va ofis dasturlarini sozlash",
+        "Hot Potatoes dasturida interaktiv o'quv kurslarini yaratish",
+        "iSpring QuizMaker va Wordwall.net yordamida til mashqlarini yaratish"
       ],
       backLabel: "← Bosh sahifaga"
     }
