@@ -1,5 +1,7 @@
 export type Language = "ru" | "uz";
 
+const ALL_LANGUAGES: Language[] = ["ru", "uz"];
+
 export type SectionSlug =
   | "lecture"
   | "practice"
@@ -57,11 +59,44 @@ export type PracticeInteractiveContent = {
   resultsTitle: string;
 };
 
+export type SectionContentItem = {
+  title: string;
+  details?: string | string[];
+  linkSlug?: string;
+};
+
+type LectureContentSection = {
+  heading: string;
+  paragraphs: string[];
+};
+
+type LectureResource = {
+  label: string;
+  url: string;
+};
+
+type LectureTopicTranslation = {
+  title: string;
+  summary: string;
+  plan: string[];
+  sections: LectureContentSection[];
+  resources?: LectureResource[];
+};
+
+type LectureTopicEntry = {
+  slug: string;
+  translations: Record<Language, LectureTopicTranslation>;
+};
+
+export type LectureTopic = LectureTopicTranslation & {
+  slug: string;
+};
+
 type SectionPageContent = {
   title: string;
   lead: string;
   description: string;
-  items: string[];
+  items: SectionContentItem[];
   interactiveModules?: PracticeInteractiveContent[];
   backLabel: string;
 };
@@ -2088,7 +2123,7 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
   lecture: {
     ru: {
       title: "Лекция",
-      lead: "Методологические основы цифровой гуманитаристики",
+      lead: "Методологические основы",
       description:
         "Лекции помогают понять историю цифровой филологии, познакомиться с ключевыми терминами и увидеть, как цифровые методы применяются на практике.",
       items: [
@@ -2100,7 +2135,7 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
     },
     uz: {
       title: "Ma'ruza",
-      lead: "Raqamli gumanitar fanlarning metodologik asoslari",
+      lead: "Metodologik asoslar",
       description:
         "Ma'ruzalar raqamli filologiya tarixini tushunishga, asosiy atamalar bilan tanishishga va amaliyotda qanday qo'llanilishini ko'rishga yordam beradi.",
       items: [
