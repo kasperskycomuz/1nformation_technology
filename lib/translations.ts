@@ -65,9 +65,28 @@ export type SectionContentItem = {
   linkSlug?: string;
 };
 
+export type LectureSectionMediaBase = {
+  kind: "image" | "diagram" | "table";
+  title: string;
+  description: string;
+};
+
+export type LectureSectionMediaVisual = LectureSectionMediaBase & {
+  kind: "image" | "diagram";
+};
+
+export type LectureSectionMediaTable = LectureSectionMediaBase & {
+  kind: "table";
+  headers: string[];
+  rows: string[][];
+};
+
+export type LectureSectionMedia = LectureSectionMediaVisual | LectureSectionMediaTable;
+
 type LectureContentSection = {
   heading: string;
   paragraphs: string[];
+  media?: LectureSectionMedia[];
 };
 
 type LectureResource = {
