@@ -614,6 +614,11 @@ body {
   gap: 1.5rem;
 }
 
+.lecture-topic h1 {
+  font-size: clamp(1.8rem, 2.4vw + 1.3rem, 2.6rem);
+  line-height: 1.2;
+}
+
 .lecture-topic__plan h2,
 .lecture-topic__content h2,
 .lecture-topic__resources h2 {
@@ -652,7 +657,7 @@ body {
   margin-top: 2rem;
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .lecture-topic__media {
@@ -696,6 +701,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  grid-column: 1 / -1;
 }
 
 .lecture-topic__table-title {
