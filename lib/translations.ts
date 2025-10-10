@@ -2119,30 +2119,1403 @@ const practiceInteractiveModules: Record<Language, PracticeInteractiveContent[]>
   ]
 };
 
-const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageContent, "interactive">>> = {
+const lectureTopicsData: LectureTopicEntry[] = [
+  {
+    slug: "discipline-digital-technologies",
+    translations: {
+      ru: {
+        title:
+          "Предмет и задачи дисциплины «Информационные технологии». Роль и возможности цифровых технологий в профессиональной деятельности",
+        summary:
+          "Определяем цели дисциплины и показываем, как цифровые инструменты трансформируют повседневную работу филолога, преподавателя и исследователя.",
+        plan: [
+          "Понятие цифровой грамотности для гуманитариев",
+          "Профессиональные сценарии применения информационных технологий",
+          "Цели курса и ожидаемые результаты обучения",
+          "Навыки XXI века и цифровая трансформация образования"
+        ],
+        sections: [
+          {
+            heading: "Почему информационные технологии стали базовой компетенцией",
+            paragraphs: [
+              "За последние десять лет цифровые инструменты перестали быть вспомогательным инструментом и превратились в основу исследовательских и образовательных процессов. Работа с большими корпусами текстов, визуализация данных и поддержка онлайн-курсов требуют уверенного владения программами и сервисами.",
+              "Для филолога информационные технологии открывают новые форматы анализа — от автоматического выявления тем до совместной работы над рукописями. Это меняет роль специалиста: он становится модератором цифровых процессов и автором комплексных проектов, объединяющих гуманитарный и технический подход." 
+            ]
+          },
+          {
+            heading: "Профессиональные задачи и цифровые сценарии",
+            paragraphs: [
+              "В преподавании дисциплина помогает организовать смешанное обучение, использовать интерактивные доски, платформы для тестирования и индивидуализации практикумов. В исследовательской работе цифровые методы позволяют обрабатывать массивы данных, систематизировать архивы и визуализировать результаты, делая их наглядными для коллег и широкой аудитории.",
+              "Отдельное направление — популяризация знаний. Социальные сети, подкасты и образовательные порталы требуют умения подбирать медиаверсию материала, адаптировать тексты под конкретные форматы и управлять обратной связью аудитории." 
+            ]
+          },
+          {
+            heading: "Цели курса и карта компетенций",
+            paragraphs: [
+              "Курс формирует понимание цифровой экосистемы образовательного учреждения, знакомит с актуальными инструментами и выстраивает логику их применения. Студенты учатся выбирать сервис под задачу, оценивать его ограничения и комбинировать инструменты для получения устойчивого результата.",
+              "Компетенции включают технические навыки (работа с данными, мультимедиа, платформами) и soft skills (планирование цифровых проектов, коммуникация в распределённых командах, критическая оценка источников). Особый акцент сделан на цифровой этике и безопасности." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "UNESCO: ICT Competency Framework for Teachers",
+            url: "https://unesdoc.unesco.org/ark:/48223/pf0000265721"
+          },
+          {
+            label: "OECD Skills Outlook: Skills for Digital Transformation",
+            url: "https://www.oecd.org/education/skills-beyond-school/oecd-skills-outlook-2019-3ae3dfb8-en.htm"
+          }
+        ]
+      },
+      uz: {
+        title:
+          "\"Axborot texnologiyalari\" fanining predmeti va vazifalari. Raqamli texnologiyalarning professional faoliyatdagi roli va imkoniyatlari",
+        summary:
+          "Fan maqsadlari va kutilayotgan natijalar bilan tanishamiz hamda raqamli vositalar filolog, o'qituvchi va tadqiqotchi kundalik ishini qanday o'zgartirishini ko'rsatamiz.",
+        plan: [
+          "Gumanitarlar uchun raqamli savodxonlik tushunchasi",
+          "Professional faoliyatda axborot texnologiyalarining ssenariylari",
+          "Kurs maqsadlari va o'qishdan kutiladigan natijalar",
+          "XXI asr ko'nikmalari va ta'limdagi raqamli transformatsiya"
+        ],
+        sections: [
+          {
+            heading: "Nega axborot texnologiyalari asosiy kompetensiyaga aylandi",
+            paragraphs: [
+              "So'nggi o'n yillikda raqamli vositalar yordamchi emas, balki tadqiqot va ta'lim jarayonlarining markaziga aylandi. Korpuslar bilan ishlash, ma'lumotlarni vizuallashtirish va onlayn kurslarni yuritish ishonchli dasturiy ko'nikmalarni talab qiladi.",
+              "Filolog uchun axborot texnologiyalari yangi tahliliy imkoniyatlarni ochadi: mavzularni avtomatik aniqlash, qo'lyozmalar ustida birgalikda ishlash, natijalarni multimediali formatlarda taqdim etish. Mutaxassis raqamli jarayonlarni boshqaruvchi va gumanitar hamda texnik yondashuvlarni uyg'unlashtiruvchi loyiha rahbariga aylanadi." 
+            ]
+          },
+          {
+            heading: "Professional vazifalar va raqamli ssenariylar",
+            paragraphs: [
+              "Ta'lim jarayonida fan aralash (blended) ta'limni tashkil etish, interaktiv doskalar, test tizimlari va amaliy mashg'ulotlarni shaxsiylashtirishga yordam beradi. Tadqiqot ishlari uchun raqamli metodlar ma'lumotlarni qayta ishlash, arxivlarni tizimlashtirish va natijalarni hamkasblar hamda keng jamoatchilikka vizual tarzda ko'rsatish imkonini beradi.",
+              "Yana bir muhim yo'nalish — bilimlarni ommalashtirish. Ijtimoiy tarmoqlar, podkastlar va ta'limiy portallar materialni mos formatda taqdim etish, matnlarni auditoriyaga qarab moslashtirish va fikr-mulohazalarni boshqarishni talab qiladi." 
+            ]
+          },
+          {
+            heading: "Kurs maqsadlari va kompetensiyalar xaritasi",
+            paragraphs: [
+              "Kurs oliy ta'lim muassasasining raqamli ekotizimini tushuntiradi, dolzarb vositalar bilan tanishtiradi va ularni vazifaga qarab tanlash hamda uyg'unlashtirishni o'rgatadi. Talabalar servisning cheklovlarini baholash va barqaror natija beruvchi kombinatsiyalarni yaratishni o'zlashtiradilar.",
+              "Kompetensiyalar tarkibiga texnik (ma'lumotlar, multimedia, platformalar bilan ishlash) va yumshoq ko'nikmalar (raqamli loyihalarni rejalash, masofaviy jamoalarda muloqot, manbalarni tanqidiy baholash) kiradi. Maxsus e'tibor raqamli etika va xavfsizlikka qaratiladi." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "UNESCO: O'qituvchilar uchun AKT kompetensiya ramkasi",
+            url: "https://unesdoc.unesco.org/ark:/48223/pf0000265721"
+          },
+          {
+            label: "OECD Skills Outlook: Raqamli transformatsiya uchun ko'nikmalar",
+            url: "https://www.oecd.org/education/skills-beyond-school/oecd-skills-outlook-2019-3ae3dfb8-en.htm"
+          }
+        ]
+      }
+    }
+  },
+  {
+    slug: "system-software-modern-it",
+    translations: {
+      ru: {
+        title: "Системное программное обеспечение современных информационных технологий",
+        summary:
+          "Разбираем архитектуру системного ПО, сравниваем настольные и облачные платформы и учимся поддерживать стабильность цифровой инфраструктуры.",
+        plan: [
+          "Компоненты и функции операционных систем",
+          "Управление оборудованием и драйверами",
+          "Виртуализация, контейнеризация и облачные сервисы",
+          "Администрирование, обновления и безопасность"
+        ],
+        sections: [
+          {
+            heading: "Операционные системы как ядро цифровой среды",
+            paragraphs: [
+              "Системное программное обеспечение включает ядро, драйверы, службы и оболочки, которые обеспечивают взаимодействие пользователя с аппаратными ресурсами. Важно понимать различия между монолитными и модульными архитектурами, а также роль диспетчера памяти, процессов и устройств.",
+              "Современные тенденции смещают акцент в сторону гибридных сценариев: сочетание локальных ОС с облачными рабочими столами и веб-приложениями повышает гибкость, но требует строгой политики доступа и мониторинга." 
+            ]
+          },
+          {
+            heading: "Драйверы, виртуализация и контейнеры",
+            paragraphs: [
+              "Драйверы выступают посредником между устройством и ОС, поэтому грамотное обновление и контроль совместимости критичны для стабильности. Автоматизация через диспетчер устройств или системные утилиты помогает поддерживать инфраструктуру без простоя.",
+              "Виртуальные машины и контейнеры позволяют запускать разные конфигурации в одном физическом окружении. Это удобно для лабораторий и учебных проектов: можно воспроизводить конкретные версии программ и сценариев без влияния на основную систему." 
+            ]
+          },
+          {
+            heading: "Администрирование и вопросы безопасности",
+            paragraphs: [
+              "Политика обновлений должна включать тестирование, резервное копирование и план отката. Для образовательных учреждений важно учитывать расписание занятий и минимизировать влияние обновлений на аудитории.",
+              "Интеграция с системами мониторинга (например, Windows Admin Center, Zabbix) помогает отслеживать состояние устройств и своевременно реагировать на угрозы. Особое внимание уделяется журналированию, контролю учетных записей и настройке групповых политик." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Microsoft Learn: Licensing and Infrastructure Basics",
+            url: "https://learn.microsoft.com/windows-server/administration/overview"
+          },
+          {
+            label: "Linux Foundation Training: Introduction to Linux",
+            url: "https://training.linuxfoundation.org/training/introduction-to-linux/"
+          }
+        ]
+      },
+      uz: {
+        title: "Zamonaviy axborot texnologiyalarining tizimli dasturiy ta'minoti",
+        summary:
+          "Tizimli dasturiy ta'minot arxitekturasini tahlil qilamiz, ish stoli va bulut platformalarini solishtiramiz hamda raqamli infratuzilmani barqaror ushlab turishni o'rganamiz.",
+        plan: [
+          "Operatsion tizimlarning tarkibi va vazifalari",
+          "Uskunani boshqarish va drayverlar",
+          "Virtualizatsiya, konteynerlash va bulut xizmatlari",
+          "Administratsiya, yangilanishlar va xavfsizlik"
+        ],
+        sections: [
+          {
+            heading: "Operatsion tizimlar raqamli muhitning yuragi",
+            paragraphs: [
+              "Tizimli dasturiy ta'minot yadro, drayverlar, xizmatlar va qobiqdan iborat bo'lib, foydalanuvchi va apparat o'rtasidagi aloqani ta'minlaydi. Monolit va modulli arxitekturalar o'rtasidagi farqlar, xotira, jarayon va qurilmalarni boshqarishning o'rni alohida ahamiyatga ega.",
+              "Bugungi tendensiyalar gibrid ssenariylarga o'tmoqda: lokal OT, bulut ish stollari va veb-ilovalarni kombinatsiyalash moslashuvchanlikni oshiradi, biroq kirish siyosati va monitoringga qat'iy yondashuvni talab qiladi." 
+            ]
+          },
+          {
+            heading: "Drayverlar, virtualizatsiya va konteynerlar",
+            paragraphs: [
+              "Drayverlar qurilma va OT o'rtasidagi ko'prik bo'lib, ularni yangilash va mosligini nazorat qilish barqarorlikni kafolatlaydi. Qurilma dispetcheri yoki xizmat ko'rsatuvchi dasturlar orqali avtomatlashtirish infratuzilmani to'xtatmasdan qo'llab-quvvatlaydi.",
+              "Virtual mashinalar va konteynerlar bitta fizik muhitda turli konfiguratsiyalarni ishga tushirish imkonini beradi. Bu laboratoriya va o'quv loyihalarida qulay: dastur va ssenariylarning aniq versiyalarini asosiy tizimga zarar bermasdan sinovdan o'tkazish mumkin." 
+            ]
+          },
+          {
+            heading: "Administratsiya va xavfsizlik masalalari",
+            paragraphs: [
+              "Yangilanish siyosati sinov, zaxira nusxa va orqaga qaytish rejalarini o'z ichiga olishi lozim. Ta'lim muassasalarida dars jadvali hisobga olinib, yangilanishlar auditoriyalarga minimal ta'sir ko'rsatishi kerak.",
+              "Monitoring tizimlari (masalan, Windows Admin Center, Zabbix) qurilmalar holatini kuzatish va xavflarga o'z vaqtida munosabat bildirishga yordam beradi. Jurnallar, hisob yozuvlarini boshqarish va guruh siyosatlarini sozlashga alohida e'tibor qaratiladi." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Microsoft Learn: Windows Server administratori uchun qo'llanma",
+            url: "https://learn.microsoft.com/windows-server/administration/overview"
+          },
+          {
+            label: "Linux Foundation: Linuxga kirish kursi",
+            url: "https://training.linuxfoundation.org/training/introduction-to-linux/"
+          }
+        ]
+      }
+    }
+  },
+  {
+    slug: "application-software-modern-it",
+    translations: {
+      ru: {
+        title: "Прикладное программное обеспечение современных информационных технологий",
+        summary:
+          "Изучаем экосистему прикладных решений: офисные пакеты, инструменты совместной работы, аналитические и мультимедийные программы для образовательных проектов.",
+        plan: [
+          "Классификация прикладного ПО и критерии выбора",
+          "Офисные пакеты и инструменты совместной работы",
+          "Специализированные программы для анализа данных и мультимедиа",
+          "Лицензирование, интеграция и сопровождение"
+        ],
+        sections: [
+          {
+            heading: "Экосистема прикладных решений",
+            paragraphs: [
+              "Прикладное ПО охватывает редакторы, системы управления проектами, платформы для совместного творчества и аналитические сервисы. Выбор зависит от задач: создание текстов, управление курсами, визуализация или публикация контента.",
+              "Важно учитывать открытость форматов, возможность экспорта и совместимость с текущей инфраструктурой. Например, переход на облачные экосистемы требует оценки скорости соединения и политики хранения данных." 
+            ]
+          },
+          {
+            heading: "Командная работа и мультимедиа",
+            paragraphs: [
+              "Microsoft 365, Google Workspace и OnlyOffice предлагают единое пространство для документов, презентаций и таблиц. Интеграция с мессенджерами, комментариями и версионированием ускоряет образовательные проекты.",
+              "Мультимедийные задачи решаются в Adobe Creative Cloud, Affinity Suite, Canva или Figma. Каждое решение по-разному поддерживает совместную работу: стоит сравнить онлайн- и офлайн-возможности, а также наличие обучающих библиотек." 
+            ]
+          },
+          {
+            heading: "Лицензирование и сопровождение",
+            paragraphs: [
+              "Учебным заведениям доступны академические лицензии и подписки. При выборе важно оценить модели владения (SaaS, on-premise), условия обновлений и локализацию интерфейса.",
+              "Сопровождение включает обучение пользователей, создание шаблонов и регламентов, а также мониторинг эффективности. Желательно формировать минимальный набор стандартов: где хранить файлы, как именовать версии и кто отвечает за доступ." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Microsoft 365 Education",
+            url: "https://www.microsoft.com/education" 
+          },
+          {
+            label: "Google Workspace for Education",
+            url: "https://edu.google.com/"
+          }
+        ]
+      },
+      uz: {
+        title: "Zamonaviy axborot texnologiyalarining amaliy dasturiy ta'minoti",
+        summary:
+          "Ofis paketlari, hamkorlik servislar, analitika va multimedia dasturlarini o'rganib, ta'lim loyihalari uchun optimal yechimlarni tanlaymiz.",
+        plan: [
+          "Amaliy dasturiy ta'minotni klassifikatsiya qilish va tanlash mezonlari",
+          "Ofis paketlari va birgalikda ishlash vositalari",
+          "Ma'lumot tahlili va multimedia uchun maxsus dasturlar",
+          "Litsenziyalash, integratsiya va qo'llab-quvvatlash"
+        ],
+        sections: [
+          {
+            heading: "Amaliy yechimlar ekotizimi",
+            paragraphs: [
+              "Amaliy dasturlar matn muharrirlari, loyiha boshqaruvi tizimlari, hamkorlik platformalari va analitik servislarni qamrab oladi. Tanlov vazifaga bog'liq: matn yaratish, kurslarni yuritish, vizualizatsiya yoki kontentni nashr etish.",
+              "Formatlarning ochiqligi, eksport imkoniyati va mavjud infratuzilma bilan mosligi muhim. Masalan, bulut ekotizimiga o'tishda aloqa tezligi va ma'lumot saqlash siyosatini baholash kerak." 
+            ]
+          },
+          {
+            heading: "Jamoaviy ish va multimedia",
+            paragraphs: [
+              "Microsoft 365, Google Workspace va OnlyOffice hujjatlar, taqdimotlar va jadvallar uchun yagona muhit yaratadi. Messengerlar, sharhlar va versiyalar integratsiyasi o'quv loyihalarini tezlashtiradi.",
+              "Multimedia vazifalari Adobe Creative Cloud, Affinity Suite, Canva yoki Figma yordamida bajariladi. Har bir yechim onlayn va oflayn rejim, shuningdek, o'quv materiallari kutubxonasi bo'yicha farqlanadi." 
+            ]
+          },
+          {
+            heading: "Litsenziyalash va qo'llab-quvvatlash",
+            paragraphs: [
+              "Ta'lim muassasalari uchun akademik litsenziyalar va obunalar mavjud. Tanlashda egalik modeli (SaaS, joyida), yangilanish shartlari va interfeysning mahalliylashtirilishini baholash kerak.",
+              "Qo'llab-quvvatlash foydalanuvchilarni o'qitish, shablon va reglamentlar yaratish hamda samaradorlikni monitoring qilishni o'z ichiga oladi. Fayllarni saqlash, versiyalarni nomlash va kirishni boshqarish bo'yicha minimal standartlarni joriy qilish tavsiya etiladi." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Microsoft 365 Education",
+            url: "https://www.microsoft.com/education"
+          },
+          {
+            label: "Google Workspace for Education",
+            url: "https://edu.google.com/"
+          }
+        ]
+      }
+    }
+  },
+  {
+    slug: "electronic-learning-tools",
+    translations: {
+      ru: {
+        title: "Электронные средства обучения",
+        summary:
+          "Систематизируем типы электронных учебных материалов, разбираем стандарты качества и проектируем мультимедийные курсы для аудитории разного уровня подготовки.",
+        plan: [
+          "Виды электронных учебных ресурсов и их функции",
+          "Дидактический дизайн и требования к структуре",
+          "Выбор платформ и инструментов создания контента",
+          "Оценка эффективности и поддержка пользователей"
+        ],
+        sections: [
+          {
+            heading: "Классификация цифровых учебных материалов",
+            paragraphs: [
+              "Электронные средства обучения включают интерактивные учебники, тренажеры, видеоуроки, симуляторы, подкасты и гибридные модули. Выбор формата определяется целями: объяснение теории, отработка навыка или организация контроля.",
+              "Важно продумать уровни навигации, адаптивность под устройства и доступность для пользователей с особыми потребностями. Валидация контента проводится через экспертные проверки и пилотный запуск." 
+            ]
+          },
+          {
+            heading: "Дидактический дизайн и структура",
+            paragraphs: [
+              "Качественный электронный курс строится на принципах микрообучения, четких целей и сценарного подхода. Каждый модуль включает мотивационный блок, основное изложение, практику и обратную связь.",
+              "Дизайн интерфейса должен поддерживать когнитивную простоту: единый визуальный стиль, контрастные элементы навигации, логичное расположение интерактивов. Особое внимание уделяется озвучке и субтитрам." 
+            ]
+          },
+          {
+            heading: "Платформы, инструменты и сопровождение",
+            paragraphs: [
+              "Среди популярных инструментов — Articulate 360, iSpring Suite, Adobe Captivate, H5P. При выборе учитываем совместимость со стандартами SCORM/xAPI и возможностями LMS.",
+              "После запуска курса необходимо организовать техподдержку, сбор обратной связи и регулярное обновление материалов. Аналитика по прохождению помогает выявить сложные элементы и улучшить сценарий." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Articulate E-Learning Heroes Community",
+            url: "https://community.articulate.com/"
+          },
+          {
+            label: "eLearning Industry: Instructional Design Guides",
+            url: "https://elearningindustry.com/category/articles/instructional-design"
+          }
+        ]
+      },
+      uz: {
+        title: "Elektron o‘quv vositalari",
+        summary:
+          "Elektron o‘quv materiallari turlarini tizimlashtiramiz, sifat standartlarini ko‘rib chiqamiz va turli tayyorgarlik darajasidagi auditoriya uchun multimedia kurslarini loyihalashtiramiz.",
+        plan: [
+          "Elektron o‘quv resurslarining turlari va vazifalari",
+          "Didaktik dizayn va tuzilma talablari",
+          "Kontent yaratish platformalari va vositalarni tanlash",
+          "Samaradorlikni baholash va foydalanuvchilarni qo‘llab-quvvatlash"
+        ],
+        sections: [
+          {
+            heading: "Raqamli o‘quv materiallari klassifikatsiyasi",
+            paragraphs: [
+              "Elektron o‘quv vositalariga interaktiv darsliklar, trenajyorlar, videodarslar, simulyatorlar, podkastlar va gibrid modullar kiradi. Format tanlovi maqsadga bog‘liq: nazariyani tushuntirish, ko‘nikmani mustahkamlash yoki nazoratni tashkil etish.",
+              "Navigatsiya darajalari, qurilmalarga moslashuvchanlik va maxsus ehtiyojli foydalanuvchilar uchun qulaylikni oldindan o‘ylash kerak. Kontent ekspertlar va pilot sinovlar orqali tasdiqlanadi." 
+            ]
+          },
+          {
+            heading: "Didaktik dizayn va tuzilma",
+            paragraphs: [
+              "Sifatli elektron kurs mikroo‘qitish, aniq maqsadlar va ssenariy yondashuviga tayangan holda quriladi. Har bir modul motivatsion bo‘lim, asosiy mazmun, amaliyot va fikr-mulohazani o‘z ichiga oladi.",
+              "Interfeys kognitiv qulaylikni ta’minlashi zarur: yagona vizual uslub, kontrastli navigatsiya, interaktiv elementlarning mantiqiy joylashuvi. Ovoz va subtitrlarga alohida e'tibor qaratiladi." 
+            ]
+          },
+          {
+            heading: "Platformalar, vositalar va qo‘llab-quvvatlash",
+            paragraphs: [
+              "Articulate 360, iSpring Suite, Adobe Captivate, H5P kabi vositalar keng qo‘llaniladi. Tanlashda SCORM/xAPI standartlariga moslik va LMS bilan integratsiyani baholash muhim.",
+              "Kurs ishga tushirilgach, texnik yordam, fikr-mulohaza yig‘ish va materiallarni muntazam yangilash zarur. O‘tish statistikasi murakkab elementlarni aniqlash va ssenariyni takomillashtirishga yordam beradi." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Articulate E-Learning Heroes hamjamiyati",
+            url: "https://community.articulate.com/"
+          },
+          {
+            label: "eLearning Industry: Instructional Design bo‘yicha qo‘llanmalar",
+            url: "https://elearningindustry.com/category/articles/instructional-design"
+          }
+        ]
+      }
+    }
+  },
+  {
+    slug: "computer-graphics-photoshop-animation",
+    translations: {
+      ru: {
+        title:
+          "Компьютерная графика. Программа Adobe Photoshop. Использование анимаций в профессиональной деятельности и их преимущества. Современные средства для создания 3D-моделирования и анимационных роликов",
+        summary:
+          "Изучаем основы растровой и векторной графики, ключевые инструменты Photoshop, а также современные подходы к созданию 2D/3D-анимации для образовательных и исследовательских проектов.",
+        plan: [
+          "Типы компьютерной графики и рабочие форматы",
+          "Ключевые инструменты Adobe Photoshop для гуманитарных задач",
+          "Анимация и визуальный сторителлинг",
+          "Инструменты 3D-моделирования и экспорт мультимедийных материалов"
+        ],
+        sections: [
+          {
+            heading: "Основы растровой и векторной графики",
+            paragraphs: [
+              "Растровая графика оперирует пикселями и подходит для фотографий и текстур. Векторная графика основана на математических описаниях и масштабируется без потерь. При подготовке учебных материалов важно комбинировать оба типа, учитывая целевую платформу.",
+              "Форматы PNG, JPEG, SVG, WebP имеют разные сценарии применения. Для презентаций и веба рекомендуются легкие форматы с прозрачностью и поддержкой адаптивного рендеринга." 
+            ]
+          },
+          {
+            heading: "Рабочий процесс в Adobe Photoshop",
+            paragraphs: [
+              "Photoshop позволяет выполнять ретушь, коллажирование, цветокоррекцию, подготовку графики для интерактивных материалов. Важно освоить работу со слоями, масками, смарт-объектами и стилями слоев для быстрой правки.",
+              "Для образовательных материалов полезны функции пакетной обработки, создание шаблонов и использование библиотек Creative Cloud. Автоматизация через Actions ускоряет подготовку серии изображений." 
+            ]
+          },
+          {
+            heading: "Анимация и 3D",
+            paragraphs: [
+              "Простые анимации можно создавать в Photoshop, After Effects или онлайн-инструментах вроде Canva. Они помогают визуализировать процессы, показать динамику изменений и удержать внимание аудитории.",
+              "Для 3D-моделирования применяются Blender, Cinema 4D, SketchUp. Экспорт в форматы GLTF/GLB или MP4 позволяет интегрировать модели в веб-страницы и презентации. Желательно учитывать оптимизацию: полигоны, текстуры и освещение влияют на производительность." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Adobe Photoshop Learn",
+            url: "https://helpx.adobe.com/photoshop/tutorials.html"
+          },
+          {
+            label: "Blender Fundamentals",
+            url: "https://www.blender.org/support/tutorials/"
+          }
+        ]
+      },
+      uz: {
+        title:
+          "Kompyuter grafikasi. Adobe Photoshop dasturi. Professional faoliyatda animatsiyalarni qo‘llash va ularning afzalliklari. 3D modellashtirish va animatsion roliklar yaratishning zamonaviy vositalari",
+        summary:
+          "Rastr va vektor grafikasi asoslari, Photoshop imkoniyatlari hamda ta'lim va tadqiqot loyihalari uchun 2D/3D animatsiya yaratish yondashuvlarini o‘rganamiz.",
+        plan: [
+          "Kompyuter grafikasining turlari va ishchi formatlar",
+          "Gumanitar vazifalar uchun Adobe Photoshopning asosiy vositalari",
+          "Animatsiya va vizual hikoyalash",
+          "3D modellashtirish vositalari va multimedia eksporti"
+        ],
+        sections: [
+          {
+            heading: "Rastr va vektor grafikasi asoslari",
+            paragraphs: [
+              "Rastr grafika piksel asosida bo‘lib, fotosurat va teksturalarga mos keladi. Vektor grafika matematik ifodalarga tayangan bo‘lib, o‘lchamni yo‘qotmasdan kengayadi. O‘quv materiallarini tayyorlashda maqsadli platformaga qarab ikkala turdan ham foydalanish kerak.",
+              "PNG, JPEG, SVG, WebP formatlari turli ssenariylarga ega. Prezentatsiya va veb uchun engil, shaffoflikni qo‘llab-quvvatlovchi va moslashuvchan formatlar tavsiya etiladi." 
+            ]
+          },
+          {
+            heading: "Adobe Photoshopdagi ish jarayoni",
+            paragraphs: [
+              "Photoshop retush, kollaj, rangni sozlash, interaktiv materiallar uchun grafika tayyorlash imkonini beradi. Qatlamlar, niqoblar, smart obyektlar va uslub bilan ishlash jarayonni tezlashtiradi.",
+              "Ta'lim materiallari uchun paketli qayta ishlash, shablon yaratish va Creative Cloud kutubxonasidan foydalanish foydali. Actions yordamida avtomatlashtirish tasvirlar seriyasini tayyorlashni tezlashtiradi." 
+            ]
+          },
+          {
+            heading: "Animatsiya va 3D",
+            paragraphs: [
+              "Oddiy animatsiyalar Photoshop, After Effects yoki Canva kabi onlayn vositalarda yaratilishi mumkin. Ular jarayonlarni ko‘rsatish, o‘zgarish dinamikasini yoritish va auditoriya e'tiborini ushlab turishga yordam beradi.",
+              "3D modellashtirish uchun Blender, Cinema 4D, SketchUp qo‘llaniladi. GLTF/GLB yoki MP4 formatlariga eksport qilish veb sahifalar va prezentatsiyalarga integratsiyani osonlashtiradi. Poligonlar, teksturalar va yoritish optimallashtirishda muhim." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Adobe Photoshop o‘quv markazi",
+            url: "https://helpx.adobe.com/photoshop/tutorials.html"
+          },
+          {
+            label: "Blender Fundamentals darslari",
+            url: "https://www.blender.org/support/tutorials/"
+          }
+        ]
+      }
+    }
+  },
+  {
+    slug: "audio-video-processing",
+    translations: {
+      ru: {
+        title: "Обработка аудио- и видеоматериалов",
+        summary:
+          "Рассматриваем полный цикл работы с медиа: запись, очистку, монтаж, цветокоррекцию и публикацию образовательных и исследовательских материалов.",
+        plan: [
+          "Подготовка и запись аудио/видео",
+          "Очистка, монтаж и цветокоррекция",
+          "Звуковой дизайн и титры",
+          "Экспорт, публикация и хранение материалов"
+        ],
+        sections: [
+          {
+            heading: "Запись и подготовка сырья",
+            paragraphs: [
+              "Качество исходного материала определяется оборудованием и локацией. Для аудио используем петличные или конденсаторные микрофоны, акустическую обработку и контроль уровня записи. Для видео важны освещение, баланс белого и стабилизация.",
+              "Рекомендуется писать в несжатых или слабо сжатых форматах (WAV, ProRes), чтобы сохранить максимум информации на этапе постобработки." 
+            ]
+          },
+          {
+            heading: "Монтаж и обработка",
+            paragraphs: [
+              "Для аудио применяются Izotope RX, Adobe Audition, Audacity: удаление шумов, нормализация, эквализация. Видео монтируется в Adobe Premiere Pro, DaVinci Resolve, Final Cut Pro — инструменты позволяют собирать сюжет, добавлять переходы и цветокоррекцию.",
+              "Цветокоррекция выравнивает кадры, усиливает акценты и поддерживает фирменный стиль. Используем LUT-файлы, корректируем экспозицию, контраст и насыщенность." 
+            ]
+          },
+          {
+            heading: "Публикация и хранение",
+            paragraphs: [
+              "Выбор формата экспорта зависит от платформы: MP4 (H.264/H.265) — универсальный вариант, WEBM — для веба, WAV/FLAC — для аудиоархивов. Важно оптимизировать битрейт под целевое устройство.",
+              "Хранение организуем в медиа-библиотеках с метаданными и версионированием. Облачные сервисы (YouTube Studio, Vimeo, SoundCloud) предоставляют аналитику и настройки доступа." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "DaVinci Resolve Training",
+            url: "https://www.blackmagicdesign.com/products/davinciresolve/training"
+          },
+          {
+            label: "Adobe Audition Learn",
+            url: "https://helpx.adobe.com/audition/tutorials.html"
+          }
+        ]
+      },
+      uz: {
+        title: "Audio va video materiallarni qayta ishlash",
+        summary:
+          "Media bilan ishlashning to‘liq siklini ko‘rib chiqamiz: yozib olish, tozalash, montaj, rangni sozlash va ta'limiy hamda tadqiqot materiallarini nashr qilish.",
+        plan: [
+          "Audio/video yozishga tayyorgarlik",
+          "Tozalash, montaj va rangni sozlash",
+          "Ovoz dizayni va titrlar",
+          "Eksport, nashr va saqlash"
+        ],
+        sections: [
+          {
+            heading: "Yozib olish va tayyorlash",
+            paragraphs: [
+              "Sifatli natija uskunalar va joylashuvga bog'liq. Audio uchun petlichka yoki kondensator mikrofonlar, akustik ishlov va signal darajasini nazorat qilish zarur. Video uchun yoritish, oq balans va stabilizatsiya muhim.",
+              "Post-ishlov bosqichida ko‘proq ma’lumot saqlanishi uchun siqilmagan yoki oz siqilgan formatlarda (WAV, ProRes) yozish tavsiya etiladi." 
+            ]
+          },
+          {
+            heading: "Montaj va qayta ishlash",
+            paragraphs: [
+              "Audio uchun Izotope RX, Adobe Audition, Audacity vositalaridan foydalanamiz: shovqinni olib tashlash, normalizatsiya, ekvalayzer. Video Adobe Premiere Pro, DaVinci Resolve, Final Cut Pro’da yig'iladi, o‘tishlar va rangni sozlash qo‘llaniladi.",
+              "Rangni sozlash kadrlarga uyg‘unlik beradi, urg‘ularni kuchaytiradi va korporativ uslubni qo‘llab-quvvatlaydi. LUT fayllaridan foydalanib, ekspozitsiya, kontrast va to‘yintirishni moslaymiz." 
+            ]
+          },
+          {
+            heading: "Nashr va saqlash",
+            paragraphs: [
+              "Eksport formati platformaga bog‘liq: MP4 (H.264/H.265) universal, WEBM veb uchun, WAV/FLAC audio arxivlar uchun qulay. Maqsadli qurilma uchun bitreytni optimallashtirish lozim.",
+              "Saqlash jarayonini metama'lumotlar va versiyalar bilan tashkil etilgan media kutubxonalarda yo‘lga qo‘ying. YouTube Studio, Vimeo, SoundCloud kabi bulut servislar tahlil va kirish sozlamalarini taqdim etadi." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "DaVinci Resolve treninglari",
+            url: "https://www.blackmagicdesign.com/products/davinciresolve/training"
+          },
+          {
+            label: "Adobe Audition o‘quv markazi",
+            url: "https://helpx.adobe.com/audition/tutorials.html"
+          }
+        ]
+      }
+    }
+  },
+  {
+    slug: "web-technologies-fundamentals",
+    translations: {
+      ru: {
+        title: "Основы веб-технологий. Программные средства для создания веб-страниц",
+        summary:
+          "Разбираем устройство современных веб-проектов, знакомимся с HTML, CSS и JavaScript и подбираем инструменты для быстрой публикации образовательных сайтов.",
+        plan: [
+          "Архитектура веб-приложений и клиент-серверное взаимодействие",
+          "HTML и семантическая разметка",
+          "CSS, адаптивность и дизайн-системы",
+          "Инструменты создания сайтов: от конструкторов до фреймворков"
+        ],
+        sections: [
+          {
+            heading: "Как устроен современный веб",
+            paragraphs: [
+              "Веб-страница — результат работы браузера, который получает HTML, CSS, JavaScript и обращается к серверу по протоколам HTTPS и HTTP/2. Понимание маршрута запроса помогает строить устойчивые и безопасные приложения.",
+              "Принципы прогрессивного улучшения и доступности гарантируют, что контент останется читаемым на любых устройствах, включая вспомогательные технологии." 
+            ]
+          },
+          {
+            heading: "Семантика и стили",
+            paragraphs: [
+              "Семантический HTML облегчает навигацию, улучшает SEO и доступность. Разметка разделяется на структуру (header, main, article) и интерактивные элементы (button, nav, form).",
+              "CSS отвечает за визуальное оформление: сетки, типографика, анимации. Использование flexbox и grid позволяет строить адаптивные макеты, а переменные и preprocessor'ы (Sass) ускоряют поддержку." 
+            ]
+          },
+          {
+            heading: "Инструменты и платформы",
+            paragraphs: [
+              "Для быстрого запуска можно использовать конструкторы (Tilda, Wix, Webflow) или CMS (WordPress). Они подходят для сайтов без сложной логики и позволяют сосредоточиться на контенте.",
+              "Фреймворки Next.js, Gatsby или Astro дают контроль над SEO, производительностью и интеграциями. Tailwind CSS, Bootstrap помогают выдержать единый стиль и ускоряют разработку." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "MDN Web Docs",
+            url: "https://developer.mozilla.org/"
+          },
+          {
+            label: "Next.js Documentation",
+            url: "https://nextjs.org/docs"
+          }
+        ]
+      },
+      uz: {
+        title: "Veb-texnologiyalar asoslari. Veb-sahifalar yaratish dasturlari",
+        summary:
+          "Zamonaviy veb loyihalar tuzilishini ko‘rib chiqamiz, HTML, CSS va JavaScript bilan tanishamiz hamda ta'limiy saytlarni tez nashr qilish uchun vositalarni tanlaymiz.",
+        plan: [
+          "Veb ilovalar arxitekturasi va mijoz-server o‘zaro ta'siri",
+          "HTML va semantik belgilash",
+          "CSS, moslashuvchanlik va dizayn tizimlari",
+          "Sayt yaratish vositalari: konstruktordan freymvorklargacha"
+        ],
+        sections: [
+          {
+            heading: "Zamonaviy veb qanday ishlaydi",
+            paragraphs: [
+              "Veb sahifa — brauzer tomonidan o‘qiladigan HTML, CSS va JavaScript natijasi bo‘lib, server bilan HTTPS va HTTP/2 orqali muloqot qiladi. So‘rov yo‘lini tushunish barqaror va xavfsiz ilovalarni yaratishga yordam beradi.",
+              "Progressiv yo‘l bilan takomillashtirish va imkoniyatlar tengligi prinsiplari kontentni istalgan qurilmada, jumladan maxsus texnologiyalar yordamida, o‘qiladigan qiladi." 
+            ]
+          },
+          {
+            heading: "Semantika va uslublar",
+            paragraphs: [
+              "Semantik HTML navigatsiyani osonlashtiradi, SEO va imkoniyatlar tengligini yaxshilaydi. Belgilash struktura (header, main, article) va interaktiv elementlarga (button, nav, form) bo‘linadi.",
+              "CSS vizual ko‘rinish uchun javob beradi: panjaralar, tipografiya, animatsiyalar. Flexbox va grid moslashuvchan maketlar yaratadi, Sass kabi preprocessorlar qo‘llab-quvvatlashni tezlashtiradi." 
+            ]
+          },
+          {
+            heading: "Vositalar va platformalar",
+            paragraphs: [
+              "Tezkor start uchun Tilda, Wix, Webflow kabi konstruktordan yoki WordPress kabi CMSdan foydalanish mumkin. Ular murakkab logikasiz saytlar uchun mos bo‘lib, kontentga e'tibor qaratishga imkon beradi.",
+              "Next.js, Gatsby yoki Astro kabi freymvorklar SEO, unumdorlik va integratsiyalarni nazorat qilishga yordam beradi. Tailwind CSS, Bootstrap yagona uslubni saqlashga va ishlab chiqishni tezlashtirishga xizmat qiladi." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "MDN Web Docs",
+            url: "https://developer.mozilla.org/"
+          },
+          {
+            label: "Next.js hujjatlari",
+            url: "https://nextjs.org/docs"
+          }
+        ]
+      }
+    }
+  },
+  {
+    slug: "google-web-services",
+    translations: {
+      ru: {
+        title: "Веб-сервисы Google",
+        summary:
+          "Изучаем экосистему Google Workspace и сопутствующие инструменты: от совместной работы в документах до расширенных аналитических и образовательных сервисов.",
+        plan: [
+          "Структура Google Workspace и управление аккаунтами",
+          "Документы, Таблицы, Презентации и формы",
+          "Google Classroom, Meet и Jamboard",
+          "Расширения, автоматизация и безопасность"
+        ],
+        sections: [
+          {
+            heading: "Единая экосистема",
+            paragraphs: [
+              "Google Workspace объединяет почту, календарь, диск и офисные приложения. Централизованное администрирование позволяет назначать роли, управлять устройствами и настраивать политики безопасности.",
+              "Диск обеспечивает совместный доступ и историю версий. Шардинг по папкам помогает разграничить материалы курсов, а метки ускоряют поиск." 
+            ]
+          },
+          {
+            heading: "Совместная работа и обучение",
+            paragraphs: [
+              "Docs, Sheets, Slides поддерживают комментарии, задачи, голосование. Формы автоматизируют сбор заявок и тестирование, а интеграция с Таблицами позволяет строить отчеты.",
+              "Google Classroom и Meet формируют полноценную цифровую аудиторию: расписание, задания, проверка, видеоконференции. Jamboard и Canvas расширяют сценарии визуальной кооперации." 
+            ]
+          },
+          {
+            heading: "Автоматизация и безопасность",
+            paragraphs: [
+              "Расширения Apps Script и надстройки (например, Autocrat, Form Publisher) автоматизируют рутину: рассылки сертификатов, формирование договоров, импорт данных.",
+              "Безопасность обеспечивается двухфакторной аутентификацией, контролем доступа и аудитом действий. Admin Console и Alert Center фиксируют подозрительные события." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Google Workspace Learning Center",
+            url: "https://support.google.com/a/users"
+          },
+          {
+            label: "Apps Script Documentation",
+            url: "https://developers.google.com/apps-script"
+          }
+        ]
+      },
+      uz: {
+        title: "Google veb-servislari",
+        summary:
+          "Google Workspace ekotizimi va unga oid vositalarni o‘rganamiz: hujjatlar bilan birgalikda ishlashdan tortib, analitika va ta’limiy servislargacha.",
+        plan: [
+          "Google Workspace tuzilmasi va akkauntlarni boshqarish",
+          "Hujjatlar, Jadvallar, Taqdimotlar va formalar",
+          "Google Classroom, Meet va Jamboard",
+          "Kengaytmalar, avtomatlashtirish va xavfsizlik"
+        ],
+        sections: [
+          {
+            heading: "Yagona ekotizim",
+            paragraphs: [
+              "Google Workspace pochta, kalendar, disk va ofis ilovalarini birlashtiradi. Markazlashtirilgan boshqaruv rollarni tayinlash, qurilmalarni nazorat qilish va xavfsizlik siyosatlarini sozlash imkonini beradi.",
+              "Disk umumiy kirish va versiya tarixini ta'minlaydi. Papkalar bo‘yicha guruhlash kurs materiallarini ajratadi, yorliqlar qidiruvni tezlashtiradi." 
+            ]
+          },
+          {
+            heading: "Birgalikda ishlash va ta'lim",
+            paragraphs: [
+              "Docs, Sheets, Slides kommentariylar, vazifalar va ovoz berishni qo‘llab-quvvatlaydi. Formalar arizalar to‘plash va testlarni avtomatlashtiradi, Jadvallar bilan integratsiya esa hisobotlar yaratishga yordam beradi.",
+              "Google Classroom va Meet raqamli auditoriyani shakllantiradi: jadval, topshiriqlar, tekshiruv, videokonferensiya. Jamboard va Canvas vizual hamkorlik ssenariylarini kengaytiradi." 
+            ]
+          },
+          {
+            heading: "Avtomatlashtirish va xavfsizlik",
+            paragraphs: [
+              "Apps Script kengaytmalari va qo‘shimchalari (Autocrat, Form Publisher) oddiy ishlarni avtomatlashtiradi: sertifikatlarni yuborish, shartnomalar yaratish, ma'lumot importi.",
+              "Ikki faktorli autentifikatsiya, kirishni boshqarish va faoliyat auditi xavfsizlikni ta’minlaydi. Admin Console va Alert Center shubhali voqealarni qayd etadi." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Google Workspace o‘quv markazi",
+            url: "https://support.google.com/a/users"
+          },
+          {
+            label: "Apps Script hujjatlari",
+            url: "https://developers.google.com/apps-script"
+          }
+        ]
+      }
+    }
+  },
+  {
+    slug: "healthy-internet-environment",
+    translations: {
+      ru: {
+        title: "Формирование здоровой среды использования интернета. Интернет-безопасность",
+        summary:
+          "Учим цифровой гигиене: от настройки личной безопасности до построения этичной онлайн-коммуникации и защиты данных в организации.",
+        plan: [
+          "Принципы цифровой гигиены и медиаграмотности",
+          "Управление паролями и аутентификация",
+          "Защита персональных данных и правовые аспекты",
+          "Психологический комфорт и этика онлайн-коммуникации"
+        ],
+        sections: [
+          {
+            heading: "Цифровая гигиена",
+            paragraphs: [
+              "Основы безопасной работы в сети включают регулярное обновление программ, использование лицензионного ПО, проверку ссылок и вложений, а также резервное копирование данных.",
+              "Медиаграмотность помогает распознавать фейковые новости, манипуляции и обеспечить критическое отношение к источникам." 
+            ]
+          },
+          {
+            heading: "Идентификация и защита",
+            paragraphs: [
+              "Рекомендуется использовать менеджеры паролей, двухфакторную аутентификацию, аппаратные ключи. Для образовательных проектов важно внедрить политику доступа по ролям и аудит безопасности.",
+              "Шифрование данных, VPN и безопасные каналы связи защищают конфиденциальную информацию. Регулярные тренировки помогают сотрудникам действовать в случае инцидента." 
+            ]
+          },
+          {
+            heading: "Этика и благополучие",
+            paragraphs: [
+              "Здоровая цифровая среда учитывает эмоциональное состояние участников: регламентируем время онлайн, внедряем правила общения и поддерживаем обратную связь.",
+              "Важно помнить о правовых аспектах: GDPR, локальные законы о персональных данных, политика конфиденциальности. Осознанная коммуникация и прозрачность укрепляют доверие." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "ENISA Cybersecurity Guidelines",
+            url: "https://www.enisa.europa.eu/topics/csirt-cert-services"
+          },
+          {
+            label: "Google Safety Center",
+            url: "https://safety.google/"
+          }
+        ]
+      },
+      uz: {
+        title: "Internetdan sog‘lom foydalanish muhitini shakllantirish. Internet xavfsizligi",
+        summary:
+          "Raqamli gigiyenani o‘rganamiz: shaxsiy xavfsizlik sozlamalaridan tortib, ma'lumotlarni himoya qilish va onlayn muloqot etikasi gacha.",
+        plan: [
+          "Raqamli gigiyena va mediama'rifat prinsiplari",
+          "Parollarni boshqarish va autentifikatsiya",
+          "Shaxsiy ma'lumotlarni himoya qilish va huquqiy jihatlar",
+          "Psixologik qulaylik va onlayn muloqot etikasi"
+        ],
+        sections: [
+          {
+            heading: "Raqamli gigiyena",
+            paragraphs: [
+              "Tarmoqqa xavfsiz ulanish dasturlarni yangilash, litsenziyalangan dasturdan foydalanish, havola va fayllarni tekshirish, ma'lumotlarni zaxiralashni o‘z ichiga oladi.",
+              "Mediama'rifat soxta yangiliklar, manipulyatsiyalarni aniqlash va manbalarga tanqidiy yondashishni shakllantiradi." 
+            ]
+          },
+          {
+            heading: "Identifikatsiya va himoya",
+            paragraphs: [
+              "Parol menejerlari, ikki faktorli autentifikatsiya va apparat kalitlardan foydalanish tavsiya etiladi. Ta'lim loyihalarida rollar bo‘yicha kirish siyosati va xavfsizlik auditi muhim.",
+              "Ma'lumotlarni shifrlash, VPN va xavfsiz aloqa kanallari maxfiy ma'lumotni himoya qiladi. Muntazam treninglar hodisa vaqtida qanday harakat qilishni o‘rgatadi." 
+            ]
+          },
+          {
+            heading: "Etika va farovonlik",
+            paragraphs: [
+              "Sog‘lom raqamli muhit ishtirokchilarning hissiy holatini hisobga oladi: onlayn vaqtni tartiblash, muloqot qoidalarini joriy etish va fikr-mulohaza tizimini qo‘llab-quvvatlash kerak.",
+              "Huquqiy jihatlarga e'tibor: GDPR va mahalliy shaxsiy ma'lumotlarni himoya qilish qonunlari, maxfiylik siyosati. Ongli muloqot va shaffoflik ishonchni mustahkamlaydi." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "ENISA: Kiberxavfsizlik bo‘yicha qo‘llanmalar",
+            url: "https://www.enisa.europa.eu/topics/csirt-cert-services"
+          },
+          {
+            label: "Google Safety Center",
+            url: "https://safety.google/"
+          }
+        ]
+      }
+    }
+  },
+  {
+    slug: "e-learning-organization",
+    translations: {
+      ru: {
+        title: "Электронное обучение и основы его организации",
+        summary:
+          "Выстраиваем модель e-learning: от анализа целевой аудитории и выбора LMS до сопровождения, аналитики и поддержки мотивации обучающихся.",
+        plan: [
+          "Модели электронного обучения и blended-подходы",
+          "Проектирование учебного опыта (LX design)",
+          "Выбор платформы и интеграции",
+          "Управление качеством и аналитика"
+        ],
+        sections: [
+          {
+            heading: "Модели и стратегии",
+            paragraphs: [
+              "Электронное обучение охватывает полностью дистанционные курсы, смешанные форматы и модель перевернутого класса. Выбор зависит от целей, ресурсов и уровня самостоятельности аудитории.",
+              "Важно определить роли команды: автор контента, тьютор, технический специалист, аналитик. Совместная работа обеспечивает целостный опыт обучающегося." 
+            ]
+          },
+          {
+            heading: "Проектирование опыта",
+            paragraphs: [
+              "Learner Experience Design включает исследование аудитории, создание персоны студента, карту пути (learner journey) и сценарии взаимодействия. Используются спринты и прототипирование.",
+              "Контент дробится на микро-модули с четкими результатами. Важны интерактивы, обратная связь и поддержка мотивации через геймификацию и сообщества." 
+            ]
+          },
+          {
+            heading: "Платформы и аналитика",
+            paragraphs: [
+              "При выборе LMS учитываем стандарты (SCORM, xAPI, LTI), мобильность, интеграцию с внешними сервисами. Moodle, Canvas, Open edX, HEMIS предлагают разные сценарии и требуют адаптации.",
+              "Аналитика посещаемости, прогресса и вовлеченности помогает выявлять риски, поддерживать студентов и корректировать курс. Настраиваем дашборды и систему уведомлений." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "EDUCAUSE: 7 Things You Should Know About LMS",
+            url: "https://library.educause.edu/resources"
+          },
+          {
+            label: "Learning Experience Design Handbook",
+            url: "https://lxdesign.co/"
+          }
+        ]
+      },
+      uz: {
+        title: "Elektron ta'lim va uni tashkil etish asoslari",
+        summary:
+          "E-learning modelini quramiz: auditoriyani o‘rganish, LMS tanlash, qo‘llab-quvvatlash va talabalar motivatsiyasini ushlab turish jarayonlarini ko‘rib chiqamiz.",
+        plan: [
+          "Elektron ta'lim modellari va aralash yondashuvlar",
+          "O‘quv tajribasini loyihalash (LX dizayn)",
+          "Platformani tanlash va integratsiyalar",
+          "Sifatni boshqarish va analitika"
+        ],
+        sections: [
+          {
+            heading: "Modellar va strategiyalar",
+            paragraphs: [
+              "Elektron ta'lim to‘liq masofaviy kurslarni, aralash formatlarni va ag‘darilgan sinf modelini qamrab oladi. Tanlov maqsadlar, resurslar va auditoriya mustaqilligiga bog‘liq.",
+              "Jamoa rollari: kontent muallifi, tyutor, texnik mutaxassis, analitik. Hamkorlikda ishlash talabaning yaxlit tajribasini ta'minlaydi." 
+            ]
+          },
+          {
+            heading: "Tajriba dizayni",
+            paragraphs: [
+              "Learner Experience Design auditoriyani o‘rganish, talabalar personasi va yo‘l xaritasini (learner journey) yaratish, o‘zaro ta'sir ssenariylarini ishlab chiqishni o‘z ichiga oladi. Sprintlar va prototiplardan foydalaniladi.",
+              "Kontent aniq natijalarga ega mikro modullarga bo‘linadi. Interaktivlar, fikr-mulohaza va gamifikatsiya talabalar motivatsiyasini qo‘llab-quvvatlaydi." 
+            ]
+          },
+          {
+            heading: "Platformalar va analitika",
+            paragraphs: [
+              "LMS tanlashda standartlar (SCORM, xAPI, LTI), mobil imkoniyatlar va tashqi servislar bilan integratsiya hisobga olinadi. Moodle, Canvas, Open edX, HEMIS turli ssenariylarni qo‘llab-quvvatlaydi va moslashtirishni talab qiladi.",
+              "Davomat, progress va jalb etilish bo‘yicha analitika xavflarni aniqlash, talabalarni qo‘llab-quvvatlash va kursni yangilashga yordam beradi. Dashbordlar va bildirishnomalar tizimi sozlanadi." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "EDUCAUSE: LMS bo‘yicha qo‘llanmalar",
+            url: "https://library.educause.edu/resources"
+          },
+          {
+            label: "Learning Experience Design qo‘llanmasi",
+            url: "https://lxdesign.co/"
+          }
+        ]
+      }
+    }
+  },
+  {
+    slug: "hemis-lms-management",
+    translations: {
+      ru: {
+        title:
+          "Информационная система управления процессами высшего образования Hemis. Создание курсов и работа с пользователями в системе управления электронным обучением",
+        summary:
+          "Разбираем архитектуру Hemis, роли пользователей и пошаговые процессы создания курсов, расписаний и аналитических отчетов.",
+        plan: [
+          "Архитектура Hemis и модули системы",
+          "Управление пользователями и ролями",
+          "Создание и сопровождение учебных курсов",
+          "Отчётность, интеграции и поддержка качества"
+        ],
+        sections: [
+          {
+            heading: "Модули и процессы",
+            paragraphs: [
+              "Hemis объединяет академические, административные и финансовые процессы. Основные модули отвечают за учебные планы, расписания, электронный журнал, контингент и отчеты.",
+              "Интерфейс поддерживает многоязычность, интеграцию с госреестрами и внешними LMS. Важно понимать схему данных, чтобы корректно импортировать информацию." 
+            ]
+          },
+          {
+            heading: "Права доступа и рабочие роли",
+            paragraphs: [
+              "Система использует ролевую модель: администратор, преподаватель, студент, отдел учебного процесса. Каждой роли назначаются права на просмотр, редактирование или утверждение данных.",
+              "Процессы должны сопровождаться журналированием и уведомлениями. Это позволяет отслеживать изменения и поддерживать соответствие нормативам." 
+            ]
+          },
+          {
+            heading: "Создание курсов и аналитика",
+            paragraphs: [
+              "Пошагово: импорт учебного плана, формирование дисциплин, привязка преподавателей, настройка расписания и экзаменационных сеток. Настраиваются рубрики оценивания и веса контрольных точек.",
+              "Отчеты включают посещаемость, успеваемость, нагрузку преподавателей. Экспорт в Excel/CSV и API позволяют строить собственные аналитические панели." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Hemis User Manual",
+            url: "https://hemis.uz/"
+          },
+          {
+            label: "UzEdu Digital Transformation Updates",
+            url: "https://edu.uz/uz/news/view"
+          }
+        ]
+      },
+      uz: {
+        title:
+          "Hemis oliy ta'lim jarayonlarini boshqarish axborot tizimi. Elektron ta'lim boshqaruv tizimida kurslar yaratish va foydalanuvchilar bilan ishlash",
+        summary:
+          "Hemis arxitekturasi, foydalanuvchi rollari va kurslarni yaratish, jadval tuzish hamda analitik hisobotlarni tayyorlash jarayonlarini bosqichma-bosqich ko‘rib chiqamiz.",
+        plan: [
+          "Hemis arxitekturasi va modullari",
+          "Foydalanuvchilar va rollarni boshqarish",
+          "O‘quv kurslarini yaratish va yuritish",
+          "Hisobotlar, integratsiyalar va sifatni qo‘llab-quvvatlash"
+        ],
+        sections: [
+          {
+            heading: "Modullar va jarayonlar",
+            paragraphs: [
+              "Hemis akademik, ma'muriy va moliyaviy jarayonlarni birlashtiradi. Asosiy modullar o‘quv rejalari, jadval, elektron jurnal, kontingent va hisobotlar uchun mo‘ljallangan.",
+              "Interfeys ko‘p tilli rejimni, davlat reyestrlari va tashqi LMS bilan integratsiyani qo‘llab-quvvatlaydi. Ma'lumotlarni to‘g‘ri import qilish uchun ma'lumotlar sxemasini bilish lozim." 
+            ]
+          },
+          {
+            heading: "Kirish huquqlari va rollar",
+            paragraphs: [
+              "Tizim rollarga asoslangan: administrator, o‘qituvchi, talaba, o‘quv jarayoni bo‘limi. Har bir rolga ma'lumotlarni ko‘rish, tahrirlash yoki tasdiqlash huquqlari beriladi.",
+              "Jarayonlar jurnal va bildirishnomalar bilan qo‘llab-quvvatlanadi. Bu o‘zgarishlarni kuzatish va normativlarga muvofiqlikni ta'minlashga yordam beradi." 
+            ]
+          },
+          {
+            heading: "Kurs yaratish va analitika",
+            paragraphs: [
+              "Bosqichma-bosqich: o‘quv rejasini import qilish, fanlarni shakllantirish, o‘qituvchilarni biriktirish, jadval va imtihon setkalarini sozlash. Baholash mezonlari va nazorat nuqtalari og‘irliklari belgilanadi.",
+              "Hisobotlar davomat, o‘zlashtirish, o‘qituvchilar yuklamasini o‘z ichiga oladi. Excel/CSV eksporti va API o‘z analitik panellarni yaratishga imkon beradi." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "Hemis foydalanuvchi qo‘llanmasi",
+            url: "https://hemis.uz/"
+          },
+          {
+            label: "UzEdu raqamli transformatsiya yangiliklari",
+            url: "https://edu.uz/uz/news/view"
+          }
+        ]
+      }
+    }
+  },
+  {
+    slug: "interactive-smart-tools",
+    translations: {
+      ru: {
+        title: "Интерактивные SMART-средства обучения",
+        summary:
+          "Рассматриваем интерактивные панели, сенсорные экраны, системы голосования и их интеграцию с цифровыми платформами для построения вовлекающих занятий.",
+        plan: [
+          "Виды интерактивного оборудования и сценарии применения",
+          "Подготовка и адаптация контента",
+          "Интеграция с LMS и онлайн-сервисами",
+          "Метрики вовлеченности и поддержка преподавателя"
+        ],
+        sections: [
+          {
+            heading: "Оборудование и форматы",
+            paragraphs: [
+              "SMART-панели, интерактивные проекторы, документ-камеры и голосовые системы позволяют работать с материалом в реальном времени, аннотировать и сохранять результаты.",
+              "Выбор зависит от размера аудитории, типа занятий и бюджета. Важно оценить совместимость с устройствами студентов и устойчивость к интенсивной эксплуатации." 
+            ]
+          },
+          {
+            heading: "Контент и интеграции",
+            paragraphs: [
+              "Контент адаптируется под сенсорное взаимодействие: крупные элементы, четкая типографика, мультимедиа. Используются специализированные программы (SMART Notebook, Promethean, MyViewBoard) и веб-сервисы (Nearpod, Mentimeter).",
+              "Интеграция с LMS позволяет автоматически сохранять результаты активности, выдавать задания и отслеживать прогресс. Поддержка облачных хранилищ облегчает доступ к материалам." 
+            ]
+          },
+          {
+            heading: "Аналитика и поддержка преподавателя",
+            paragraphs: [
+              "Системы фиксируют участие, время реакции, результаты опросов. Эти данные помогают корректировать темп и содержание занятия, а также персонализировать задания.",
+              "Необходима техническая поддержка и обучение преподавателей: создание сценариев, управление оборудованием, резервные планы на случай технических сбоев." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "SMART Technologies Resource Library",
+            url: "https://education.smarttech.com/"
+          },
+          {
+            label: "Promethean Professional Development",
+            url: "https://www.prometheanworld.com/professional-development/"
+          }
+        ]
+      },
+      uz: {
+        title: "Interaktiv SMART-o‘quv vositalari",
+        summary:
+          "Interaktiv panellar, sensorli ekranlar, ovoz berish tizimlari va ularni raqamli platformalar bilan integratsiya qilish orqali jalb etuvchi darslarni qurishni o‘rganamiz.",
+        plan: [
+          "Interaktiv uskunalar turlari va qo‘llanilish ssenariylari",
+          "Kontentni tayyorlash va moslashtirish",
+          "LMS va onlayn servislar bilan integratsiya",
+          "Jalb etilish metrikalari va o‘qituvchini qo‘llab-quvvatlash"
+        ],
+        sections: [
+          {
+            heading: "Uskunalar va formatlar",
+            paragraphs: [
+              "SMART-panellar, interaktiv proyektorlar, hujjat kameralar va ovoz berish tizimlari material bilan real vaqt rejimida ishlash, izoh qoldirish va natijalarni saqlash imkonini beradi.",
+              "Tanlov auditoriya hajmi, dars turi va budjetga bog‘liq. Talabalar qurilmalari bilan moslik va doimiy foydalanishga chidamlilikni baholash zarur." 
+            ]
+          },
+          {
+            heading: "Kontent va integratsiyalar",
+            paragraphs: [
+              "Kontent sensorli o‘zaro ta'sirga moslashtiriladi: yirik elementlar, aniq tipografiya, multimedia. SMART Notebook, Promethean, MyViewBoard kabi dasturlar hamda Nearpod, Mentimeter kabi veb-servislar qo‘llaniladi.",
+              "LMS bilan integratsiya faoliyat natijalarini avtomatik saqlash, topshiriqlar berish va progressni kuzatishni ta'minlaydi. Bulutli saqlash materiallarga kirishni osonlashtiradi." 
+            ]
+          },
+          {
+            heading: "Analitika va o‘qituvchini qo‘llab-quvvatlash",
+            paragraphs: [
+              "Tizimlar ishtirok, javob vaqti, so‘rov natijalarini qayd etadi. Ma'lumotlar dars sur'ati va mazmunini moslashtirish hamda shaxsiylashtirilgan topshiriqlar berishga yordam beradi.",
+              "Texnik qo‘llab-quvvatlash va o‘qituvchilarni o‘qitish zarur: ssenariylar yaratish, uskunani boshqarish, texnik nosozliklarga qarshi zaxira rejalar." 
+            ]
+          }
+        ],
+        resources: [
+          {
+            label: "SMART Technologies resurslar kutubxonasi",
+            url: "https://education.smarttech.com/"
+          },
+          {
+            label: "Promethean Professional Development",
+            url: "https://www.prometheanworld.com/professional-development/"
+          }
+        ]
+      }
+    }
+  }
+];
+
+export const lectureTopics: Record<Language, LectureTopic[]> = Object.fromEntries(
+  ALL_LANGUAGES.map((language) => [
+    language,
+    lectureTopicsData.map((topic) => ({
+      slug: topic.slug,
+      ...topic.translations[language]
+    }))
+  ])
+) as Record<Language, LectureTopic[]>;
+
+export const lectureTopicSlugs = lectureTopicsData.map((topic) => topic.slug);
+
+export function getLectureTopic(slug: string, language: Language): LectureTopic | null {
+  const entry = lectureTopicsData.find((topic) => topic.slug === slug);
+  if (!entry) {
+    return null;
+  }
+  const translation = entry.translations[language];
+  if (!translation) {
+    return null;
+  }
+  return {
+    slug: entry.slug,
+    ...translation
+  };
+}
+
+const simpleItems = (titles: string[]): SectionContentItem[] => titles.map((title) => ({ title }));
+
+const lectureItemsByLanguage: Record<Language, SectionContentItem[]> = Object.fromEntries(
+  ALL_LANGUAGES.map((language) => [
+    language,
+    lectureTopicsData.map((topic) => ({
+      title: topic.translations[language].title,
+      details: topic.translations[language].summary,
+      linkSlug: topic.slug
+    }))
+  ])
+) as Record<Language, SectionContentItem[]>;
+
+const practiceItemsByLanguage: Record<Language, SectionContentItem[]> = {
+  ru: [
+    {
+      title: "Создание мини-корпуса и аннотирование текста",
+      details: [
+        "Соберите тематический набор источников и оформите метаданные в едином формате.",
+        "Определите уровни аннотации: лингвистический, жанровый, стилистический.",
+        "Протестируйте корпус с помощью поисковых запросов и экспортируйте результаты."
+      ]
+    },
+    {
+      title: "Python для филологов: обработка текста с помощью spaCy и NLTK",
+      details: [
+        "Настройте окружение и импортируйте корпус для анализа.",
+        "Реализуйте цепочку предобработки: токенизация, лемматизация, частеречная разметка.",
+        "Соберите частотный словарь и выделите устойчивые словосочетания."
+      ]
+    },
+    {
+      title: "Визуализация результатов исследования в Tableau и Observable",
+      details: [
+        "Подготовьте данные: удалите дубликаты, задайте иерархию и метрики.",
+        "Сконструируйте интерактивный дашборд с фильтрами и аннотациями.",
+        "Опубликуйте визуализацию и получайте обратную связь от аудитории."
+      ]
+    },
+    {
+      title: "Настройка операционных систем и офисных приложений для учебных проектов",
+      details: [
+        "Создайте учетную запись с необходимыми правами доступа и политиками безопасности.",
+        "Настройте автоматическое резервное копирование и синхронизацию документов.",
+        "Составьте регламент обновлений и чек-лист контроля состояния системы."
+      ]
+    },
+    {
+      title: "Проектирование интерактивных учебных курсов в Hot Potatoes",
+      details: [
+        "Разработайте структуру модуля и карту компетенций для каждой активности.",
+        "Реализуйте минимум три типа заданий и настройте переходы между ними.",
+        "Протестируйте курс в браузере и подготовьте инструкцию для студентов."
+      ]
+    },
+    {
+      title: "Разработка языковых упражнений в iSpring QuizMaker и Wordwall.net",
+      details: [
+        "Определите учебные цели и подберите формат (лексика, грамматика, аудирование).",
+        "Создайте задания с использованием мультимедиа и индивидуальной обратной связи.",
+        "Организуйте сбор результатов и анализ успеваемости по группе." 
+      ]
+    },
+    {
+      title: "Интерактивные задания в iSpring, MyTest и LearningApps",
+      details: [
+        "Сравните платформы по типам вопросов и возможностям адаптивного тестирования.",
+        "Цифровизируйте существующее упражнение и настройте уровни сложности.",
+        "Подготовьте инструкцию по внедрению в очный и дистанционный формат."
+      ]
+    },
+    {
+      title: "Создание анимаций и 3D-моделей в Adobe Photoshop и Blender",
+      details: [
+        "Разработайте раскадровку и определите ключевые объекты сцены.",
+        "Соберите статичную 3D-модель и настройте базовую анимацию движения.",
+        "Экспортируйте проект в нужный формат и составьте техническую документацию." 
+      ]
+    },
+    {
+      title: "Монтаж и улучшение аудио- и видеоматериалов",
+      details: [
+        "Очистите записи от шумов и выровняйте уровни громкости.",
+        "Добавьте титры, инфографику и переходы между сюжетными блоками.",
+        "Подготовьте финальный файл и чек-лист контроля качества." 
+      ]
+    },
+    {
+      title: "Цифровая гигиена и безопасное поведение в интернете",
+      details: [
+        "Проведите аудит паролей и включите двухфакторную аутентификацию.",
+        "Настройте менеджер паролей и резервное копирование критичных данных.",
+        "Разработайте памятку по реагированию на фишинговые инциденты." 
+      ]
+    },
+    {
+      title:
+        "Google Docs, Sheets, Slides, Forms и Classroom: совместная работа и интерактивные доски classroomscreen.com",
+      details: [
+        "Настройте совместный доступ и разграничение прав.",
+        "Создайте шаблон с автоматическими формулами и визуальными элементами.",
+        "Организуйте сбор обратной связи через формы и визуализируйте результаты." 
+      ]
+    },
+    {
+      title: "Информационная система HEMIS: роли пользователей и управление учебными данными",
+      details: [
+        "Создайте курс, назначьте роли преподавателей и студентов.",
+        "Импортируйте учебные планы и настройте расписание.",
+        "Сформируйте аналитические отчеты и рекомендации по улучшению данных." 
+      ]
+    },
+    {
+      title: "Смарт-учебники, Zoom и вебинары в образовательном процессе",
+      details: [
+        "Составьте сценарий занятия с активностями каждые 10–15 минут.",
+        "Настройте Zoom: залы ожидания, опросы, запись и интеграцию с SMART-доской.",
+        "Соберите обратную связь и обновите цифровые материалы по итогам." 
+      ]
+    }
+  ],
+  uz: [
+    {
+      title: "Mini-korpus yaratish va matnni annotatsiya qilish",
+      details: [
+        "Mavzuga oid manbalarni yig'ib, metama'lumotlarni yagona formatga keltiring.",
+        "Annotatsiya darajalarini belgilang: lingvistik, janr, uslubiy.",
+        "Korpusni so'rovlar bilan sinab ko'ring va natijalarni eksport qiling." 
+      ]
+    },
+    {
+      title: "Filologlar uchun Python: spaCy va NLTK yordamida matnni qayta ishlash",
+      details: [
+        "Muhitni sozlang va tahlil qilinadigan korpusni import qiling.",
+        "Tokenlash, lemmatizatsiya va so'z turkumlarini belgilash zanjirini yarating.",
+        "Chastota lug'atini tuzing va barqaror birikmalarni ajrating." 
+      ]
+    },
+    {
+      title: "Tablue va Observable'da tadqiqot natijalarini vizuallashtirish",
+      details: [
+        "Ma'lumotlarni tozalang, ierarxiya va metrialarni aniqlang.",
+        "Filtrlari va izohlari bo'lgan interaktiv panel yarating.",
+        "Vizuallashtirishni nashr eting va foydalanuvchi fikrlarini yig'ing." 
+      ]
+    },
+    {
+      title: "O'quv loyihalari uchun operatsion tizim va ofis dasturlarini sozlash",
+      details: [
+        "Kerakli xavfsizlik siyosatlari bilan foydalanuvchi hisobini yarating.",
+        "Avtozaxiralash va hujjatlarni sinxronlashtirishni yoqing.",
+        "Yangilanishlar reglamenti va tizim holati bo'yicha chek-list tuzing." 
+      ]
+    },
+    {
+      title: "Hot Potatoes dasturida interaktiv o'quv kurslarini yaratish",
+      details: [
+        "Modul tuzilmasi va har bir faoliyat uchun kompetensiyalar xaritasini chizing.",
+        "Kamida uch turdagi topshiriqni yarating va ular orasidagi o'tishlarni sozlang.",
+        "Kursni brauzerda sinab ko'ring va talabalar uchun yo'riqnoma tayyorlang." 
+      ]
+    },
+    {
+      title: "iSpring QuizMaker va Wordwall.net yordamida til mashqlarini yaratish",
+      details: [
+        "O'quv maqsadini aniqlang va mos formatni tanlang.",
+        "Multimedia va shaxsiy fikr-mulohaza bilan mashqlar yarating.",
+        "Natijalarni yig'ish va tahlil qilish jarayonini yo'lga qo'ying." 
+      ]
+    },
+    {
+      title: "iSpring, MyTest va LearningApps bilan interaktiv topshiriqlar",
+      details: [
+        "Platformalarni savol turlari va adaptiv testlash imkoniyatlari bo'yicha solishtiring.",
+        "Mavjud mashqni raqamli formatga o'tkazing va murakkablikni sozlang.",
+        "Ofline va onlayn formatda joriy etish bo'yicha qo'llanma yozing." 
+      ]
+    },
+    {
+      title: "Adobe Photoshop va Blenderda animatsiya hamda 3D modellar yaratish",
+      details: [
+        "Sahna uchun storyboard tuzing va asosiy obyektlarni belgilang.",
+        "Statik 3D model va oddiy animatsiyani yarating.",
+        "Loyihani kerakli formatda eksport qilib, texnik tavsif yozing." 
+      ]
+    },
+    {
+      title: "Audio va video materiallarini montaj qilish va sifatini yaxshilash",
+      details: [
+        "Yozuvlarni shovqindan tozalang va tovush darajasini tekislang.",
+        "Sarlavha, grafika va o'tishlarni qo'shing.",
+        "Yakuniy fayl va sifat nazorati chek-listini tayyorlang." 
+      ]
+    },
+    {
+      title: "Internetdan xavfsiz foydalanish va raqamli gigiyena",
+      details: [
+        "Parollar auditini o'tkazing va ikki faktorli autentifikatsiyani yoqing.",
+        "Parol menejerini va muhim ma'lumotlar uchun zaxiralashni sozlang.",
+        "Fishing holatlariga javob berish bo'yicha eslatma tayyorlang." 
+      ]
+    },
+    {
+      title: "Google Docs, Sheets, Slides, Forms, Classroom va classroomscreen.com bilan ishlash",
+      details: [
+        "Ulashish va huquqlarni ajratish tizimini sozlang.",
+        "Avtomatik formulalar va vizual elementlarga ega shablon yarating.",
+        "Forma orqali fikr-mulohaza to'plang va natijalarni interaktiv taxtada ko'rsating." 
+      ]
+    },
+    {
+      title: "HEMIS axborot tizimi: foydalanuvchi rollari va o'quv ma'lumotlarini boshqarish",
+      details: [
+        "Kurs yarating va o'qituvchi hamda talabalar rollarini belgilang.",
+        "O'quv rejalarini import qiling va jadvalni sozlang.",
+        "Analitik hisobotlar va takomillashtirish bo'yicha tavsiyalar tayyorlang." 
+      ]
+    },
+    {
+      title: "Smart darsliklar, Zoom va vebinarlar yordamida ta'limni tashkil etish",
+      details: [
+        "Har 10–15 daqiqada faollik nazarda tutilgan ssenariy tuzing.",
+        "Zoom sozlamalarini belgilang: kutish zali, so'rovlar, yozib olish, SMART-taxta integratsiyasi.",
+        "Fikr-mulohazalarni yig'ib, raqamli materiallarni yangilang." 
+      ]
+    }
+  ]
+};
+
+const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageContent, "interactiveModules">>> = {
   lecture: {
     ru: {
       title: "Лекция",
-      lead: "Методологические основы",
+      lead: "Методологические основы цифровой гуманитаристики",
       description:
-        "Лекции помогают понять историю цифровой филологии, познакомиться с ключевыми терминами и увидеть, как цифровые методы применяются на практике.",
-      items: [
-        "История компьютерной лингвистики и корпусных исследований",
-        "Инструменты анализа текста: частотный анализ, конкордансы, тематическое моделирование",
-        "Этические аспекты работы с цифровыми гуманитарными данными"
-      ],
+        "Лекции собирают ключевые темы курса и дают развернутые материалы с планами, примерами и дополнительными ресурсами.",
+      items: lectureItemsByLanguage.ru,
       backLabel: "← На главную"
     },
     uz: {
       title: "Ma'ruza",
-      lead: "Metodologik asoslar",
+      lead: "Raqamli gumanitar fanlarning metodologik asoslari",
       description:
-        "Ma'ruzalar raqamli filologiya tarixini tushunishga, asosiy atamalar bilan tanishishga va amaliyotda qanday qo'llanilishini ko'rishga yordam beradi.",
-      items: [
-        "Kompyuter lingvistikasining tarixi va korpus tadqiqotlari",
-        "Matn tahlili vositalari: chastota tahlili, konkordanslar, mavzuli modellashtirish",
-        "Raqamli gumanitar ma'lumotlar bilan ishlashning axloqiy jihatlari"
-      ],
+        "Ma'ruzalar kursning asosiy mavzularini birlashtirib, batafsil reja, misollar va qo'shimcha manbalarni taqdim etadi.",
+      items: lectureItemsByLanguage.uz,
       backLabel: "← Bosh sahifaga"
     }
   },
@@ -2151,44 +3524,16 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       title: "Практика",
       lead: "Упражнения и лабораторные задания",
       description:
-        "Практические занятия формируют навыки работы с текстовыми корпусами, визуализацией данных и настройкой цифрового рабочего места.",
-      items: [
-        "Создание мини-корпуса и аннотирование текста",
-        "Python для филологов: обработка текста с помощью spaCy и NLTK",
-        "Визуализация результатов исследования в Tableau и Observable",
-        "Настройка операционных систем и офисных приложений для учебных проектов",
-        "Проектирование интерактивных учебных курсов в Hot Potatoes",
-        "Разработка языковых упражнений в iSpring QuizMaker и Wordwall.net",
-        "Интерактивные задания в iSpring, MyTest и LearningApps",
-        "Создание анимаций и 3D-моделей в Adobe Photoshop и Blender",
-        "Монтаж и улучшение аудио- и видеоматериалов",
-        "Цифровая гигиена и безопасное поведение в интернете",
-        "Google Docs, Sheets, Slides, Forms и Classroom: совместная работа и интерактивные доски classroomscreen.com",
-        "Информационная система HEMIS: роли пользователей и управление учебными данными",
-        "Смарт-учебники, Zoom и вебинары в образовательном процессе"
-      ],
+        "Практические занятия помогают закрепить навыки работы с цифровыми инструментами и подготовить собственные проекты.",
+      items: practiceItemsByLanguage.ru,
       backLabel: "← На главную"
     },
     uz: {
       title: "Amaliyot",
       lead: "Mashqlar va laboratoriya topshiriqlari",
       description:
-        "Amaliy mashg'ulotlar matn korpuslari bilan ishlash, ma'lumotlarni vizuallashtirish va raqamli ish joyini sozlash ko'nikmalarini shakllantiradi.",
-      items: [
-        "Mini-korpus yaratish va matnni annotatsiya qilish",
-        "Filologlar uchun Python: spaCy va NLTK yordamida matnni qayta ishlash",
-        "Tablue va Observable'da tadqiqot natijalarini vizuallashtirish",
-        "O'quv loyihalari uchun operatsion tizim va ofis dasturlarini sozlash",
-        "Hot Potatoes dasturida interaktiv o'quv kurslarini yaratish",
-        "iSpring QuizMaker va Wordwall.net yordamida til mashqlarini yaratish",
-        "iSpring, MyTest va LearningApps bilan interaktiv topshiriqlar",
-        "Adobe Photoshop va Blenderda animatsiya hamda 3D modellar yaratish",
-        "Audio va video materiallarini montaj qilish va sifatini yaxshilash",
-        "Internetdan xavfsiz foydalanish va raqamli gigiyena",
-        "Google Docs, Sheets, Slides, Forms, Classroom va classroomscreen.com bilan ishlash",
-        "HEMIS axborot tizimi: foydalanuvchi rollari va o'quv ma'lumotlarini boshqarish",
-        "Smart darsliklar, Zoom va vebinarlar yordamida ta'limni tashkil etish"
-      ],
+        "Amaliy mashg'ulotlar raqamli vositalar bilan ishlash ko'nikmalarini mustahkamlash va shaxsiy loyihalar yaratishga yordam beradi.",
+      items: practiceItemsByLanguage.uz,
       backLabel: "← Bosh sahifaga"
     }
   },
@@ -2198,11 +3543,11 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       lead: "Слайды и шаблоны для занятий",
       description:
         "Презентации помогают быстро структурировать материал и дополняют устное выступление на семинарах и лекциях.",
-      items: [
+      items: simpleItems([
         "Введение в цифровую филологию",
         "Работа с корпусами: пошаговый чек-лист",
         "Примеры проектов студентов и исследовательские кейсы"
-      ],
+      ]),
       backLabel: "← На главную"
     },
     uz: {
@@ -2210,11 +3555,11 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       lead: "Darslar uchun slaydlar va shablonlar",
       description:
         "Taqdimotlar materialni tezda tuzishga yordam beradi va seminar hamda ma'ruzalarda og'zaki chiqishni to'ldiradi.",
-      items: [
+      items: simpleItems([
         "Raqamli filologiyaga kirish",
         "Korpuslar bilan ishlash: bosqichma-bosqich chek-list",
         "Talabalar loyihalari va tadqiqot misollari"
-      ],
+      ]),
       backLabel: "← Bosh sahifaga"
     }
   },
@@ -2224,11 +3569,11 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       lead: "Структура и регламент курса",
       description:
         "Силлабус содержит цели, промежуточные контрольные точки и критерии итогового проекта, помогая студентам планировать обучение.",
-      items: [
+      items: simpleItems([
         "Цели обучения и ожидаемые компетенции",
         "Модульная структура и междисциплинарные связи",
         "Система оценивания и критерии итогового проекта"
-      ],
+      ]),
       backLabel: "← На главную"
     },
     uz: {
@@ -2236,11 +3581,11 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       lead: "Kurs tuzilmasi va reglamenti",
       description:
         "Sillabus maqsadlar, oraliq nazorat nuqtalari va yakuniy loyiha mezonlarini o'z ichiga oladi, talabalar o'qishini rejalashtirishga yordam beradi.",
-      items: [
+      items: simpleItems([
         "O'qish maqsadlari va kutilayotgan kompetensiyalar",
         "Modulli tuzilma va fanlararo bog'lanishlar",
         "Baholash tizimi va yakuniy loyiha mezonlari"
-      ],
+      ]),
       backLabel: "← Bosh sahifaga"
     }
   },
@@ -2250,11 +3595,11 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       lead: "Подборка видеолекций и интервью",
       description:
         "Видео помогают увидеть подходы и техники в действии, а также услышать комментарии практиков цифровой гуманитаристики.",
-      items: [
+      items: simpleItems([
         "Лингвистика данных: интервью с практиком",
         "Разбор кейса: цифровая обработка рукописей",
         "Мастер-класс по визуализации филологических данных"
-      ],
+      ]),
       backLabel: "← На главную"
     },
     uz: {
@@ -2262,11 +3607,11 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       lead: "Video ma'ruzalar va intervyular to'plami",
       description:
         "Videolar yondashuv va texnikalarni amalda ko'rishga, shuningdek raqamli gumanitar fanlar mutaxassislarining fikrlarini tinglashga yordam beradi.",
-      items: [
+      items: simpleItems([
         "Ma'lumotlar lingvistikasining amaliyoti: mutaxassis bilan intervyu",
         "Keys tahlili: qo'lyozmalarni raqamli qayta ishlash",
         "Filologik ma'lumotlarni vizuallashtirish bo'yicha ustozlik darsi"
-      ],
+      ]),
       backLabel: "← Bosh sahifaga"
     }
   },
@@ -2276,11 +3621,11 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       lead: "Команда курса и приглашённые эксперты",
       description:
         "Команда объединяет исследователей, преподавателей и специалистов по цифровым гуманитарным практикам, чтобы поддерживать курс актуальным.",
-      items: [
+      items: simpleItems([
         "Куратор программы — д-р филол. наук Анна Рубцова",
         "Эксперт по визуализации данных — канд. ист. наук Павел Лазарев",
         "Партнёрские организации и международные лаборатории"
-      ],
+      ]),
       backLabel: "← На главную"
     },
     uz: {
@@ -2288,11 +3633,11 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       lead: "Kurs jamoasi va taklif etilgan mutaxassislar",
       description:
         "Jamoa kursni dolzarb saqlash uchun tadqiqotchilar, o'qituvchilar va raqamli gumanitar amaliyotchilarni birlashtiradi.",
-      items: [
+      items: simpleItems([
         "Dastur kuratori — filol. fanlari doktori Anna Rubtsova",
         "Ma'lumotlarni vizuallashtirish bo'yicha ekspert — tarix fanlari nomzodi Pavel Lazaryev",
         "Hamkor tashkilotlar va xalqaro laboratoriyalar"
-      ],
+      ]),
       backLabel: "← Bosh sahifaga"
     }
   }
