@@ -16,11 +16,27 @@ export function HomePage() {
           <h1 className="hero__title">{content.hero.title}</h1>
           <p className="hero__description">{content.hero.description}</p>
           <div className="hero__actions">
-            {content.sections.map((section) => (
-              <Link key={section.id} href={`#${section.id}`} className="hero__action">
-                {section.title}
-              </Link>
-            ))}
+            {content.sections.map((section) => {
+              if (section.id === "syllabus") {
+                return (
+                  <a
+                    key={section.id}
+                    href="/api/syllabus"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hero__action"
+                  >
+                    {section.title}
+                  </a>
+                );
+              }
+
+              return (
+                <Link key={section.id} href={`#${section.id}`} className="hero__action">
+                  {section.title}
+                </Link>
+              );
+            })}
           </div>
         </div>
         <div className="hero__image-wrapper" aria-hidden="true">
@@ -29,21 +45,35 @@ export function HomePage() {
       </div>
 
       <div className="grid">
-        {content.sections.map((section) => (
-          <section key={section.id} id={section.id} className="section-card">
-            <div className="section-card__header">
-              <span className="section-card__badge">{section.subtitle}</span>
-              <h2 className="section-card__title">{section.title}</h2>
-            </div>
-            <p className="section-card__description">{section.description}</p>
-            <div className="section-card__cta">
-              <Link href={`/${section.id}`} className="section-card__link">
-                {section.linkLabel}
-              </Link>
-              <span className="section-card__hint">{section.hint}</span>
-            </div>
-          </section>
-        ))}
+        {content.sections.map((section) => {
+          const isSyllabus = section.id === "syllabus";
+          return (
+            <section key={section.id} id={section.id} className="section-card">
+              <div className="section-card__header">
+                <span className="section-card__badge">{section.subtitle}</span>
+                <h2 className="section-card__title">{section.title}</h2>
+              </div>
+              <p className="section-card__description">{section.description}</p>
+              <div className="section-card__cta">
+                {isSyllabus ? (
+                  <a
+                    href="/api/syllabus"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="section-card__link"
+                  >
+                    {section.linkLabel}
+                  </a>
+                ) : (
+                  <Link href={`/${section.id}`} className="section-card__link">
+                    {section.linkLabel}
+                  </Link>
+                )}
+                <span className="section-card__hint">{section.hint}</span>
+              </div>
+            </section>
+          );
+        })}
       </div>
 
       <footer className="footer">
