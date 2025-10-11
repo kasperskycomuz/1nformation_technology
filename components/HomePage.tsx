@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { homeContent } from "@/lib/translations";
 import { useLanguage } from "./LanguageContext";
+import heroImage from "@/images/fon.jfif";
 
 export function HomePage() {
   const { language } = useLanguage();
@@ -11,14 +13,19 @@ export function HomePage() {
   return (
     <main className="page">
       <div className="hero">
-        <h1 className="hero__title">{content.hero.title}</h1>
-        <p className="hero__description">{content.hero.description}</p>
-        <div className="hero__actions">
-          {content.sections.map((section) => (
-            <Link key={section.id} href={`#${section.id}`} className="hero__action">
-              {section.title}
-            </Link>
-          ))}
+        <div className="hero__content">
+          <h1 className="hero__title">{content.hero.title}</h1>
+          <p className="hero__description">{content.hero.description}</p>
+          <div className="hero__actions">
+            {content.sections.map((section) => (
+              <Link key={section.id} href={`#${section.id}`} className="hero__action">
+                {section.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="hero__image-wrapper" aria-hidden="true">
+          <Image src={heroImage} alt="" className="hero__image" priority />
         </div>
       </div>
 
