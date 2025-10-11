@@ -76,7 +76,8 @@ export function HomePage() {
             })}
           </div>
         </div>
-        <div className="hero__image-wrapper" aria-hidden="true">
+        <div className="hero__image-wrapper">
+          <span className="hero__university">{content.hero.universityName}</span>
           <Image src="/images/fon.jpg" alt="" fill className="hero__image" priority />
         </div>
       </div>
