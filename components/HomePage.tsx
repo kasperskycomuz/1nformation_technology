@@ -24,7 +24,7 @@ export function HomePage() {
           </div>
         </div>
         <div className="hero__image-wrapper" aria-hidden="true">
-          <Image src="/images/fon.jfif" alt="" fill className="hero__image" priority />
+          <Image src="/images/fon.jpg" alt="" fill className="hero__image" priority />
         </div>
       </div>
 
