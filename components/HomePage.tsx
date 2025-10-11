@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { homeContent } from "@/lib/translations";
 import { useLanguage } from "./LanguageContext";
 import Image from "next/image";
@@ -13,6 +13,7 @@ export function HomePage() {
   const [showVideosModal, setShowVideosModal] = useState(false);
   const [showPracticeModal, setShowPracticeModal] = useState(false);
   const [showAuthorsModal, setShowAuthorsModal] = useState(false);
+  const [videos, setVideos] = useState<{ title: string; slug: string }[]>([]);
 
   const openVideosModal = () => setShowVideosModal(true);
   const closeVideosModal = () => setShowVideosModal(false);
@@ -21,8 +22,50 @@ export function HomePage() {
   const openAuthorsModal = () => setShowAuthorsModal(true);
   const closeAuthorsModal = () => setShowAuthorsModal(false);
 
-  const videoButtonLabel = language === "uz" ? "Video" : "Видео";
-  const videoButtons = Array.from({ length: 12 }, (_, index) => `${videoButtonLabel} ${index + 1}`);
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadVideos = async () => {
+      try {
+        const response = await fetch("/api/videos");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch videos");
+        }
+
+        const data = await response.json();
+
+        if (!isMounted) {
+          return;
+        }
+
+        const items = Array.isArray(data.videos)
+          ? data.videos.map((video: { title: string; slug: string }) => ({
+              title: video.title,
+              slug: video.slug
+            }))
+          : [];
+
+        setVideos(items);
+      } catch (error) {
+        if (isMounted) {
+          setVideos([]);
+        }
+      }
+    };
+
+    loadVideos();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const handleVideoOpen = (slug: string) => {
+    const url = `/videos/${slug}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   const practiceButtons = Array.from({ length: 12 }, (_, index) => {
     const practiceNumber = index + 1;
     return {
@@ -181,11 +224,22 @@ export function HomePage() {
                 : "Выберите нужный видеоматериал из списка"}
             </p>
             <div className="videos-modal__grid">
-              {videoButtons.map((label) => (
-                <button key={label} type="button" className="videos-modal__button">
-                  {label}
-                </button>
-              ))}
+              {videos.length > 0 ? (
+                videos.map((video) => (
+                  <button
+                    key={video.slug}
+                    type="button"
+                    className="videos-modal__button"
+                    onClick={() => handleVideoOpen(video.slug)}
+                  >
+                    {video.title}
+                  </button>
+                ))
+              ) : (
+                <span className="videos-modal__empty">
+                  {language === "uz" ? "Video fayllari topilmadi" : "Видео файлы не найдены."}
+                </span>
+              )}
             </div>
           </div>
         </div>

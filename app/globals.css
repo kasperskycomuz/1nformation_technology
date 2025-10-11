@@ -680,6 +680,13 @@ body {
   outline: none;
 }
 
+.videos-modal__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: rgba(248, 249, 255, 0.8);
+  font-size: 1rem;
+}
+
 .practice-modal {
   position: fixed;
   inset: 0;
@@ -774,6 +781,29 @@ body {
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.32);
   outline: none;
+}
+
+.video-player {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.video-player__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  text-align: center;
+  color: var(--accent-strong);
+}
+
+.video-player__media {
+  width: 100%;
+  max-height: 70vh;
+  border-radius: 24px;
+  background: rgba(32, 48, 112, 0.1);
+  box-shadow: 0 32px 60px rgba(32, 48, 112, 0.18);
+  border: 1px solid rgba(149, 154, 189, 0.28);
 }
 
 .authors-modal {
