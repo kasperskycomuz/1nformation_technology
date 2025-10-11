@@ -123,8 +123,8 @@ type SectionPageContent = {
 export const homeContent: Record<Language, HomeContent> = {
   ru: {
     hero: {
-      badge: "ИТ для филологов",
-      title: "Цифровые технологии, которые помогают филологам исследовать и вдохновлять",
+      badge: "УЗБЕКСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ МИРОВЫХ ЯЗЫКОВ,ИНФОРМАЦИОННЫЕ ТЕХНОЛОГИИ",
+      title: "Цифровые технологии, которые помогают исследовать и вдохновлять",
       description:
         "Добро пожаловать на образовательный портал: здесь собраны материалы, создающие мост между гуманитарными науками и современными ИТ-практиками. Погружайтесь в лекции, тренируйтесь на практике, используйте визуальные материалы и делитесь знаниями."
     },
@@ -134,7 +134,7 @@ export const homeContent: Record<Language, HomeContent> = {
         title: "Лекция",
         subtitle: "Теория и методология",
         description:
-          "Глубокие материалы о цифровых инструментах, которые помогают филологам анализировать тексты и данные.",
+          "Глубокие материалы о цифровых инструментах, которые помогают анализировать тексты и данные.",
         linkLabel: "Перейти к лекциям",
         hint: "Обновляется по мере выхода новых тем"
       },
@@ -203,8 +203,8 @@ export const homeContent: Record<Language, HomeContent> = {
   },
   uz: {
     hero: {
-      badge: "Filologlar uchun IT",
-      title: "Filologlarga tadqiqot va izlanish uchun yordam beradigan raqamli texnologiyalar",
+      badge: "O'ZBEKISTON DAVLAT JAHON TILLARI UNIVERSITETI, AXBOROT TEXNOLOGIYALARI",
+      title: "Tadqiqot va izlanish uchun yordam beradigan raqamli texnologiyalar",
       description:
         "Ta'lim portaliga xush kelibsiz: bu yerda gumanitar fanlar va zamonaviy IT amaliyotlari o'rtasida ko'prik bo'ladigan materiallar to'plangan. Ma'ruzalarga sho'ng'ing, amaliyotni bajarib ko'ring, vizual materiallardan foydalaning va bilimlaringizni ulashing."
     },
