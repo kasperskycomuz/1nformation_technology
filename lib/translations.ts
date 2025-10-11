@@ -40,6 +40,12 @@ type HomeContent = {
     summary: string;
     hint: string;
   };
+  authorModal: {
+    title: string;
+    name: string;
+    role: string;
+    description: string;
+  };
   footer: {
     copyright: string;
     note: string;
@@ -210,6 +216,13 @@ export const homeContent: Record<Language, HomeContent> = {
       summary: "Подборка сценариев и мастерских для отработки цифровых навыков в учебных задачах.",
       hint: "Каждое занятие сопровождается чек-листом и рекомендациями."
     },
+    authorModal: {
+      title: "Команда курса",
+      name: "Мухамадиева Кибриё Баходировна",
+      role: "Преподаватель кафедры «Современные информационные технологии»",
+      description:
+        "Специализируется на внедрении цифровых образовательных сред, консультирует преподавателей по проектированию учебных курсов и внедрению интерактивных инструментов."
+    },
     footer: {
       copyright: `© ${new Date().getFullYear()} ИТ для филологов. Сделано для Vercel и Next.js.`,
       note:
@@ -297,6 +310,13 @@ export const homeContent: Record<Language, HomeContent> = {
       buttonLabel: "Mashg'ulot",
       summary: "Raqamli ko'nikmalarni amaliy vazifalar orqali mustahkamlash uchun mashg'ulotlar to'plami.",
       hint: "Har bir mashg'ulotda nazorat savollari va metodik tavsiyalar mavjud."
+    },
+    authorModal: {
+      title: "Kurs jamoasi",
+      name: "Muxamadiyeva Kibriyo Bahodirovna",
+      role: "“Zamonaviy axborot texnologiyalari” kafedrasi o'qituvchisi",
+      description:
+        "Raqamli ta'lim muhiti va interaktiv o'quv kurslarini ishlab chiqish bo'yicha mutaxassis, o'qituvchilarga zamonaviy IT vositalarini dars jarayoniga joriy etishda ko'maklashadi."
     },
     footer: {
       copyright: `© ${new Date().getFullYear()} Filologlar uchun IT. Vercel va Next.js uchun yaratildi.`,

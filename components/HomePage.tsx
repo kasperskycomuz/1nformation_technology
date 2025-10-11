@@ -5,17 +5,21 @@ import { useState } from "react";
 import { homeContent } from "@/lib/translations";
 import { useLanguage } from "./LanguageContext";
 import Image from "next/image";
+import authorsPhoto from "@/images/authors.jpg";
 
 export function HomePage() {
   const { language } = useLanguage();
   const content = homeContent[language];
   const [showVideosModal, setShowVideosModal] = useState(false);
   const [showPracticeModal, setShowPracticeModal] = useState(false);
+  const [showAuthorsModal, setShowAuthorsModal] = useState(false);
 
   const openVideosModal = () => setShowVideosModal(true);
   const closeVideosModal = () => setShowVideosModal(false);
   const openPracticeModal = () => setShowPracticeModal(true);
   const closePracticeModal = () => setShowPracticeModal(false);
+  const openAuthorsModal = () => setShowAuthorsModal(true);
+  const closeAuthorsModal = () => setShowAuthorsModal(false);
 
   const videoButtonLabel = language === "uz" ? "Video" : "Видео";
   const videoButtons = Array.from({ length: 12 }, (_, index) => `${videoButtonLabel} ${index + 1}`);
@@ -51,6 +55,19 @@ export function HomePage() {
                 ];
               }
 
+              if (section.id === "authors") {
+                return [
+                  <button
+                    key={section.id}
+                    type="button"
+                    className="hero__action hero__action--button"
+                    onClick={openAuthorsModal}
+                  >
+                    {section.title}
+                  </button>
+                ];
+              }
+
               return [
                 <Link key={section.id} href={`#${section.id}`} className="hero__action">
                   {section.title}
@@ -68,6 +85,7 @@ export function HomePage() {
         {content.sections.flatMap((section) => {
           const isSyllabus = section.id === "syllabus";
           const isVideos = section.id === "videos";
+          const isAuthors = section.id === "authors";
           const card = (
             <section key={section.id} id={section.id} className="section-card">
               <div className="section-card__header">
@@ -90,6 +108,14 @@ export function HomePage() {
                     type="button"
                     className="section-card__link section-card__link--button"
                     onClick={openVideosModal}
+                  >
+                    {section.linkLabel}
+                  </button>
+                ) : isAuthors ? (
+                  <button
+                    type="button"
+                    className="section-card__link section-card__link--button"
+                    onClick={openAuthorsModal}
                   >
                     {section.linkLabel}
                   </button>
@@ -196,6 +222,41 @@ export function HomePage() {
                   {label}
                 </a>
               ))}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {showAuthorsModal ? (
+        <div className="authors-modal" role="dialog" aria-modal="true" aria-labelledby="authors-modal-title">
+          <div className="authors-modal__dialog">
+            <button
+              type="button"
+              className="authors-modal__close"
+              onClick={closeAuthorsModal}
+              aria-label={language === "uz" ? "Yopish" : "Закрыть"}
+            >
+              ×
+            </button>
+            <div className="authors-modal__content">
+              <div className="authors-modal__photo-frame">
+                <Image
+                  src={authorsPhoto}
+                  alt={content.authorModal.name}
+                  className="authors-modal__photo"
+                  width={360}
+                  height={420}
+                  sizes="(max-width: 600px) 100vw, 360px"
+                />
+              </div>
+              <div className="authors-modal__info">
+                <span className="authors-modal__badge">{content.authorModal.title}</span>
+                <h2 id="authors-modal-title" className="authors-modal__name">
+                  {content.authorModal.name}
+                </h2>
+                <p className="authors-modal__role">{content.authorModal.role}</p>
+                <p className="authors-modal__description">{content.authorModal.description}</p>
+              </div>
             </div>
           </div>
         </div>
