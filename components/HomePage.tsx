@@ -10,12 +10,19 @@ export function HomePage() {
   const { language } = useLanguage();
   const content = homeContent[language];
   const [showVideosModal, setShowVideosModal] = useState(false);
+  const [showPracticeModal, setShowPracticeModal] = useState(false);
 
   const openVideosModal = () => setShowVideosModal(true);
   const closeVideosModal = () => setShowVideosModal(false);
+  const openPracticeModal = () => setShowPracticeModal(true);
+  const closePracticeModal = () => setShowPracticeModal(false);
 
   const videoButtonLabel = language === "uz" ? "Video" : "Видео";
   const videoButtons = Array.from({ length: 12 }, (_, index) => `${videoButtonLabel} ${index + 1}`);
+  const practiceButtons = Array.from(
+    { length: 12 },
+    (_, index) => `${content.practiceSessions.buttonLabel} ${index + 1}`
+  );
 
   return (
     <main className="page">
@@ -24,9 +31,9 @@ export function HomePage() {
           <h1 className="hero__title">{content.hero.title}</h1>
           <p className="hero__description">{content.hero.description}</p>
           <div className="hero__actions">
-            {content.sections.map((section) => {
+            {content.sections.flatMap((section) => {
               if (section.id === "videos") {
-                return (
+                return [
                   <button
                     key={section.id}
                     type="button"
@@ -34,15 +41,23 @@ export function HomePage() {
                     onClick={openVideosModal}
                   >
                     {section.title}
+                  </button>,
+                  <button
+                    key="practice-sessions"
+                    type="button"
+                    className="hero__action hero__action--button"
+                    onClick={openPracticeModal}
+                  >
+                    {content.practiceSessions.actionLabel}
                   </button>
-                );
+                ];
               }
 
-              return (
+              return [
                 <Link key={section.id} href={`#${section.id}`} className="hero__action">
                   {section.title}
                 </Link>
-              );
+              ];
             })}
           </div>
         </div>
@@ -116,6 +131,39 @@ export function HomePage() {
             <div className="videos-modal__grid">
               {videoButtons.map((label) => (
                 <button key={label} type="button" className="videos-modal__button">
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {showPracticeModal ? (
+        <div
+          className="practice-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="practice-modal-title"
+        >
+          <div className="practice-modal__dialog">
+            <div className="practice-modal__header">
+              <h2 id="practice-modal-title" className="practice-modal__title">
+                {content.practiceSessions.modalTitle}
+              </h2>
+              <button
+                type="button"
+                className="practice-modal__close"
+                onClick={closePracticeModal}
+                aria-label="Close modal"
+              >
+                ×
+              </button>
+            </div>
+            <p className="practice-modal__description">{content.practiceSessions.modalDescription}</p>
+            <div className="practice-modal__grid">
+              {practiceButtons.map((label) => (
+                <button key={label} type="button" className="practice-modal__button">
                   {label}
                 </button>
               ))}

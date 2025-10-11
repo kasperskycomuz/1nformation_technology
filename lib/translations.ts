@@ -32,19 +32,54 @@ type HomeContent = {
     label: string;
     items: string[];
   };
+  practiceSessions: {
+    actionLabel: string;
+    modalTitle: string;
+    modalDescription: string;
+    buttonLabel: string;
+  };
   footer: {
     copyright: string;
     note: string;
   };
 };
 
-export type PracticeInteractiveTask = {
+type LectureContentSection = {
+  heading: string;
+  paragraphs: string[];
+  media?: LectureSectionMedia[];
+};
+
+type SectionContentItem = {
+  title: string;
+  details?: string | string[];
+  linkSlug?: string;
+  href?: string;
+  description?: string;
+  resources?: { label: string; url: string }[];
+};
+
+type PracticeInteractiveTask = {
   id: string;
   question: string;
   options: string[];
   correct: number;
   explanation: string;
 };
+
+export type LectureSectionMedia =
+  | {
+      kind: "image" | "diagram";
+      title: string;
+      description: string;
+    }
+  | {
+      kind: "table";
+      title: string;
+      description: string;
+      headers: string[];
+      rows: string[][];
+    };
 
 export type PracticeInteractiveContent = {
   id: string;
@@ -57,36 +92,6 @@ export type PracticeInteractiveContent = {
   successMessage: string;
   encouragement: string;
   resultsTitle: string;
-};
-
-export type SectionContentItem = {
-  title: string;
-  details?: string | string[];
-  linkSlug?: string;
-};
-
-export type LectureSectionMediaBase = {
-  kind: "image" | "diagram" | "table";
-  title: string;
-  description: string;
-};
-
-export type LectureSectionMediaVisual = LectureSectionMediaBase & {
-  kind: "image" | "diagram";
-};
-
-export type LectureSectionMediaTable = LectureSectionMediaBase & {
-  kind: "table";
-  headers: string[];
-  rows: string[][];
-};
-
-export type LectureSectionMedia = LectureSectionMediaVisual | LectureSectionMediaTable;
-
-type LectureContentSection = {
-  heading: string;
-  paragraphs: string[];
-  media?: LectureSectionMedia[];
 };
 
 type LectureResource = {
@@ -139,12 +144,21 @@ export const homeContent: Record<Language, HomeContent> = {
         hint: "Обновляется по мере выхода новых тем"
       },
       {
+        id: "videos",
+        title: "Видео",
+        subtitle: "Разборы и мастер-классы",
+        description:
+          "Подборка видеолекций и интервью с экспертами об ИТ в гуманитарных науках.",
+        linkLabel: "Смотреть видео",
+        hint: "Добавляем разборы по запросу студентов"
+      },
+      {
         id: "practice",
-        title: "Практика",
+        title: "Тесты",
         subtitle: "Интерактивные задания",
         description:
           "Пошаговые упражнения и лабораторные работы, чтобы закрепить навыки работы с ИТ-инструментами.",
-        linkLabel: "Перейти к практике",
+        linkLabel: "Перейти к тестам",
         hint: "Содержит интерактивные кейсы и самопроверку"
       },
       {
@@ -166,15 +180,6 @@ export const homeContent: Record<Language, HomeContent> = {
         hint: "Содержит чек-лист по контрольным точкам"
       },
       {
-        id: "videos",
-        title: "Видео",
-        subtitle: "Разборы и мастер-классы",
-        description:
-          "Подборка видеолекций и интервью с экспертами об ИТ в гуманитарных науках.",
-        linkLabel: "Смотреть видео",
-        hint: "Добавляем разборы по запросу студентов"
-      },
-      {
         id: "authors",
         title: "Авторы",
         subtitle: "Команда курса",
@@ -194,6 +199,12 @@ export const homeContent: Record<Language, HomeContent> = {
         "Материалы, адаптированные под гуманитарные задачи",
         "Расширяемая база знаний и коллективные подборки"
       ]
+    },
+    practiceSessions: {
+      actionLabel: "Практические занятия",
+      modalTitle: "Практические занятия",
+      modalDescription: "Выберите занятие, чтобы отработать навыки на практических примерах.",
+      buttonLabel: "Занятие"
     },
     footer: {
       copyright: `© ${new Date().getFullYear()} ИТ для филологов. Сделано для Vercel и Next.js.`,
@@ -274,6 +285,12 @@ export const homeContent: Record<Language, HomeContent> = {
         "Gumanitar vazifalar uchun moslashtirilgan materiallar",
         "Kengaytiriladigan bilimlar bazasi va jamoaviy to'plamlar"
       ]
+    },
+    practiceSessions: {
+      actionLabel: "Amaliy mashg'ulotlar",
+      modalTitle: "Amaliy mashg'ulotlar",
+      modalDescription: "Ko'nikmalarni mustahkamlash uchun mashg'ulotni tanlang.",
+      buttonLabel: "Mashg'ulot"
     },
     footer: {
       copyright: `© ${new Date().getFullYear()} Filologlar uchun IT. Vercel va Next.js uchun yaratildi.`,
@@ -3540,18 +3557,18 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
   },
   practice: {
     ru: {
-      title: "Практика",
-      lead: "Упражнения и лабораторные задания",
+      title: "Тесты",
+      lead: "Самопроверка и практические задания",
       description:
-        "Практические занятия помогают закрепить навыки работы с цифровыми инструментами и подготовить собственные проекты.",
+        "Интерактивные тесты помогают закрепить навыки работы с цифровыми инструментами и подготовиться к практическим проектам.",
       items: practiceItemsByLanguage.ru,
       backLabel: "← На главную"
     },
     uz: {
-      title: "Amaliyot",
-      lead: "Mashqlar va laboratoriya topshiriqlari",
+      title: "Testlar",
+      lead: "O'zini sinash va amaliy topshiriqlar",
       description:
-        "Amaliy mashg'ulotlar raqamli vositalar bilan ishlash ko'nikmalarini mustahkamlash va shaxsiy loyihalar yaratishga yordam beradi.",
+        "Interfaol testlar raqamli vositalar bilan ishlash ko'nikmalarini mustahkamlash va amaliy loyihalarga tayyorlanishga yordam beradi.",
       items: practiceItemsByLanguage.uz,
       backLabel: "← Bosh sahifaga"
     }

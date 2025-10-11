@@ -7,7 +7,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "IT для филологов",
   description:
-    "Учебный портал с лекциями, практиками, презентациями и материалами по ИТ для филологов"
+    "Учебный портал с лекциями, тестами, презентациями и материалами по ИТ для филологов"
 };
 
 export default function RootLayout({
