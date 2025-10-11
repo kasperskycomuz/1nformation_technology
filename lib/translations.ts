@@ -260,11 +260,11 @@ export const homeContent: Record<Language, HomeContent> = {
       },
       {
         id: "practice",
-        title: "Amaliyot",
+        title: "Test",
         subtitle: "Interaktiv topshiriqlar",
         description:
           "IT vositalari bilan ishlash ko'nikmalarini mustahkamlash uchun bosqichma-bosqich mashqlar va laboratoriyalar.",
-        linkLabel: "Amaliyotga o'tish",
+        linkLabel: "Testlarga o'tish",
         hint: "Interaktiv vaziyatlar va o'z-o'zini tekshirishni o'z ichiga oladi"
       },
       {
