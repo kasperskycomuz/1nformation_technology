@@ -77,8 +77,10 @@ export function HomePage() {
           </div>
         </div>
         <div className="hero__image-wrapper">
-          <span className="hero__university">{content.hero.universityName}</span>
           <Image src="/images/fon.jpg" alt="" fill className="hero__image" priority />
+          <div className="hero__image-overlay">
+            <span className="hero__image-title">{content.hero.imageTitle}</span>
+          </div>
         </div>
       </div>
 

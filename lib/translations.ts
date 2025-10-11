@@ -24,7 +24,7 @@ type HomeContent = {
     badge: string;
     title: string;
     description: string;
-    universityName: string;
+    imageTitle: string;
   };
   sections: HomeSection[];
   highlight: {
@@ -141,7 +141,7 @@ export const homeContent: Record<Language, HomeContent> = {
       title: "Цифровые технологии, которые помогают исследовать и вдохновлять",
       description:
         "Добро пожаловать на образовательный портал: здесь собраны материалы, создающие мост между гуманитарными науками и современными ИТ-практиками. Погружайтесь в лекции, тренируйтесь на практике, используйте визуальные материалы и делитесь знаниями.",
-      universityName: "Узбекский государственный университет мировых языков"
+      imageTitle: "Узбекский государственный университет мировых языков"
     },
     sections: [
       {
@@ -237,7 +237,7 @@ export const homeContent: Record<Language, HomeContent> = {
       title: "Tadqiqot va izlanish uchun yordam beradigan raqamli texnologiyalar",
       description:
         "Ta'lim portaliga xush kelibsiz: bu yerda gumanitar fanlar va zamonaviy IT amaliyotlari o'rtasida ko'prik bo'ladigan materiallar to'plangan. Ma'ruzalarga sho'ng'ing, amaliyotni bajarib ko'ring, vizual materiallardan foydalaning va bilimlaringizni ulashing.",
-      universityName: "O'zbekiston davlat jahon tillari"
+      imageTitle: "O'ZBEKISTON DAVLAT JAHON TILLARI UNIVERSITETI"
     },
     sections: [
       {
