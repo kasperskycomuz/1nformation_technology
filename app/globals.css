@@ -113,14 +113,6 @@ body {
   text-decoration: none;
   padding: 0.75rem 1.3rem;
   border-radius: 999px;
-
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
-  .hero__image-wrapper {
-    min-height: 200px;
-  }
   border: 1px solid rgba(95, 61, 196, 0.25);
   color: var(--accent-strong);
   font-weight: 600;
@@ -806,6 +798,14 @@ font-size: 1rem;              /* set your size */
   .hero__actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__image-wrapper {
+    min-height: 200px;
   }
 
   .section-card {

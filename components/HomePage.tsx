@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { homeContent } from "@/lib/translations";
 import { useLanguage } from "./LanguageContext";
-import heroImage from "@/images/fon.jfif";
+import Image from "next/image";
 
 export function HomePage() {
   const { language } = useLanguage();
@@ -25,7 +24,7 @@ export function HomePage() {
           </div>
         </div>
         <div className="hero__image-wrapper" aria-hidden="true">
-          <Image src={heroImage} alt="" className="hero__image" priority />
+          <Image src="/images/fon.jfif" alt="" fill className="hero__image" priority />
         </div>
       </div>
 
