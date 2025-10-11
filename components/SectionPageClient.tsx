@@ -31,7 +31,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
   };
 
   return (
-    <main className="section">
+    <main className={`section section--${slug}`}>
       <div className="section__wrap">
         <Link href="/" className="section__back">
           {content.backLabel}
@@ -49,7 +49,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
             if (!hasDetails) {
               return (
                 <li key={item.title} className="section__list-item">
-                  <span>{item.title}</span>
+                  <span className="section__list-title">{item.title}</span>
                   {item.linkSlug ? (
                     <Link
                       href={`/lecture/${item.linkSlug}`}
@@ -80,7 +80,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
                     <span className="section__list-icon" aria-hidden="true">
                       ▼
                     </span>
-                    <span>{item.title}</span>
+                    <span className="section__list-title">{item.title}</span>
                   </button>
                   {item.linkSlug ? (
                     <Link
