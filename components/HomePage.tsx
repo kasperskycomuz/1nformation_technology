@@ -192,7 +192,6 @@ export function HomePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="practice-modal__button"
-                  onClick={closePracticeModal}
                 >
                   {label}
                 </a>
