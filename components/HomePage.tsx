@@ -19,10 +19,13 @@ export function HomePage() {
 
   const videoButtonLabel = language === "uz" ? "Video" : "Видео";
   const videoButtons = Array.from({ length: 12 }, (_, index) => `${videoButtonLabel} ${index + 1}`);
-  const practiceButtons = Array.from(
-    { length: 12 },
-    (_, index) => `${content.practiceSessions.buttonLabel} ${index + 1}`
-  );
+  const practiceButtons = Array.from({ length: 12 }, (_, index) => {
+    const practiceNumber = index + 1;
+    return {
+      label: `${content.practiceSessions.buttonLabel} № ${practiceNumber}`,
+      href: `/api/practice/${practiceNumber}`
+    };
+  });
 
   return (
     <main className="page">
@@ -182,10 +185,17 @@ export function HomePage() {
             </div>
             <p className="practice-modal__description">{content.practiceSessions.modalDescription}</p>
             <div className="practice-modal__grid">
-              {practiceButtons.map((label) => (
-                <button key={label} type="button" className="practice-modal__button">
+              {practiceButtons.map(({ label, href }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="practice-modal__button"
+                  onClick={closePracticeModal}
+                >
                   {label}
-                </button>
+                </a>
               ))}
             </div>
           </div>
