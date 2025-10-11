@@ -14,6 +14,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
   const { language } = useLanguage();
   const content = sectionContent[slug][language];
   const [openItems, setOpenItems] = useState<Record<number, boolean>>({});
+  const sectionClassName = slug === "lecture" ? "section section--lecture" : "section";
   const linkLabels: Record<typeof language, string> = {
     ru: slug === "lecture" ? "Открыть лекцию" : "Подробнее",
     uz: slug === "lecture" ? "Ma'ruza sahifasini ochish" : "Batafsil"
@@ -31,7 +32,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
   };
 
   return (
-    <main className={`section section--${slug}`}>
+    <main className={sectionClassName}>
       <div className="section__wrap">
         <Link href="/" className="section__back">
           {content.backLabel}
