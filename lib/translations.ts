@@ -37,6 +37,8 @@ type HomeContent = {
     modalTitle: string;
     modalDescription: string;
     buttonLabel: string;
+    summary: string;
+    hint: string;
   };
   footer: {
     copyright: string;
@@ -204,7 +206,9 @@ export const homeContent: Record<Language, HomeContent> = {
       actionLabel: "Практические занятия",
       modalTitle: "Практические занятия",
       modalDescription: "Выберите занятие, чтобы отработать навыки на практических примерах.",
-      buttonLabel: "Занятие"
+      buttonLabel: "Занятие",
+      summary: "Подборка сценариев и мастерских для отработки цифровых навыков в учебных задачах.",
+      hint: "Каждое занятие сопровождается чек-листом и рекомендациями."
     },
     footer: {
       copyright: `© ${new Date().getFullYear()} ИТ для филологов. Сделано для Vercel и Next.js.`,
@@ -228,6 +232,15 @@ export const homeContent: Record<Language, HomeContent> = {
           "Filologlarga matnlar va ma'lumotlarni tahlil qilishda yordam beradigan raqamli vositalar haqidagi chuqur materiallar.",
         linkLabel: "Ma'ruzalarga o'tish",
         hint: "Yangi mavzular chiqqanda yangilanadi"
+      },
+      {
+        id: "videos",
+        title: "Video",
+        subtitle: "Tahlillar va ustozlar darslari",
+        description:
+          "Raqamli gumanitar fanlar bo'yicha mutaxassislarning video ma'ruzalari va intervyulari to'plami.",
+        linkLabel: "Videolarni ko'rish",
+        hint: "Talabalar so'rovi bo'yicha tahlillar qo'shiladi"
       },
       {
         id: "practice",
@@ -257,15 +270,6 @@ export const homeContent: Record<Language, HomeContent> = {
         hint: "Nazorat nuqtalari bo'yicha chek-list mavjud"
       },
       {
-        id: "videos",
-        title: "Video",
-        subtitle: "Tahlillar va ustozlar darslari",
-        description:
-          "Raqamli gumanitar fanlar bo'yicha mutaxassislarning video ma'ruzalari va intervyulari to'plami.",
-        linkLabel: "Videolarni ko'rish",
-        hint: "Talabalar so'rovi bo'yicha tahlillar qo'shiladi"
-      },
-      {
         id: "authors",
         title: "Mualliflar",
         subtitle: "Kurs jamoasi",
@@ -290,7 +294,9 @@ export const homeContent: Record<Language, HomeContent> = {
       actionLabel: "Amaliy mashg'ulotlar",
       modalTitle: "Amaliy mashg'ulotlar",
       modalDescription: "Ko'nikmalarni mustahkamlash uchun mashg'ulotni tanlang.",
-      buttonLabel: "Mashg'ulot"
+      buttonLabel: "Mashg'ulot",
+      summary: "Raqamli ko'nikmalarni amaliy vazifalar orqali mustahkamlash uchun mashg'ulotlar to'plami.",
+      hint: "Har bir mashg'ulotda nazorat savollari va metodik tavsiyalar mavjud."
     },
     footer: {
       copyright: `© ${new Date().getFullYear()} Filologlar uchun IT. Vercel va Next.js uchun yaratildi.`,

@@ -42,14 +42,9 @@ export function HomePage() {
                   >
                     {section.title}
                   </button>,
-                  <button
-                    key="practice-sessions"
-                    type="button"
-                    className="hero__action hero__action--button"
-                    onClick={openPracticeModal}
-                  >
+                  <Link key="practice-sessions" href="#practice-sessions" className="hero__action">
                     {content.practiceSessions.actionLabel}
-                  </button>
+                  </Link>
                 ];
               }
 
@@ -67,10 +62,10 @@ export function HomePage() {
       </div>
 
       <div className="grid">
-        {content.sections.map((section) => {
+        {content.sections.flatMap((section) => {
           const isSyllabus = section.id === "syllabus";
           const isVideos = section.id === "videos";
-          return (
+          const card = (
             <section key={section.id} id={section.id} className="section-card">
               <div className="section-card__header">
                 <span className="section-card__badge">{section.subtitle}</span>
@@ -104,6 +99,31 @@ export function HomePage() {
               </div>
             </section>
           );
+
+          if (!isVideos) {
+            return [card];
+          }
+
+          return [
+            card,
+            <section key="practice-sessions" id="practice-sessions" className="section-card">
+              <div className="section-card__header">
+                <span className="section-card__badge">{content.practiceSessions.buttonLabel}</span>
+                <h2 className="section-card__title">{content.practiceSessions.actionLabel}</h2>
+              </div>
+              <p className="section-card__description">{content.practiceSessions.summary}</p>
+              <div className="section-card__cta">
+                <button
+                  type="button"
+                  className="section-card__link section-card__link--button"
+                  onClick={openPracticeModal}
+                >
+                  {content.practiceSessions.modalTitle}
+                </button>
+                <span className="section-card__hint">{content.practiceSessions.hint}</span>
+              </div>
+            </section>
+          ];
         })}
       </div>
 
