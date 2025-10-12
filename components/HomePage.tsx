@@ -13,7 +13,7 @@ export function HomePage() {
   const [showVideosModal, setShowVideosModal] = useState(false);
   const [showPracticeModal, setShowPracticeModal] = useState(false);
   const [showAuthorsModal, setShowAuthorsModal] = useState(false);
-  const [videos, setVideos] = useState<{ title: string; slug: string }[]>([]);
+  const [videos, setVideos] = useState<{ title: string; slug: string; filename: string }[]>([]);
 
   const openVideosModal = () => setShowVideosModal(true);
   const closeVideosModal = () => setShowVideosModal(false);
@@ -40,9 +40,10 @@ export function HomePage() {
         }
 
         const items = Array.isArray(data.videos)
-          ? data.videos.map((video: { title: string; slug: string }) => ({
+          ? data.videos.map((video: { title: string; slug: string; filename: string }) => ({
               title: video.title,
-              slug: video.slug
+              slug: video.slug,
+              filename: video.filename
             }))
           : [];
 
@@ -232,7 +233,7 @@ export function HomePage() {
                     className="videos-modal__button"
                     onClick={() => handleVideoOpen(video.slug)}
                   >
-                    {video.title}
+                    {video.filename}
                   </button>
                 ))
               ) : (
