@@ -10,13 +10,20 @@ type SectionPageClientProps = {
   slug: SectionSlug;
 };
 
+type PresentationButton = {
+  filename: string;
+  slug: string;
+  title: string;
+  href: string;
+};
+
+const createEmptyPresentationList = (): PresentationButton[] => [];
+
 export function SectionPageClient({ slug }: SectionPageClientProps) {
   const { language } = useLanguage();
   const content = sectionContent[slug][language];
   const [openItems, setOpenItems] = useState<Record<number, boolean>>({});
-  const [presentations, setPresentations] = useState<
-    { filename: string; slug: string; title: string }[]
-  >([]);
+  const [presentations, setPresentations] = useState<PresentationButton[]>(() => createEmptyPresentationList());
   const [presentationsLoading, setPresentationsLoading] = useState(false);
   const [presentationsError, setPresentationsError] = useState<string | null>(null);
   const sectionClassName = slug === "lecture" ? "section section--lecture" : "section";
@@ -46,7 +53,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
 
   useEffect(() => {
     if (slug !== "lecture") {
-      setPresentations([]);
+  setPresentations(createEmptyPresentationList());
       setPresentationsLoading(false);
       setPresentationsError(null);
       return;
@@ -70,11 +77,12 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
           return;
         }
 
-        const items = Array.isArray(data.presentations)
-          ? data.presentations.map((presentation: { filename: string; slug: string; title: string }) => ({
+        const items: PresentationButton[] = Array.isArray(data.presentations)
+          ? data.presentations.map((presentation: PresentationButton) => ({
               filename: presentation.filename,
               slug: presentation.slug,
-              title: presentation.title ?? presentation.filename
+              title: presentation.title ?? presentation.filename,
+              href: presentation.href
             }))
           : [];
 
@@ -82,7 +90,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
       } catch (error) {
         if (isMounted) {
           setPresentationsError("load_error");
-          setPresentations([]);
+          setPresentations(createEmptyPresentationList());
         }
       } finally {
         if (isMounted) {
@@ -98,8 +106,8 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
     };
   }, [slug]);
 
-  const handlePresentationOpen = (presentationSlug: string) => {
-    const url = `/api/presentations/download/${presentationSlug}`;
+  const handlePresentationOpen = (presentationSlug: string, href: string) => {
+    const url = href ?? `/api/presentations/download/${presentationSlug}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
@@ -205,7 +213,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
                     key={presentation.slug}
                     type="button"
                     className="presentations__button"
-                    onClick={() => handlePresentationOpen(presentation.slug)}
+                    onClick={() => handlePresentationOpen(presentation.slug, presentation.href)}
                   >
                     {presentation.filename}
                   </button>

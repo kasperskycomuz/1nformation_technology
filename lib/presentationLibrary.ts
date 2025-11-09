@@ -6,9 +6,10 @@ export type PresentationMetadata = {
   filename: string;
   title: string;
   slug: string;
+  href: string;
 };
 
-const presentationsDir = path.join(process.cwd(), "presentations");
+const presentationsDir = path.join(process.cwd(), "public", "presentations");
 
 const PRESENTATION_EXTENSIONS = new Set([
   ".pdf",
@@ -36,10 +37,14 @@ export async function listPresentations(): Promise<PresentationMetadata[]> {
       .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }))
       .map((filename) => {
         const base = path.parse(filename).name;
+        const slug = slugify(base);
+        const encoded = encodeURIComponent(filename);
+
         return {
           filename,
           title: buildTitle(filename),
-          slug: slugify(base)
+          slug,
+          href: `/presentations/${encoded}`
         } satisfies PresentationMetadata;
       });
   } catch (error) {
