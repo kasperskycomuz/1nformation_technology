@@ -14,15 +14,94 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
   const { language } = useLanguage();
   const content = sectionContent[slug][language];
   const [openItems, setOpenItems] = useState<Record<number, boolean>>({});
+  const [presentations, setPresentations] = useState<
+    { filename: string; slug: string; title: string }[]
+  >([]);
+  const [presentationsLoading, setPresentationsLoading] = useState(false);
+  const [presentationsError, setPresentationsError] = useState<string | null>(null);
   const sectionClassName = slug === "lecture" ? "section section--lecture" : "section";
   const linkLabels: Record<typeof language, string> = {
     ru: slug === "lecture" ? "Открыть лекцию" : "Подробнее",
     uz: slug === "lecture" ? "Ma'ruza sahifasini ochish" : "Batafsil"
   };
 
+  const presentationsLabels = {
+    ru: {
+      heading: "Доступные презентации",
+      loading: "Загрузка файлов...",
+      error: "Не удалось загрузить презентации.",
+      empty: "Презентации не найдены."
+    },
+    uz: {
+      heading: "Mavjud taqdimotlar",
+      loading: "Fayllar yuklanmoqda...",
+      error: "Taqdimotlarni yuklab bo'lmadi.",
+      empty: "Taqdimotlar topilmadi."
+    }
+  } as const;
+
   useEffect(() => {
     setOpenItems({});
   }, [content]);
+
+  useEffect(() => {
+    if (slug !== "presentations") {
+      setPresentations([]);
+      setPresentationsLoading(false);
+      setPresentationsError(null);
+      return;
+    }
+
+    let isMounted = true;
+    const fetchPresentations = async () => {
+      setPresentationsLoading(true);
+      setPresentationsError(null);
+
+      try {
+        const response = await fetch("/api/presentations");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch presentations");
+        }
+
+        const data = await response.json();
+
+        if (!isMounted) {
+          return;
+        }
+
+        const items = Array.isArray(data.presentations)
+          ? data.presentations.map((presentation: { filename: string; slug: string; title: string }) => ({
+              filename: presentation.filename,
+              slug: presentation.slug,
+              title: presentation.title ?? presentation.filename
+            }))
+          : [];
+
+        setPresentations(items);
+      } catch (error) {
+        if (isMounted) {
+          setPresentationsError("load_error");
+          setPresentations([]);
+        }
+      } finally {
+        if (isMounted) {
+          setPresentationsLoading(false);
+        }
+      }
+    };
+
+    fetchPresentations();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [slug]);
+
+  const handlePresentationOpen = (presentationSlug: string) => {
+    const url = `/api/presentations/download/${presentationSlug}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
 
   const toggleItem = (index: number) => {
     setOpenItems((prev) => ({
@@ -110,6 +189,33 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
             );
           })}
         </ul>
+        {slug === "presentations" ? (
+          <div className="presentations">
+            <h2 className="presentations__title">{presentationsLabels[language].heading}</h2>
+            {presentationsLoading ? (
+              <p className="presentations__status">{presentationsLabels[language].loading}</p>
+            ) : presentationsError ? (
+              <p className="presentations__status presentations__status--error">
+                {presentationsLabels[language].error}
+              </p>
+            ) : presentations.length > 0 ? (
+              <div className="presentations__grid">
+                {presentations.map((presentation) => (
+                  <button
+                    key={presentation.slug}
+                    type="button"
+                    className="presentations__button"
+                    onClick={() => handlePresentationOpen(presentation.slug)}
+                  >
+                    {presentation.filename}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <p className="presentations__status">{presentationsLabels[language].empty}</p>
+            )}
+          </div>
+        ) : null}
         {slug === "practice" && content.interactiveModules?.length ? (
           <div className="section__interactives">
             {content.interactiveModules.map((module) => (

@@ -510,6 +510,57 @@ body {
   color: var(--accent-strong);
 }
 
+.presentations {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.presentations__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  color: var(--accent-strong);
+}
+
+.presentations__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.presentations__button {
+  border: none;
+  border-radius: 14px;
+  padding: 0.9rem 1.1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(95, 61, 196, 0.18), rgba(53, 138, 221, 0.22));
+  color: var(--accent-strong);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 16px 28px rgba(52, 72, 129, 0.16);
+  text-align: center;
+  word-break: break-word;
+}
+
+.presentations__button:hover,
+.presentations__button:focus-visible {
+  transform: translateY(-2px);
+  outline: none;
+  background: linear-gradient(135deg, rgba(95, 61, 196, 0.28), rgba(53, 138, 221, 0.3));
+  box-shadow: 0 20px 36px rgba(52, 72, 129, 0.22);
+}
+
+.presentations__status {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.presentations__status--error {
+  color: #c13515;
+}
+
 .certificate-modal {
   position: fixed;
   inset: 0;
