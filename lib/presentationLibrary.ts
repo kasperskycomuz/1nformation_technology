@@ -2,14 +2,24 @@ import path from "path";
 import { promises as fs } from "fs";
 import { slugify } from "@/lib/videoLibrary";
 
+export type PresentationLocale = "ru" | "uz";
+
 export type PresentationMetadata = {
   filename: string;
   title: string;
   slug: string;
   href: string;
+  locale: PresentationLocale;
 };
 
-const presentationsDir = path.join(process.cwd(), "public", "presentations");
+const presentationsRootDir = path.join(process.cwd(), "public", "presentations");
+
+const PRESENTATION_LOCALE_DIRS: Record<PresentationLocale, string> = {
+  ru: presentationsRootDir,
+  uz: path.join(presentationsRootDir, "uzb")
+};
+
+const PRESENTATION_LOCALES: PresentationLocale[] = ["ru", "uz"];
 
 const PRESENTATION_EXTENSIONS = new Set([
   ".pdf",
@@ -28,23 +38,28 @@ const buildTitle = (filename: string) => {
   return capitalizeWords(normalizeWhitespace(base));
 };
 
-export async function listPresentations(): Promise<PresentationMetadata[]> {
+const getPresentationsDir = (locale: PresentationLocale) => PRESENTATION_LOCALE_DIRS[locale];
+
+export async function listPresentations(locale: PresentationLocale = "ru"): Promise<PresentationMetadata[]> {
   try {
-    const entries = await fs.readdir(presentationsDir);
+    const directory = getPresentationsDir(locale);
+    const entries = await fs.readdir(directory);
 
     return entries
       .filter((entry) => PRESENTATION_EXTENSIONS.has(path.extname(entry).toLowerCase()))
-  .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base", numeric: true }))
+      .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base", numeric: true }))
       .map((filename) => {
         const base = path.parse(filename).name;
         const slug = slugify(base);
         const encoded = encodeURIComponent(filename);
+        const href = locale === "uz" ? `/presentations/uzb/${encoded}` : `/presentations/${encoded}`;
 
         return {
           filename,
           title: buildTitle(filename),
           slug,
-          href: `/presentations/${encoded}`
+          href,
+          locale
         } satisfies PresentationMetadata;
       });
   } catch (error) {
@@ -52,14 +67,27 @@ export async function listPresentations(): Promise<PresentationMetadata[]> {
   }
 }
 
-export async function findPresentationBySlug(slug: string): Promise<PresentationMetadata | null> {
-  const presentations = await listPresentations();
-  const match = presentations.find((presentation) => presentation.slug === slug);
-  return match ?? null;
+export async function findPresentationBySlug(
+  slug: string,
+  preferredLocale?: PresentationLocale
+): Promise<PresentationMetadata | null> {
+  const localesToSearch = preferredLocale
+    ? [preferredLocale, ...PRESENTATION_LOCALES.filter((locale) => locale !== preferredLocale)]
+    : PRESENTATION_LOCALES;
+
+  for (const locale of localesToSearch) {
+    const presentations = await listPresentations(locale);
+    const match = presentations.find((presentation) => presentation.slug === slug);
+    if (match) {
+      return match;
+    }
+  }
+
+  return null;
 }
 
-export function getPresentationPath(filename: string) {
-  return path.join(presentationsDir, filename);
+export function getPresentationPath(filename: string, locale: PresentationLocale = "ru") {
+  return path.join(getPresentationsDir(locale), filename);
 }
 
 export function getPresentationContentType(filename: string) {

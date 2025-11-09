@@ -15,6 +15,15 @@ type PresentationButton = {
   slug: string;
   title: string;
   href: string;
+  locale: "ru" | "uz";
+};
+
+type PresentationResponse = {
+  filename: string;
+  slug: string;
+  title?: string;
+  href?: string;
+  locale?: "ru" | "uz";
 };
 
 const createEmptyPresentationList = (): PresentationButton[] => [];
@@ -55,7 +64,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
 
   useEffect(() => {
     if (slug !== "lecture") {
-  setPresentations(createEmptyPresentationList());
+      setPresentations(createEmptyPresentationList());
       setPresentationsLoading(false);
       setPresentationsError(null);
       return;
@@ -67,7 +76,8 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
       setPresentationsError(null);
 
       try {
-        const response = await fetch("/api/presentations");
+        const locale = language === "uz" ? "uz" : "ru";
+        const response = await fetch(`/api/presentations?lang=${locale}`, { cache: "no-store" });
 
         if (!response.ok) {
           throw new Error("Failed to fetch presentations");
@@ -80,11 +90,14 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
         }
 
         const items: PresentationButton[] = Array.isArray(data.presentations)
-          ? data.presentations.map((presentation: PresentationButton) => ({
+          ? data.presentations.map((presentation: PresentationResponse) => ({
               filename: presentation.filename,
               slug: presentation.slug,
               title: presentation.title ?? presentation.filename,
-              href: presentation.href
+              href:
+                presentation.href ??
+                `/api/presentations/download/${presentation.slug}?lang=${language === "uz" ? "uz" : "ru"}`,
+              locale: presentation.locale ?? (language === "uz" ? "uz" : "ru")
             }))
           : [];
 
@@ -106,10 +119,10 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
     return () => {
       isMounted = false;
     };
-  }, [slug]);
+  }, [language, slug]);
 
-  const handlePresentationOpen = (presentationSlug: string, href: string) => {
-    const url = href ?? `/api/presentations/download/${presentationSlug}`;
+  const handlePresentationOpen = (presentation: PresentationButton) => {
+    const url = presentation.href ?? `/api/presentations/download/${presentation.slug}?lang=${presentation.locale}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
@@ -215,7 +228,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
                     key={presentation.slug}
                     type="button"
                     className="presentations__button"
-                    onClick={() => handlePresentationOpen(presentation.slug, presentation.href)}
+                    onClick={() => handlePresentationOpen(presentation)}
                     aria-label={`${presentationsLabels[language].buttonPrefix}${index + 1}. ${presentation.filename}`}
                   >
                     {presentationsLabels[language].buttonPrefix}
