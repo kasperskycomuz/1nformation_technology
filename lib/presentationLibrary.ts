@@ -34,7 +34,7 @@ export async function listPresentations(): Promise<PresentationMetadata[]> {
 
     return entries
       .filter((entry) => PRESENTATION_EXTENSIONS.has(path.extname(entry).toLowerCase()))
-      .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }))
+  .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base", numeric: true }))
       .map((filename) => {
         const base = path.parse(filename).name;
         const slug = slugify(base);

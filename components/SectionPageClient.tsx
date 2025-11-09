@@ -37,13 +37,15 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
       heading: "Доступные презентации",
       loading: "Загрузка файлов...",
       error: "Не удалось загрузить презентации.",
-      empty: "Презентации не найдены."
+      empty: "Презентации не найдены.",
+      buttonPrefix: "Презентация "
     },
     uz: {
       heading: "Mavjud taqdimotlar",
       loading: "Fayllar yuklanmoqda...",
       error: "Taqdimotlarni yuklab bo'lmadi.",
-      empty: "Taqdimotlar topilmadi."
+      empty: "Taqdimotlar topilmadi.",
+      buttonPrefix: "Taqdimot "
     }
   } as const;
 
@@ -208,14 +210,16 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
               </p>
             ) : presentations.length > 0 ? (
               <div className="presentations__grid">
-                {presentations.map((presentation) => (
+                {presentations.map((presentation, index) => (
                   <button
                     key={presentation.slug}
                     type="button"
                     className="presentations__button"
                     onClick={() => handlePresentationOpen(presentation.slug, presentation.href)}
+                    aria-label={`${presentationsLabels[language].buttonPrefix}${index + 1}. ${presentation.filename}`}
                   >
-                    {presentation.filename}
+                    {presentationsLabels[language].buttonPrefix}
+                    {index + 1}
                   </button>
                 ))}
               </div>
