@@ -14,6 +14,8 @@ export function HomePage() {
   const [showPracticeModal, setShowPracticeModal] = useState(false);
   const [showAuthorsModal, setShowAuthorsModal] = useState(false);
   const [videos, setVideos] = useState<{ title: string; slug: string; filename: string }[]>([]);
+  const [videosLoading, setVideosLoading] = useState(false);
+  const [videosError, setVideosError] = useState(false);
 
   const openVideosModal = () => setShowVideosModal(true);
   const closeVideosModal = () => setShowVideosModal(false);
@@ -23,11 +25,18 @@ export function HomePage() {
   const closeAuthorsModal = () => setShowAuthorsModal(false);
 
   useEffect(() => {
+    if (!showVideosModal) {
+      return;
+    }
+
     let isMounted = true;
 
     const loadVideos = async () => {
+      setVideosLoading(true);
+      setVideosError(false);
+
       try {
-        const response = await fetch("/api/videos");
+        const response = await fetch("/api/videos", { cache: "no-store" });
 
         if (!response.ok) {
           throw new Error("Failed to fetch videos");
@@ -50,7 +59,12 @@ export function HomePage() {
         setVideos(items);
       } catch (error) {
         if (isMounted) {
+          setVideosError(true);
           setVideos([]);
+        }
+      } finally {
+        if (isMounted) {
+          setVideosLoading(false);
         }
       }
     };
@@ -60,7 +74,7 @@ export function HomePage() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [showVideosModal]);
 
   const handleVideoOpen = (slug: string) => {
     const url = `/videos/${slug}`;
@@ -225,7 +239,17 @@ export function HomePage() {
                 : "Выберите нужный видеоматериал из списка"}
             </p>
             <div className="videos-modal__grid">
-              {videos.length > 0 ? (
+              {videosLoading ? (
+                <span className="videos-modal__status">
+                  {language === "uz" ? "Video fayllari yuklanmoqda..." : "Загружаем список видео..."}
+                </span>
+              ) : videosError ? (
+                <span className="videos-modal__status videos-modal__status--error">
+                  {language === "uz"
+                    ? "Video ro'yxatini yuklab bo'lmadi."
+                    : "Не удалось загрузить список видео."}
+                </span>
+              ) : videos.length > 0 ? (
                 videos.map((video) => (
                   <button
                     key={video.slug}
@@ -237,7 +261,7 @@ export function HomePage() {
                   </button>
                 ))
               ) : (
-                <span className="videos-modal__empty">
+                <span className="videos-modal__status">
                   {language === "uz" ? "Video fayllari topilmadi" : "Видео файлы не найдены."}
                 </span>
               )}

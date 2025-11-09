@@ -731,11 +731,15 @@ body {
   outline: none;
 }
 
-.videos-modal__empty {
+.videos-modal__status {
   grid-column: 1 / -1;
   text-align: center;
   color: rgba(248, 249, 255, 0.8);
   font-size: 1rem;
+}
+
+.videos-modal__status--error {
+  color: #ffd1d1;
 }
 
 .practice-modal {
