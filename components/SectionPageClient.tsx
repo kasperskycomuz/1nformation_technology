@@ -45,7 +45,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
   }, [content]);
 
   useEffect(() => {
-    if (slug !== "presentations") {
+    if (slug !== "lecture") {
       setPresentations([]);
       setPresentationsLoading(false);
       setPresentationsError(null);
@@ -189,7 +189,7 @@ export function SectionPageClient({ slug }: SectionPageClientProps) {
             );
           })}
         </ul>
-        {slug === "presentations" ? (
+        {slug === "lecture" ? (
           <div className="presentations">
             <h2 className="presentations__title">{presentationsLabels[language].heading}</h2>
             {presentationsLoading ? (

@@ -5,7 +5,6 @@ const ALL_LANGUAGES: Language[] = ["ru", "uz"];
 export type SectionSlug =
   | "lecture"
   | "practice"
-  | "presentations"
   | "syllabus"
   | "videos"
   | "authors";
@@ -172,15 +171,6 @@ export const homeContent: Record<Language, HomeContent> = {
         hint: "Содержит интерактивные кейсы и самопроверку"
       },
       {
-        id: "presentations",
-        title: "Презентации",
-        subtitle: "Визуальные конспекты",
-        description:
-          "Красочно оформленные презентации, которые удобно использовать на занятиях и для самоподготовки.",
-        linkLabel: "Открыть презентации",
-        hint: "Подходит для демонстраций и обсуждений"
-      },
-      {
         id: "syllabus",
         title: "Силлабус",
         subtitle: "Структура курса",
@@ -266,15 +256,6 @@ export const homeContent: Record<Language, HomeContent> = {
           "IT vositalari bilan ishlash ko'nikmalarini mustahkamlash uchun bosqichma-bosqich mashqlar va laboratoriyalar.",
         linkLabel: "Testlarga o'tish",
         hint: "Interaktiv vaziyatlar va o'z-o'zini tekshirishni o'z ichiga oladi"
-      },
-      {
-        id: "presentations",
-        title: "Taqdimotlar",
-        subtitle: "Vizual konspektlar",
-        description:
-          "Darslarda va mustaqil tayyorgarlikda foydalanish qulay bo'lgan chiroyli taqdimotlar.",
-        linkLabel: "Taqdimotlarni ochish",
-        hint: "Namoyish va muhokama uchun qulay"
       },
       {
         id: "syllabus",
@@ -3338,17 +3319,6 @@ export function getLectureTopic(slug: string, language: Language): LectureTopic 
 
 const simpleItems = (titles: string[]): SectionContentItem[] => titles.map((title) => ({ title }));
 
-const lectureItemsByLanguage: Record<Language, SectionContentItem[]> = Object.fromEntries(
-  ALL_LANGUAGES.map((language) => [
-    language,
-    lectureTopicsData.map((topic) => ({
-      title: topic.translations[language].title,
-      details: topic.translations[language].summary,
-      linkSlug: topic.slug
-    }))
-  ])
-) as Record<Language, SectionContentItem[]>;
-
 const practiceItemsByLanguage: Record<Language, SectionContentItem[]> = {
   ru: [
     {
@@ -3572,7 +3542,7 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       lead: "Методологические основы цифровой гуманитаристики",
       description:
         "Лекции собирают ключевые темы курса и дают развернутые материалы с планами, примерами и дополнительными ресурсами.",
-      items: lectureItemsByLanguage.ru,
+      items: [],
       backLabel: "← На главную"
     },
     uz: {
@@ -3580,7 +3550,7 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       lead: "Raqamli gumanitar fanlarning metodologik asoslari",
       description:
         "Ma'ruzalar kursning asosiy mavzularini birlashtirib, batafsil reja, misollar va qo'shimcha manbalarni taqdim etadi.",
-      items: lectureItemsByLanguage.uz,
+      items: [],
       backLabel: "← Bosh sahifaga"
     }
   },
@@ -3599,32 +3569,6 @@ const sectionBaseContent: Record<SectionSlug, Record<Language, Omit<SectionPageC
       description:
         "Interfaol testlar raqamli vositalar bilan ishlash ko'nikmalarini mustahkamlash va amaliy loyihalarga tayyorlanishga yordam beradi.",
       items: practiceItemsByLanguage.uz,
-      backLabel: "← Bosh sahifaga"
-    }
-  },
-  presentations: {
-    ru: {
-      title: "Презентации",
-      lead: "Слайды и шаблоны для занятий",
-      description:
-        "Презентации помогают быстро структурировать материал и дополняют устное выступление на семинарах и лекциях.",
-      items: simpleItems([
-        "Введение в цифровую филологию",
-        "Работа с корпусами: пошаговый чек-лист",
-        "Примеры проектов студентов и исследовательские кейсы"
-      ]),
-      backLabel: "← На главную"
-    },
-    uz: {
-      title: "Taqdimotlar",
-      lead: "Darslar uchun slaydlar va shablonlar",
-      description:
-        "Taqdimotlar materialni tezda tuzishga yordam beradi va seminar hamda ma'ruzalarda og'zaki chiqishni to'ldiradi.",
-      items: simpleItems([
-        "Raqamli filologiyaga kirish",
-        "Korpuslar bilan ishlash: bosqichma-bosqich chek-list",
-        "Talabalar loyihalari va tadqiqot misollari"
-      ]),
       backLabel: "← Bosh sahifaga"
     }
   },
